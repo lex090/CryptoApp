@@ -14,7 +14,7 @@
 
 ## Путь пользователя
 
-![User flow](/assetes/images/UserFlow.png)
+![](/assetes/images/UserFlow.png)
 
 ## Стек
 
