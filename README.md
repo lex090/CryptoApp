@@ -14,7 +14,7 @@
 
 ## Путь пользователя
 
-![User flow](https://github.com/lex090/CryptoApp/tree/main/assets/images/UserFlow.png)
+![User flow image](https://raw.githubusercontent.com/lex090/CryptoApp/main/assets/images/UserFlow.png)
 
 ## Стек
 
