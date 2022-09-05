@@ -1,4 +1,6 @@
 import com.github.lex090.cryptoapp.dependencies.AppConfiguration
+import com.github.lex090.cryptoapp.dependencies.Dependencies
+import com.github.lex090.cryptoapp.dependencies.Dependencies.ProjectModules
 
 plugins {
     id("com.android.library")
@@ -25,4 +27,10 @@ android {
 }
 
 dependencies {
+    api(project(ProjectModules.coreNetworkApi))
+
+    implementation(Dependencies.Libraries.retrofit)
+    implementation(Dependencies.Libraries.okHttp3)
+    implementation(Dependencies.Libraries.okHttp3LoggingInterceptor)
+    implementation(Dependencies.Libraries.dagger2)
 }
