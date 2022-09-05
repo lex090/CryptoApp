@@ -30,6 +30,7 @@ dependencies {
     api(project(ProjectModules.coreNetworkApi))
 
     implementation(Dependencies.Libraries.retrofit)
+    implementation(Dependencies.Libraries.retrofitConverterMoshi)
     implementation(Dependencies.Libraries.okHttp3)
     implementation(Dependencies.Libraries.okHttp3LoggingInterceptor)
     implementation(Dependencies.Libraries.dagger2)

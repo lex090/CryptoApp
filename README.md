@@ -5,7 +5,7 @@
 
 Используемое Api: 
  * [Coin cap](https://docs.coincap.io/#ed9ed517-dd00-4d1d-98e4-772643117d9e)
- * [CoinGecko](https://www.coingecko.com/en/api/documentation )
+ * [CoinGecko](https://www.coingecko.com/en/api/documentation)
 
 
 ## Экраны

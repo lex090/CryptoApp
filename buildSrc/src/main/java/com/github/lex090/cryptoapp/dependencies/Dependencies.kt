@@ -8,8 +8,10 @@ import com.github.lex090.cryptoapp.dependencies.Dependencies.Versions.androidxJu
 import com.github.lex090.cryptoapp.dependencies.Dependencies.Versions.dagger2Version
 import com.github.lex090.cryptoapp.dependencies.Dependencies.Versions.junitVersion
 import com.github.lex090.cryptoapp.dependencies.Dependencies.Versions.materialVersion
+import com.github.lex090.cryptoapp.dependencies.Dependencies.Versions.moshiVersion
 import com.github.lex090.cryptoapp.dependencies.Dependencies.Versions.okHttp3LoggingInterceptorVersion
 import com.github.lex090.cryptoapp.dependencies.Dependencies.Versions.okHttp3Version
+import com.github.lex090.cryptoapp.dependencies.Dependencies.Versions.retrofitConverterMoshiVersion
 import com.github.lex090.cryptoapp.dependencies.Dependencies.Versions.retrofitVersion
 
 object Dependencies {
@@ -27,6 +29,8 @@ object Dependencies {
         const val okHttp3Version = "4.10.0"
         const val okHttp3LoggingInterceptorVersion = "4.10.0"
         const val dagger2Version = "2.43.2"
+        const val retrofitConverterMoshiVersion = "2.4.0"
+        const val moshiVersion = "1.13.0"
     }
 
     object ProjectModules {
@@ -47,6 +51,10 @@ object Dependencies {
 
 
         const val retrofit = "com.squareup.retrofit2:retrofit:$retrofitVersion"
+        const val retrofitConverterMoshi =
+            "com.squareup.retrofit2:converter-moshi:$retrofitConverterMoshiVersion"
+        const val moshi = "com.squareup.moshi:moshi:$moshiVersion"
+
         const val okHttp3 = "com.squareup.okhttp3:okhttp:$okHttp3Version"
         const val okHttp3LoggingInterceptor =
             "com.squareup.okhttp3:logging-interceptor:$okHttp3LoggingInterceptorVersion"
