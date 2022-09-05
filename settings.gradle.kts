@@ -14,3 +14,4 @@ dependencyResolutionManagement {
 }
 rootProject.name = "CryptoApp"
 include(":app")
+include(":modules:core:core_network_api")
