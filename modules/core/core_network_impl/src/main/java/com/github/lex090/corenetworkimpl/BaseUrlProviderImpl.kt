@@ -6,5 +6,5 @@ import javax.inject.Inject
 internal class BaseUrlProviderImpl @Inject constructor() : IUrlProvider {
 
     override fun provideUrl(): URL =
-        URL("https://pro-api.coingecko.com/api/v3/")
+        URL("https://api.coingecko.com/api/v3/")
 }
