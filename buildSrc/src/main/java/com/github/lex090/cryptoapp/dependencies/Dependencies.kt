@@ -36,6 +36,7 @@ object Dependencies {
     object ProjectModules {
 
         const val coreNetworkApi = ":modules:core:core_network_api"
+        const val coreNetworkImpl = ":modules:core:core_network_impl"
     }
 
     object Libraries {
