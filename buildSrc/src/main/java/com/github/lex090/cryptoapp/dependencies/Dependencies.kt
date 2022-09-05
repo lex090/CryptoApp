@@ -40,6 +40,8 @@ object Dependencies {
 
         const val coreDiApi = ":modules:core:core_di_api"
         const val coreDiImpl = ":modules:core:core_di_impl"
+
+        const val coreFactory = ":modules:core:core_factory"
     }
 
     object Libraries {
