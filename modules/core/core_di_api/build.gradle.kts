@@ -1,4 +1,5 @@
 import com.github.lex090.cryptoapp.dependencies.AppConfiguration
+import com.github.lex090.cryptoapp.dependencies.Dependencies
 
 plugins {
     id("com.android.library")
@@ -25,4 +26,6 @@ android {
 }
 
 dependencies {
+
+    implementation(Dependencies.Libraries.dagger2)
 }

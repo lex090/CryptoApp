@@ -37,6 +37,9 @@ object Dependencies {
 
         const val coreNetworkApi = ":modules:core:core_network_api"
         const val coreNetworkImpl = ":modules:core:core_network_impl"
+
+        const val coreDiApi = ":modules:core:core_di_api"
+        const val coreDiImpl = ":modules:core:core_di_impl"
     }
 
     object Libraries {
@@ -61,6 +64,7 @@ object Dependencies {
             "com.squareup.okhttp3:logging-interceptor:$okHttp3LoggingInterceptorVersion"
 
         const val dagger2 = "com.google.dagger:dagger:$dagger2Version"
+        const val dagger2compiler = "com.google.dagger:dagger-compiler:$dagger2Version"
     }
 }
 
