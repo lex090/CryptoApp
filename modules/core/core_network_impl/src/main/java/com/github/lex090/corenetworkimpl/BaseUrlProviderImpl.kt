@@ -3,8 +3,8 @@ package com.github.lex090.corenetworkimpl
 import java.net.URL
 import javax.inject.Inject
 
-internal class BaseUrlProviderImpl @Inject constructor() : IBaseUrlProvider {
+internal class BaseUrlProviderImpl @Inject constructor() : IUrlProvider {
 
-    override fun provideBaseUrl(): URL =
+    override fun provideUrl(): URL =
         URL("https://pro-api.coingecko.com/api/v3/")
 }

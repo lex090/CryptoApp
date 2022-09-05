@@ -42,7 +42,7 @@ internal object NetworkModule {
             .build()
 
     @Provides
-    fun provideUrl(baseUrlProvider: IBaseUrlProvider): URL = baseUrlProvider.provideBaseUrl()
+    fun provideUrl(baseUrlProvider: IUrlProvider): URL = baseUrlProvider.provideUrl()
 
     @Provides
     fun provideOkHttpClient(
@@ -87,7 +87,7 @@ internal interface BindsNetworkModule {
     @Binds
     fun bind_BaseUrlProviderImpl_to_IBaseUrlProvider(
         baseUrlProvider: BaseUrlProviderImpl
-    ): IBaseUrlProvider
+    ): IUrlProvider
 
     @Binds
     fun bind_RemoteNetworkServiceGeneratorImpl_to_IRemoteNetworkServiceGenerator(
