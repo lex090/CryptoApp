@@ -31,11 +31,11 @@ dependencies {
     api(project(ProjectModules.coreNetworkApi))
     api(project(ProjectModules.coreDiApi))
 
-    api(Dependencies.Libraries.retrofit)
-    api(Dependencies.Libraries.retrofitConverterMoshi)
+    implementation(Dependencies.Libraries.retrofit)
+    implementation(Dependencies.Libraries.retrofitConverterMoshi)
 
-    api(Dependencies.Libraries.okHttp3)
-    api(Dependencies.Libraries.okHttp3LoggingInterceptor)
+    implementation(Dependencies.Libraries.okHttp3)
+    implementation(Dependencies.Libraries.okHttp3LoggingInterceptor)
 
     implementation(Dependencies.Libraries.dagger2)
     kapt(Dependencies.Libraries.dagger2compiler)

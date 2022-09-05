@@ -9,6 +9,7 @@ import com.github.lex090.cryptoapp.dependencies.Dependencies.Versions.dagger2Ver
 import com.github.lex090.cryptoapp.dependencies.Dependencies.Versions.junitVersion
 import com.github.lex090.cryptoapp.dependencies.Dependencies.Versions.materialVersion
 import com.github.lex090.cryptoapp.dependencies.Dependencies.Versions.moshiVersion
+import com.github.lex090.cryptoapp.dependencies.Dependencies.Versions.multidexVersion
 import com.github.lex090.cryptoapp.dependencies.Dependencies.Versions.okHttp3LoggingInterceptorVersion
 import com.github.lex090.cryptoapp.dependencies.Dependencies.Versions.okHttp3Version
 import com.github.lex090.cryptoapp.dependencies.Dependencies.Versions.retrofitConverterMoshiVersion
@@ -31,6 +32,7 @@ object Dependencies {
         const val dagger2Version = "2.43.2"
         const val retrofitConverterMoshiVersion = "2.4.0"
         const val moshiVersion = "1.13.0"
+        const val multidexVersion = "2.0.1"
     }
 
     object ProjectModules {
@@ -67,6 +69,8 @@ object Dependencies {
 
         const val dagger2 = "com.google.dagger:dagger:$dagger2Version"
         const val dagger2compiler = "com.google.dagger:dagger-compiler:$dagger2Version"
+
+        const val multidex = "androidx.multidex:multidex:$multidexVersion"
     }
 }
 
