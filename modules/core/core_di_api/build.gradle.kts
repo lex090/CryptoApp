@@ -26,6 +26,7 @@ android {
 }
 
 dependencies {
+    api(project(Dependencies.ProjectModules.coreNetworkApi))
 
     implementation(Dependencies.Libraries.dagger2)
 }

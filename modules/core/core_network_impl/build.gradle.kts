@@ -5,6 +5,7 @@ import com.github.lex090.cryptoapp.dependencies.Dependencies.ProjectModules
 plugins {
     id("com.android.library")
     id("org.jetbrains.kotlin.android")
+    id("kotlin-kapt")
 }
 
 android {
@@ -28,10 +29,14 @@ android {
 
 dependencies {
     api(project(ProjectModules.coreNetworkApi))
+    api(project(ProjectModules.coreDiApi))
 
-    implementation(Dependencies.Libraries.retrofit)
-    implementation(Dependencies.Libraries.retrofitConverterMoshi)
-    implementation(Dependencies.Libraries.okHttp3)
-    implementation(Dependencies.Libraries.okHttp3LoggingInterceptor)
+    api(Dependencies.Libraries.retrofit)
+    api(Dependencies.Libraries.retrofitConverterMoshi)
+
+    api(Dependencies.Libraries.okHttp3)
+    api(Dependencies.Libraries.okHttp3LoggingInterceptor)
+
     implementation(Dependencies.Libraries.dagger2)
+    kapt(Dependencies.Libraries.dagger2compiler)
 }

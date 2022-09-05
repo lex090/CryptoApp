@@ -1,5 +1,6 @@
 package com.github.lex090.corenetworkimpl
 
+import com.github.lex090.corediapi.ApplicationScope
 import com.github.lex090.corenetworkapi.IRemoteNetworkServiceGenerator
 import dagger.Binds
 import dagger.Module
@@ -13,10 +14,6 @@ import retrofit2.converter.moshi.MoshiConverterFactory
 import java.net.URL
 import java.util.concurrent.TimeUnit
 
-internal typealias ConnectionTimeout = Pair<Long, TimeUnit>
-internal typealias CallTimeout = Pair<Long, TimeUnit>
-internal typealias ReadTimeout = Pair<Long, TimeUnit>
-
 @Module(
     includes = [
         NetworkModule::class,
@@ -28,6 +25,7 @@ object BaseNetworkModule
 @Module
 internal object NetworkModule {
 
+    @ApplicationScope
     @Provides
     fun provideRetrofit(
         url: URL,
@@ -47,16 +45,16 @@ internal object NetworkModule {
     @Provides
     fun provideOkHttpClient(
         loggingInterceptor: Interceptor,
-        connectionTimeout: ConnectionTimeout,
-        callTimeout: CallTimeout,
-        readTimeout: ReadTimeout,
+        @ConnectionTimeout connectionTimeout: Timeout,
+        @CallTimeout callTimeout: Timeout,
+        @ReadTimeout readTimeout: Timeout,
     ): OkHttpClient =
         OkHttpClient
             .Builder()
             .addNetworkInterceptor(loggingInterceptor)
-            .connectTimeout(connectionTimeout.first, connectionTimeout.second)
-            .callTimeout(callTimeout.first, callTimeout.second)
-            .readTimeout(readTimeout.first, readTimeout.second)
+            .connectTimeout(connectionTimeout.timeout, connectionTimeout.unit)
+            .callTimeout(callTimeout.timeout, callTimeout.unit)
+            .readTimeout(readTimeout.timeout, readTimeout.unit)
             .build()
 
     @Provides
@@ -66,18 +64,20 @@ internal object NetworkModule {
         }
 
     @Provides
-    fun provideConnectTimeoutSeconds(): ConnectionTimeout = 10L to TimeUnit.SECONDS
+    @ConnectionTimeout
+    fun provideConnectTimeoutSeconds(): Timeout = Timeout(timeout = 10, unit = TimeUnit.SECONDS)
 
     @Provides
-    fun provideCallTimeoutSeconds(): CallTimeout = 10L to TimeUnit.SECONDS
+    @CallTimeout
+    fun provideCallTimeoutSeconds(): Timeout = Timeout(timeout = 10, unit = TimeUnit.SECONDS)
 
     @Provides
-    fun provideReadTimeoutSeconds(): ReadTimeout = 10L to TimeUnit.SECONDS
+    @ReadTimeout
+    fun provideReadTimeoutSeconds(): Timeout = Timeout(timeout = 10, unit = TimeUnit.SECONDS)
 
     @Provides
     fun provideConverterFactory(): Converter.Factory =
         MoshiConverterFactory.create()
-
 }
 
 @Suppress("FunctionName")

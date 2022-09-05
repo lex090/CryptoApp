@@ -28,6 +28,7 @@ android {
 
 dependencies {
     api(project(Dependencies.ProjectModules.coreDiApi))
+    implementation(project(Dependencies.ProjectModules.coreNetworkImpl))
 
     implementation(Dependencies.Libraries.dagger2)
     kapt(Dependencies.Libraries.dagger2compiler)

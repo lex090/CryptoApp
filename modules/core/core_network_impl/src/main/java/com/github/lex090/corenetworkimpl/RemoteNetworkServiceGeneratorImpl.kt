@@ -4,7 +4,7 @@ import com.github.lex090.corenetworkapi.IRemoteNetworkServiceGenerator
 import retrofit2.Retrofit
 import javax.inject.Inject
 
-class RemoteNetworkServiceGeneratorImpl @Inject constructor(
+internal class RemoteNetworkServiceGeneratorImpl @Inject constructor(
     private val retrofit: Retrofit
 ) : IRemoteNetworkServiceGenerator {
 
