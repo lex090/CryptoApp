@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@id/nav_graph_app_flow_fragment"
+    app:startDestination="@id/appFlowFragment">
+
+    <fragment
+        android:id="@+id/appFlowFragment"
+        android:name="com.github.lex090.featureappflowfragmentimpl.AppFlowFragment"
+        android:label="AppFlowFragment"
+        tools:layout="@layout/fragment_app_flow" />
+
+</navigation>
