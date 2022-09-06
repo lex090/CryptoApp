@@ -10,6 +10,7 @@ import com.github.lex090.cryptoapp.dependencies.Dependencies.Versions.junitVersi
 import com.github.lex090.cryptoapp.dependencies.Dependencies.Versions.materialVersion
 import com.github.lex090.cryptoapp.dependencies.Dependencies.Versions.moshiVersion
 import com.github.lex090.cryptoapp.dependencies.Dependencies.Versions.multidexVersion
+import com.github.lex090.cryptoapp.dependencies.Dependencies.Versions.navigationVersion
 import com.github.lex090.cryptoapp.dependencies.Dependencies.Versions.okHttp3LoggingInterceptorVersion
 import com.github.lex090.cryptoapp.dependencies.Dependencies.Versions.okHttp3Version
 import com.github.lex090.cryptoapp.dependencies.Dependencies.Versions.retrofitConverterMoshiVersion
@@ -33,6 +34,7 @@ object Dependencies {
         const val retrofitConverterMoshiVersion = "2.4.0"
         const val moshiVersion = "1.13.0"
         const val multidexVersion = "2.0.1"
+        const val navigationVersion = "2.5.1"
     }
 
     object ProjectModules {
@@ -44,6 +46,12 @@ object Dependencies {
         const val coreDiImpl = ":modules:core:core_di_impl"
 
         const val coreFactory = ":modules:core:core_factory"
+
+        const val featureAppActivityApi = ":modules:feature:feature_app_activity_api"
+        const val featureAppActivityImpl = ":modules:feature:feature_app_activity_impl"
+
+        const val featureAppFlowFragmentApi = ":modules:feature:feature_app_flow_fragment_api"
+        const val featureAppFlowFragmentImpl = ":modules:feature:feature_app_flow_fragment_impl"
     }
 
     object Libraries {
@@ -71,6 +79,10 @@ object Dependencies {
         const val dagger2compiler = "com.google.dagger:dagger-compiler:$dagger2Version"
 
         const val multidex = "androidx.multidex:multidex:$multidexVersion"
+
+        const val navigationFragmentKtx =
+            "androidx.navigation:navigation-fragment-ktx:$navigationVersion"
+        const val navigationUiKtx = "androidx.navigation:navigation-ui-ktx:$navigationVersion"
     }
 }
 
