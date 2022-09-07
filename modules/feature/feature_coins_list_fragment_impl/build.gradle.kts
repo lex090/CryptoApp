@@ -20,6 +20,7 @@ android {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
     }
+
     kotlinOptions {
         jvmTarget = "1.8"
     }
@@ -30,9 +31,7 @@ android {
 }
 
 dependencies {
-    api(project(Dependencies.ProjectModules.featureAppFlowFragmentApi))
     api(project(Dependencies.ProjectModules.featureCoinsListFragmentApi))
-    api(project(Dependencies.ProjectModules.featureFavoriteCoinsFragmentApi))
 
     implementation(Dependencies.Libraries.androidxCoreKtx)
     implementation(Dependencies.Libraries.androidxAppcompat)

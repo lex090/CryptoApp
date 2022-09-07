@@ -5,7 +5,10 @@
       <map>
         <entry key="modules/feature/feature_app_activity/src/main/res/layout/activity_app.xml" value="0.34010416666666665" />
         <entry key="modules/feature/feature_app_activity_impl/src/main/res/layout/activity_app.xml" value="0.5452898550724637" />
-        <entry key="modules/feature/feature_app_flow_fragment_impl/src/main/res/layout/fragment_app_flow.xml" value="0.4166666666666667" />
+        <entry key="modules/feature/feature_app_flow_fragment_impl/src/main/res/layout/fragment_app_flow.xml" value="0.13293863932291666" />
+        <entry key="modules/feature/feature_app_flow_fragment_impl/src/main/res/menu/bottom_menu.xml" value="0.2703125" />
+        <entry key="modules/feature/feature_coins_list_fragment_impl/src/main/res/layout/fragment_coins_list.xml" value="0.40260416666666665" />
+        <entry key="modules/feature/feature_favorite_coins_fragment_impl/src/main/res/layout/fragment_favorite_coins_list.xml" value="0.41770833333333335" />
       </map>
     </option>
   </component>
