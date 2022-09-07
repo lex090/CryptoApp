@@ -7,4 +7,6 @@
 
     <include app:graph="@navigation/nav_graph_coins_list_fragment" />
 
+    <include app:graph="@navigation/nav_graph_favorite_coins_fragment" />
+
 </navigation>

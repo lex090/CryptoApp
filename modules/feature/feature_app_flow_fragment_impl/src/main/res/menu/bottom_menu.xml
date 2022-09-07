@@ -5,5 +5,7 @@
         android:id="@id/nav_graph_coins_list_fragment"
         android:title="Coins list" />
 
-    <item android:title="Favorite coins" />
+    <item
+        android:id="@id/nav_graph_favorite_coins_fragment"
+        android:title="Favorite coins" />
 </menu>
