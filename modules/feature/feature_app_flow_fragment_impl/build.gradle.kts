@@ -27,6 +27,7 @@ android {
 
 dependencies {
     api(project(Dependencies.ProjectModules.featureAppFlowFragmentApi))
+    api(project(Dependencies.ProjectModules.featureCoinsListFragmentApi))
 
     implementation(Dependencies.Libraries.androidxCoreKtx)
     implementation(Dependencies.Libraries.androidxAppcompat)

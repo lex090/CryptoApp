@@ -51,6 +51,9 @@ dependencies {
     implementation(project(Dependencies.ProjectModules.featureAppFlowFragmentApi))
     implementation(project(Dependencies.ProjectModules.featureAppFlowFragmentImpl))
 
+    implementation(project(Dependencies.ProjectModules.featureCoinsListFragmentApi))
+    implementation(project(Dependencies.ProjectModules.featureCoinsListFragmentImpl))
+
     implementation(Dependencies.Libraries.androidxCoreKtx)
     implementation(Dependencies.Libraries.androidxAppcompat)
     implementation(Dependencies.Libraries.material)
