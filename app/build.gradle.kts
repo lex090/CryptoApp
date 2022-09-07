@@ -54,6 +54,9 @@ dependencies {
     implementation(project(Dependencies.ProjectModules.featureCoinsListFragmentApi))
     implementation(project(Dependencies.ProjectModules.featureCoinsListFragmentImpl))
 
+    implementation(project(Dependencies.ProjectModules.featureFavoriteCoinsFragmentApi))
+    implementation(project(Dependencies.ProjectModules.featureFavoriteCoinsFragmentImpl))
+
     implementation(Dependencies.Libraries.androidxCoreKtx)
     implementation(Dependencies.Libraries.androidxAppcompat)
     implementation(Dependencies.Libraries.material)
