@@ -6,6 +6,7 @@
         <entry key="modules/feature/feature_app_activity/src/main/res/layout/activity_app.xml" value="0.34010416666666665" />
         <entry key="modules/feature/feature_app_activity_impl/src/main/res/layout/activity_app.xml" value="0.5452898550724637" />
         <entry key="modules/feature/feature_app_flow_fragment_impl/src/main/res/layout/fragment_app_flow.xml" value="0.4166666666666667" />
+        <entry key="modules/feature/feature_app_flow_fragment_impl/src/main/res/menu/bottom_menu.xml" value="0.2703125" />
       </map>
     </option>
   </component>

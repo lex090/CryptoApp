@@ -28,6 +28,11 @@ android {
 dependencies {
     api(project(Dependencies.ProjectModules.featureAppFlowFragmentApi))
 
+    implementation(Dependencies.Libraries.androidxCoreKtx)
+    implementation(Dependencies.Libraries.androidxAppcompat)
+    implementation(Dependencies.Libraries.material)
+    implementation(Dependencies.Libraries.androidxConstraintLayout)
+
     implementation(Dependencies.Libraries.navigationFragmentKtx)
     implementation(Dependencies.Libraries.navigationUiKtx)
 }
