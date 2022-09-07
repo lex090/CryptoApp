@@ -23,22 +23,9 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
-
-    buildFeatures {
-        viewBinding = true
-    }
 }
 
 dependencies {
-    api(project(Dependencies.ProjectModules.featureAppFlowFragmentApi))
-    api(project(Dependencies.ProjectModules.featureCoinsListFragmentApi))
-    api(project(Dependencies.ProjectModules.featureFavoriteCoinsFragmentApi))
-
-    implementation(Dependencies.Libraries.androidxCoreKtx)
-    implementation(Dependencies.Libraries.androidxAppcompat)
-    implementation(Dependencies.Libraries.material)
-    implementation(Dependencies.Libraries.androidxConstraintLayout)
-
     implementation(Dependencies.Libraries.navigationFragmentKtx)
     implementation(Dependencies.Libraries.navigationUiKtx)
 }
