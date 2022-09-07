@@ -52,6 +52,9 @@ object Dependencies {
 
         const val featureAppFlowFragmentApi = ":modules:feature:feature_app_flow_fragment_api"
         const val featureAppFlowFragmentImpl = ":modules:feature:feature_app_flow_fragment_impl"
+
+        const val featureCoinsListFragmentApi = ":modules:feature:feature_coins_list_fragment_api"
+        const val featureCoinsListFragmentImpl = ":modules:feature:feature_coins_list_fragment_impl"
     }
 
     object Libraries {
