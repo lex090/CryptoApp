@@ -43,11 +43,15 @@ dependencies {
 
     implementation(project(Dependencies.ProjectModules.coreDiApi))
     implementation(project(Dependencies.ProjectModules.coreDiImpl))
+
     implementation(project(Dependencies.ProjectModules.coreNetworkApi))
     implementation(project(Dependencies.ProjectModules.coreNetworkImpl))
 
+    implementation(project(Dependencies.ProjectModules.coreApi))
+
     implementation(project(Dependencies.ProjectModules.featureAppActivityApi))
     implementation(project(Dependencies.ProjectModules.featureAppActivityImpl))
+
     implementation(project(Dependencies.ProjectModules.featureAppFlowFragmentApi))
     implementation(project(Dependencies.ProjectModules.featureAppFlowFragmentImpl))
 

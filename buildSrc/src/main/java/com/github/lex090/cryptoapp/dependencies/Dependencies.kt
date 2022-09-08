@@ -47,6 +47,8 @@ object Dependencies {
 
         const val coreFactory = ":modules:core:core_factory"
 
+        const val coreApi = ":modules:core:core_api"
+
         const val featureAppActivityApi = ":modules:feature:feature_app_activity_api"
         const val featureAppActivityImpl = ":modules:feature:feature_app_activity_impl"
 
