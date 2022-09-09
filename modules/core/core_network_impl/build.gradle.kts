@@ -33,6 +33,7 @@ dependencies {
 
     implementation(Dependencies.Libraries.retrofit)
     implementation(Dependencies.Libraries.retrofitConverterMoshi)
+    implementation(Dependencies.Libraries.moshi)
 
     implementation(Dependencies.Libraries.okHttp3)
     implementation(Dependencies.Libraries.okHttp3LoggingInterceptor)

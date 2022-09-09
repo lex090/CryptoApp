@@ -15,7 +15,7 @@ class CoinsRepositoryImpl @Inject constructor(
 
     override suspend fun getCoinsList(): ResultOf<CoinsList> =
         try {
-            val coinsList = mapper.map(service.getCoinsList())
+            val coinsList = mapper.map(service.getCoinsMarketsList())
             ResultOf.Success(coinsList)
         } catch (e: NetworkErrorException) {
             ResultOf.Error(exception = e)

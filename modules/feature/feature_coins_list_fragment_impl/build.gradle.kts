@@ -47,6 +47,7 @@ dependencies {
     implementation(Dependencies.Libraries.navigationUiKtx)
 
     implementation(Dependencies.Libraries.retrofit)
+    implementation(Dependencies.Libraries.moshi)
 
     implementation(Dependencies.Libraries.dagger2)
     kapt(Dependencies.Libraries.dagger2compiler)

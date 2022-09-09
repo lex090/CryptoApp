@@ -1,14 +1,14 @@
 package com.github.lex090.featurecoinslistfragmentimpl.data.mappers
 
 import com.github.lex090.coreapi.data.IMapper
-import com.github.lex090.featurecoinslistfragmentimpl.data.responses.CoinsListResponse
+import com.github.lex090.featurecoinslistfragmentimpl.data.responses.CoinResponse
 import com.github.lex090.featurecoinslistfragmentimpl.domain.entity.Coin
 import com.github.lex090.featurecoinslistfragmentimpl.domain.entity.CoinsList
 
-class CoinMapperImpl : IMapper<CoinsListResponse, CoinsList> {
+class CoinMapperImpl : IMapper<List<CoinResponse>, CoinsList> {
 
-    override fun map(oldData: CoinsListResponse): CoinsList =
+    override fun map(oldData: List<CoinResponse>): CoinsList =
         CoinsList(
-            coinsList = oldData.coinsList.map { Coin(coinName = it.coinName) }
+            coinsList = oldData.map { Coin(coinName = it.name) }
         )
 }
