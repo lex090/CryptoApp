@@ -1,5 +1,7 @@
 package com.github.lex090.featurecoinslistfragmentimpl.di
 
+import com.github.lex090.corediapi.AppDependenciesProvider
+import com.github.lex090.featurecoinslistfragmentimpl.presentation.view.CoinsListFragment
 import dagger.Component
 
 @Component(
@@ -7,14 +9,16 @@ import dagger.Component
         BaseCoinListFragmentModule::class
     ],
     dependencies = [
-
+        AppDependenciesProvider::class
     ]
 )
 interface CoinListFragmentComponent {
 
+    fun inject(fragment: CoinsListFragment)
+
     @Component.Factory
     interface Factory {
 
-        fun create(): CoinListFragmentComponent
+        fun create(dependencies: AppDependenciesProvider): CoinListFragmentComponent
     }
 }
