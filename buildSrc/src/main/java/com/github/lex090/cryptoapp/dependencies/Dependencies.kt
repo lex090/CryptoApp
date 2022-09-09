@@ -1,11 +1,13 @@
 package com.github.lex090.cryptoapp.dependencies
 
+import com.github.lex090.cryptoapp.dependencies.Dependencies.Versions.activityKtxVersion
 import com.github.lex090.cryptoapp.dependencies.Dependencies.Versions.androidxAppcompatVersion
 import com.github.lex090.cryptoapp.dependencies.Dependencies.Versions.androidxConstraintLayoutVersion
 import com.github.lex090.cryptoapp.dependencies.Dependencies.Versions.androidxCoreKtxVersion
 import com.github.lex090.cryptoapp.dependencies.Dependencies.Versions.androidxEspressoVersion
 import com.github.lex090.cryptoapp.dependencies.Dependencies.Versions.androidxJunitVersion
 import com.github.lex090.cryptoapp.dependencies.Dependencies.Versions.dagger2Version
+import com.github.lex090.cryptoapp.dependencies.Dependencies.Versions.fragmentKtxVersion
 import com.github.lex090.cryptoapp.dependencies.Dependencies.Versions.junitVersion
 import com.github.lex090.cryptoapp.dependencies.Dependencies.Versions.materialVersion
 import com.github.lex090.cryptoapp.dependencies.Dependencies.Versions.moshiVersion
@@ -35,6 +37,8 @@ object Dependencies {
         const val moshiVersion = "1.13.0"
         const val multidexVersion = "2.0.1"
         const val navigationVersion = "2.5.1"
+        const val activityKtxVersion = "1.5.1"
+        const val fragmentKtxVersion = "1.5.2"
     }
 
     object ProjectModules {
@@ -79,7 +83,7 @@ object Dependencies {
         const val retrofit = "com.squareup.retrofit2:retrofit:$retrofitVersion"
         const val retrofitConverterMoshi =
             "com.squareup.retrofit2:converter-moshi:$retrofitConverterMoshiVersion"
-        const val moshi = "com.squareup.moshi:moshi:$moshiVersion"
+        const val moshi = "com.squareup.moshi:moshi-kotlin:$moshiVersion"
 
         const val okHttp3 = "com.squareup.okhttp3:okhttp:$okHttp3Version"
         const val okHttp3LoggingInterceptor =
@@ -93,6 +97,9 @@ object Dependencies {
         const val navigationFragmentKtx =
             "androidx.navigation:navigation-fragment-ktx:$navigationVersion"
         const val navigationUiKtx = "androidx.navigation:navigation-ui-ktx:$navigationVersion"
+
+        const val activityKtx = "androidx.activity:activity-ktx:$activityKtxVersion"
+        const val fragmentKtx = "androidx.fragment:fragment-ktx:$fragmentKtxVersion"
     }
 }
 

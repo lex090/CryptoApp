@@ -2,6 +2,8 @@ package com.github.lex090.corenetworkimpl
 
 import com.github.lex090.corediapi.ApplicationScope
 import com.github.lex090.corenetworkapi.IRemoteNetworkServiceGenerator
+import com.squareup.moshi.Moshi
+import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import dagger.Binds
 import dagger.Module
 import dagger.Provides
@@ -76,8 +78,12 @@ internal object NetworkModule {
     fun provideReadTimeoutSeconds(): Timeout = Timeout(timeout = 10, unit = TimeUnit.SECONDS)
 
     @Provides
-    fun provideConverterFactory(): Converter.Factory =
-        MoshiConverterFactory.create()
+    fun provideMoshi(): Moshi =
+        Moshi.Builder().addLast(KotlinJsonAdapterFactory()).build()
+
+    @Provides
+    fun provideConverterFactory(moshi: Moshi): Converter.Factory =
+        MoshiConverterFactory.create(moshi)
 }
 
 @Suppress("FunctionName")
