@@ -1,19 +1,18 @@
 package com.github.lex090.cryptoapp
 
 import androidx.multidex.MultiDexApplication
+import com.github.lex090.corediapi.AppDependenciesProvider
+import com.github.lex090.corediapi.AppDependenciesProvidersHolder
 import com.github.lex090.corefactory.CoreComponentDependenciesFactory
-import com.github.lex090.cryptoapp.di.ApplicationComponent
 import com.github.lex090.cryptoapp.di.DaggerApplicationComponent
 
 
-class CryptoAppApplication : MultiDexApplication() {
+class CryptoAppApplication : MultiDexApplication(), AppDependenciesProvidersHolder {
 
-    lateinit var applicationComponent: ApplicationComponent
+    private var aggregatingProvider: AppDependenciesProvider? = null
 
-    override fun onCreate() {
-        super.onCreate()
-
-        applicationComponent = DaggerApplicationComponent
+    override fun getProvider(): AppDependenciesProvider {
+        return aggregatingProvider ?: DaggerApplicationComponent
             .factory()
             .create(
                 coreComponentDependencies = CoreComponentDependenciesFactory.create()
