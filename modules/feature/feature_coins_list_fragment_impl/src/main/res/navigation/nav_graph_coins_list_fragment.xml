@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/coinsListFragment"
-        android:name="com.github.lex090.featurecoinslistfragmentimpl.CoinsListFragment"
+        android:name="com.github.lex090.featurecoinslistfragmentimpl.presentation.view.CoinsListFragment"
         android:label="Coins list fragment"
         tools:layout="@layout/fragment_coins_list" />
 
