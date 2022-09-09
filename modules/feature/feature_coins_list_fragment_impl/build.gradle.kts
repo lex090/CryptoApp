@@ -35,6 +35,7 @@ dependencies {
     api(project(Dependencies.ProjectModules.featureCoinsListFragmentApi))
     api(project(Dependencies.ProjectModules.coreApi))
     api(project(Dependencies.ProjectModules.coreNetworkApi))
+    api(project(Dependencies.ProjectModules.coreDiApi))
 
     implementation(Dependencies.Libraries.androidxCoreKtx)
     implementation(Dependencies.Libraries.androidxAppcompat)
