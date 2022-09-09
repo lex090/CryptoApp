@@ -5,5 +5,5 @@ import com.github.lex090.featurecoinslistfragmentimpl.domain.entity.CoinsList
 
 interface ICoinsRepository {
 
-    suspend fun getCoinsList(): ResultOf<@JvmSuppressWildcards CoinsList>
+    suspend fun getCoinsList(): ResultOf<CoinsList>
 }
