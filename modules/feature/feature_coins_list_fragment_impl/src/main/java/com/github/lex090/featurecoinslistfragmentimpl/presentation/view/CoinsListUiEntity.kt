@@ -6,6 +6,10 @@ data class CoinsListUiEntity(
     val coinsList: List<CoinUiEntity>
 )
 
-fun CoinsList.toCoinsListUiEntity(): CoinsListUiEntity = CoinsListUiEntity(
-    coinsList = this.coinsList.mapIndexed { index, value -> value.toCoinUiEntity(index) }
-)
+fun CoinsList.toCoinsListUiEntity(): CoinsListUiEntity =
+    CoinsListUiEntity(
+        coinsList = coinsList
+            .mapIndexed { index, value ->
+                value.toCoinUiEntity(index + 1)
+            }
+    )

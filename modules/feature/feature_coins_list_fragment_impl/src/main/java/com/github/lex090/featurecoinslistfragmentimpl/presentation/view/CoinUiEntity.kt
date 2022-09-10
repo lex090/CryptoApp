@@ -7,12 +7,14 @@ interface DisplayableItem
 data class CoinUiEntity(
     val position: Int,
     val name: String,
-    val price: Double
+    val price: Double,
+    val isFavorite: Boolean
 ) : DisplayableItem
 
 fun Coin.toCoinUiEntity(position: Int): CoinUiEntity =
     CoinUiEntity(
         position = position,
         name = this.name,
-        price = price
+        price = price,
+        isFavorite = false
     )
