@@ -1,6 +1,7 @@
 package com.github.lex090.cryptoapp.dependencies
 
 import com.github.lex090.cryptoapp.dependencies.Dependencies.Versions.activityKtxVersion
+import com.github.lex090.cryptoapp.dependencies.Dependencies.Versions.adapterDelegatesVersion
 import com.github.lex090.cryptoapp.dependencies.Dependencies.Versions.androidxAppcompatVersion
 import com.github.lex090.cryptoapp.dependencies.Dependencies.Versions.androidxConstraintLayoutVersion
 import com.github.lex090.cryptoapp.dependencies.Dependencies.Versions.androidxCoreKtxVersion
@@ -39,6 +40,7 @@ object Dependencies {
         const val navigationVersion = "2.5.1"
         const val activityKtxVersion = "1.5.1"
         const val fragmentKtxVersion = "1.5.2"
+        const val adapterDelegatesVersion = "4.3.2"
     }
 
     object ProjectModules {
@@ -100,6 +102,9 @@ object Dependencies {
 
         const val activityKtx = "androidx.activity:activity-ktx:$activityKtxVersion"
         const val fragmentKtx = "androidx.fragment:fragment-ktx:$fragmentKtxVersion"
+
+        const val adapterDelegates =
+            "com.hannesdorfmann:adapterdelegates4-kotlin-dsl-viewbinding:$adapterDelegatesVersion"
     }
 }
 
