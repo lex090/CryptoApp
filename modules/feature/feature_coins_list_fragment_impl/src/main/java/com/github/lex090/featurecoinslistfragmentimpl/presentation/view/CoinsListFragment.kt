@@ -6,25 +6,21 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
-import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.github.lex090.corediapi.AppDependenciesProvidersHolder
 import com.github.lex090.corenetworkapi.ResultOf
-import com.github.lex090.featurecoinslistfragmentimpl.R
 import com.github.lex090.featurecoinslistfragmentimpl.databinding.FragmentCoinsListBinding
-import com.github.lex090.featurecoinslistfragmentimpl.databinding.ItemSmallCoinInfoBinding
 import com.github.lex090.featurecoinslistfragmentimpl.di.DaggerCoinListFragmentComponent
+import com.github.lex090.featurecoinslistfragmentimpl.presentation.view.adapters.ICoinListItemAdapterFactory
+import com.github.lex090.featurecoinslistfragmentimpl.presentation.view.diffutil.CoinListDiffAdapter
 import com.github.lex090.featurecoinslistfragmentimpl.presentation.viewmodel.CoinListViewModel
 import com.google.android.material.snackbar.Snackbar
 import com.hannesdorfmann.adapterdelegates4.AdapterDelegatesManager
-import com.hannesdorfmann.adapterdelegates4.AsyncListDifferDelegationAdapter
-import com.hannesdorfmann.adapterdelegates4.dsl.adapterDelegateViewBinding
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -38,110 +34,28 @@ class CoinsListFragment : Fragment() {
     @Inject
     lateinit var viewModelFactory: CoinListViewModel.Factory
 
+    @Inject
+    lateinit var coinListItemAdapterFactory: ICoinListItemAdapterFactory
+
+    @Inject
+    lateinit var coinListDiffAdapterFactory: CoinListDiffAdapter.Factory
+
     private val viewModel by viewModels<CoinListViewModel> {
         viewModelFactory
     }
 
-    private fun cat2AdapterDelegate(itemClickedListener: (Int, CoinUiEntity, Boolean) -> Unit) =
-        adapterDelegateViewBinding<CoinUiEntity, DisplayableItem, ItemSmallCoinInfoBinding>(
-            { layoutInflater, root ->
-                ItemSmallCoinInfoBinding.inflate(
-                    layoutInflater,
-                    root,
-                    false
-                )
-            }
-        ) {
-            binding.btnFavorite.setOnClickListener {
-                val isFavorite = !item.isFavorite
-                itemClickedListener(this.adapterPosition, item, isFavorite)
-            }
-
-            bind {
-                if (it.isNotEmpty()) {
-                    Log.i("myDebug", "cat2AdapterDelegate: isNotEmpty()")
-                    val item = it.first() as Boolean
-                    if (item) {
-                        binding.btnFavorite.background =
-                            ContextCompat.getDrawable(context, R.drawable.ic_baseline_favorite_24)
-                    } else {
-                        binding.btnFavorite.background = ContextCompat.getDrawable(
-                            context,
-                            R.drawable.ic_baseline_favorite_border_24
-                        )
-                    }
-                } else {
-                    Log.i("myDebug", "cat2AdapterDelegate: isNotEmpty() false")
-
-                    binding.tvCoinName.text = item.name
-                    binding.tvPositionId.text = item.position.toString()
-                    binding.tvCoinPrice.text = item.price.toString()
-                    if (item.isFavorite) {
-                        binding.btnFavorite.background =
-                            ContextCompat.getDrawable(context, R.drawable.ic_baseline_favorite_24)
-                    } else {
-                        binding.btnFavorite.background = ContextCompat.getDrawable(
-                            context,
-                            R.drawable.ic_baseline_favorite_border_24
-                        )
-                    }
-                }
-            }
-        }
-
-    private val adapterDelegatesManager = AdapterDelegatesManager<List<DisplayableItem>>().apply {
-        addDelegate(cat2AdapterDelegate(this@CoinsListFragment::onListItemClick))
-    }
-
-    class MyDiffUtilCallBack : DiffUtil.ItemCallback<DisplayableItem>() {
-        override fun areItemsTheSame(oldItem: DisplayableItem, newItem: DisplayableItem): Boolean {
-            Log.i("myDebug", "areItemsTheSame: oldItem -> $oldItem, newItem -> $newItem")
-            return when {
-                oldItem is CoinUiEntity && newItem is CoinUiEntity -> {
-                    oldItem.name == newItem.name
-                }
-                else -> false
-            }
-        }
-
-        override fun areContentsTheSame(
-            oldItem: DisplayableItem,
-            newItem: DisplayableItem
-        ): Boolean {
-            Log.i("myDebug", "areContentsTheSame: oldItem -> $oldItem, newItem -> $newItem")
-            return when {
-                oldItem is CoinUiEntity && newItem is CoinUiEntity -> {
-                    oldItem.position == newItem.position
-                            && oldItem.name == newItem.name
-                            && oldItem.price == newItem.price
-                            && oldItem.isFavorite == newItem.isFavorite
-                }
-                else -> false
-            }
-        }
-
-        override fun getChangePayload(oldItem: DisplayableItem, newItem: DisplayableItem): Any? {
-            Log.i("myDebug", "getChangePayload: oldItem -> $oldItem, newItem -> $newItem")
-            return when {
-                oldItem is CoinUiEntity && newItem is CoinUiEntity -> {
-                    if (oldItem.isFavorite != newItem.isFavorite) {
-                        newItem.isFavorite
-                    } else {
-                        super.getChangePayload(oldItem, newItem)
-                    }
-                }
-                else -> super.getChangePayload(oldItem, newItem)
-
-            }
+    private val adapterDelegatesManager by lazy {
+        AdapterDelegatesManager<List<DisplayableItem>>().apply {
+            addDelegate(
+                coinListItemAdapterFactory
+                    .createCommonCoinListItemAdapterFactory(this@CoinsListFragment::onListItemClick)
+            )
         }
     }
 
-    inner class DiffAdapter : AsyncListDifferDelegationAdapter<DisplayableItem>(
-        MyDiffUtilCallBack(),
-        adapterDelegatesManager
-    )
-
-    private val adapter = DiffAdapter()
+    private val adapter by lazy {
+        coinListDiffAdapterFactory.create(adapterDelegatesManager)
+    }
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
