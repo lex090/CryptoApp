@@ -10,11 +10,16 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.github.lex090.corediapi.AppDependenciesProvidersHolder
 import com.github.lex090.corenetworkapi.ResultOf
 import com.github.lex090.featurecoinslistfragmentimpl.databinding.FragmentCoinsListBinding
+import com.github.lex090.featurecoinslistfragmentimpl.databinding.ItemSmallCoinInfoBinding
 import com.github.lex090.featurecoinslistfragmentimpl.di.DaggerCoinListFragmentComponent
 import com.github.lex090.featurecoinslistfragmentimpl.presentation.viewmodel.CoinListViewModel
+import com.google.android.material.snackbar.Snackbar
+import com.hannesdorfmann.adapterdelegates4.ListDelegationAdapter
+import com.hannesdorfmann.adapterdelegates4.dsl.adapterDelegateViewBinding
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -32,6 +37,28 @@ class CoinsListFragment : Fragment() {
         viewModelFactory
     }
 
+    private fun cat2AdapterDelegate(itemClickedListener: (CoinUiEntity) -> Unit) =
+        adapterDelegateViewBinding<CoinUiEntity, DisplayableItem, ItemSmallCoinInfoBinding>(
+            { layoutInflater, root ->
+                ItemSmallCoinInfoBinding.inflate(
+                    layoutInflater,
+                    root,
+                    false
+                )
+            }
+        ) {
+            binding.tvCoinPrice.setOnClickListener {
+                itemClickedListener(item)
+            }
+            bind {
+                binding.tvCoinName.text = item.name
+                binding.tvPositionId.text = item.position.toString()
+                binding.tvCoinPrice.text = item.price.toString()
+            }
+        }
+
+    val adapter = ListDelegationAdapter(cat2AdapterDelegate(::onListItemClick))
+
     override fun onAttach(context: Context) {
         super.onAttach(context)
         injectDependencies()
@@ -47,19 +74,8 @@ class CoinsListFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        viewLifecycleOwner.lifecycleScope.launch {
-            viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
-                viewModel
-                    .coinsList
-                    .map { result ->
-                        ResultOf.Success(data = result.data.toCoinsListUiEntity())
-                    }
-                    .collect { result ->
-                        processCoinsList(result = result)
-                    }
-            }
-        }
+        initRecyclerView()
+        initDataSubscriptions()
     }
 
     override fun onResume() {
@@ -80,11 +96,36 @@ class CoinsListFragment : Fragment() {
     }
 
     private fun viewCoinsList(data: CoinsListUiEntity) {
-
+        adapter.items = data.coinsList
+        adapter.notifyDataSetChanged()
     }
 
     private fun showError(error: ResultOf.Error) {
 
+    }
+
+    private fun initDataSubscriptions() {
+        viewLifecycleOwner.lifecycleScope.launch {
+            viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
+                viewModel
+                    .coinsList
+                    .map { result ->
+                        ResultOf.Success(data = result.data.toCoinsListUiEntity())
+                    }
+                    .collect { result ->
+                        processCoinsList(result = result)
+                    }
+            }
+        }
+    }
+
+    private fun initRecyclerView() {
+        viewBinding.rvCoinsList.adapter = adapter
+        viewBinding.rvCoinsList.layoutManager = LinearLayoutManager(context)
+    }
+
+    private fun onListItemClick(coinUiEntity: CoinUiEntity) {
+        Snackbar.make(viewBinding.root, coinUiEntity.name, Snackbar.LENGTH_SHORT).show()
     }
 
     private fun injectDependencies() {

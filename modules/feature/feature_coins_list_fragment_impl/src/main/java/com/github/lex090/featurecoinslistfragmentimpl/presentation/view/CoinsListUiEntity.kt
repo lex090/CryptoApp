@@ -7,5 +7,5 @@ data class CoinsListUiEntity(
 )
 
 fun CoinsList.toCoinsListUiEntity(): CoinsListUiEntity = CoinsListUiEntity(
-    coinsList = this.coinsList.map { it.toCoinUiEntity() }
+    coinsList = this.coinsList.mapIndexed { index, value -> value.toCoinUiEntity(index) }
 )

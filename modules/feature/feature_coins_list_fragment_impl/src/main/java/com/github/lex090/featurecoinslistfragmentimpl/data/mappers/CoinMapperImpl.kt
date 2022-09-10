@@ -11,6 +11,11 @@ class CoinMapperImpl @Inject constructor() :
 
     override fun map(oldData: List<CoinResponse>): CoinsList =
         CoinsList(
-            coinsList = oldData.map { Coin(coinName = it.name) }
+            coinsList = oldData.map {
+                Coin(
+                    name = it.name,
+                    price = it.currentPrice
+                )
+            }
         )
 }

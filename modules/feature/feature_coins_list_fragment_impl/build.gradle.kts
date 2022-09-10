@@ -50,6 +50,8 @@ dependencies {
     implementation(Dependencies.Libraries.retrofit)
     implementation(Dependencies.Libraries.moshi)
 
+    implementation(Dependencies.Libraries.adapterDelegates)
+
     implementation(Dependencies.Libraries.dagger2)
     kapt(Dependencies.Libraries.dagger2compiler)
 }
