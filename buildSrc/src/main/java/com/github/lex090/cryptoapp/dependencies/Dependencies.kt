@@ -63,6 +63,9 @@ object Dependencies {
         const val baseFavoriteApi = ":modules:base:base_favorite_api"
         const val baseFavoriteImpl = ":modules:base:base_favorite_impl"
 
+        const val baseCoinsApi = ":modules:base:base_coins_api"
+        const val baseCoinsImpl = ":modules:base:base_coins_impl"
+
         const val featureAppActivityApi = ":modules:feature:feature_app_activity_api"
         const val featureAppActivityImpl = ":modules:feature:feature_app_activity_impl"
 

@@ -51,6 +51,8 @@ dependencies {
 
     implementation(project(Dependencies.ProjectModules.baseFavoriteImpl))
 
+    implementation(project(Dependencies.ProjectModules.baseCoinsImpl))
+
     implementation(project(Dependencies.ProjectModules.featureAppActivityImpl))
 
     implementation(project(Dependencies.ProjectModules.featureAppFlowFragmentImpl))
