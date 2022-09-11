@@ -60,6 +60,9 @@ object Dependencies {
         const val coreDbApi = ":modules:core:core_db_api"
         const val coreDbImpl = ":modules:core:core_db_impl"
 
+        const val baseFavoriteApi = ":modules:base:base_favorite_api"
+        const val baseFavoriteImpl = ":modules:base:base_favorite_impl"
+
         const val featureAppActivityApi = ":modules:feature:feature_app_activity_api"
         const val featureAppActivityImpl = ":modules:feature:feature_app_activity_impl"
 
