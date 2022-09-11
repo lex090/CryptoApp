@@ -1,15 +1,15 @@
-package com.github.lex090.featurecoinslistfragmentimpl.data.repositoryimpl
+package com.github.lex090.basecoinsimpl.data.repositoryimpl
 
 import android.accounts.NetworkErrorException
+import com.github.lex090.basecoinsapi.domain.entity.CoinsList
+import com.github.lex090.basecoinsimpl.data.responses.CoinResponse
+import com.github.lex090.basecoinsimpl.data.services.CoinsNetworkService
+import com.github.lex090.basecoinsimpl.domain.ICoinsRepository
+import com.github.lex090.coreapi.ResultOf
 import com.github.lex090.coreapi.data.IMapper
-import com.github.lex090.corenetworkapi.ResultOf
-import com.github.lex090.featurecoinslistfragmentimpl.data.responses.CoinResponse
-import com.github.lex090.featurecoinslistfragmentimpl.data.services.CoinsNetworkService
-import com.github.lex090.featurecoinslistfragmentimpl.domain.ICoinsRepository
-import com.github.lex090.featurecoinslistfragmentimpl.domain.entity.CoinsList
 import javax.inject.Inject
 
-class CoinsRepositoryImpl @Inject constructor(
+internal class CoinsRepositoryImpl @Inject constructor(
     private val service: CoinsNetworkService,
     private val mapper: IMapper<@JvmSuppressWildcards List<@JvmSuppressWildcards CoinResponse>, CoinsList>
 ) : ICoinsRepository {

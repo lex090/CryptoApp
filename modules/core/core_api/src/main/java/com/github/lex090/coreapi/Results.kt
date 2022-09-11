@@ -1,4 +1,4 @@
-package com.github.lex090.corenetworkapi
+package com.github.lex090.coreapi
 
 sealed class ResultOf<out T> {
     data class Success<R : Any>(val data: R) : ResultOf<R>()

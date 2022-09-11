@@ -12,8 +12,8 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.github.lex090.coreapi.ResultOf
 import com.github.lex090.corediapi.AppDependenciesProvidersHolder
-import com.github.lex090.corenetworkapi.ResultOf
 import com.github.lex090.featurecoinslistfragmentimpl.databinding.FragmentCoinsListBinding
 import com.github.lex090.featurecoinslistfragmentimpl.di.DaggerCoinListFragmentComponent
 import com.github.lex090.featurecoinslistfragmentimpl.presentation.view.adapters.ICoinListItemAdapterFactory

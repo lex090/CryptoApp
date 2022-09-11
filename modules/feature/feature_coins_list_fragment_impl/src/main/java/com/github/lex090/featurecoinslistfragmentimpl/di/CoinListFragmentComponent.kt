@@ -1,12 +1,14 @@
 package com.github.lex090.featurecoinslistfragmentimpl.di
 
+import com.github.lex090.basecoinsimpl.di.BaseCoinsModule
 import com.github.lex090.corediapi.AppDependenciesProvider
 import com.github.lex090.featurecoinslistfragmentimpl.presentation.view.CoinsListFragment
 import dagger.Component
 
 @Component(
     modules = [
-        BaseCoinListFragmentModule::class
+        BaseCoinListFragmentModule::class,
+        BaseCoinsModule::class
     ],
     dependencies = [
         AppDependenciesProvider::class

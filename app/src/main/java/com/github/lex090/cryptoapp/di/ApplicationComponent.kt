@@ -1,6 +1,5 @@
 package com.github.lex090.cryptoapp.di
 
-import com.github.lex090.basefavoriteimpl.di.BaseFavoriteModule
 import com.github.lex090.corediapi.AppDependenciesProvider
 import com.github.lex090.corediapi.ApplicationScope
 import com.github.lex090.corediapi.CoreComponentDependencies
@@ -9,8 +8,7 @@ import dagger.Component
 @ApplicationScope
 @Component(
     modules = [
-        BaseApplicationModule::class,
-        BaseFavoriteModule::class
+        BaseApplicationModule::class
     ],
     dependencies = [
         CoreComponentDependencies::class

@@ -33,10 +33,9 @@ android {
 
 dependencies {
     api(project(Dependencies.ProjectModules.featureCoinsListFragmentApi))
-    api(project(Dependencies.ProjectModules.coreApi))
-    api(project(Dependencies.ProjectModules.coreNetworkApi))
-    api(project(Dependencies.ProjectModules.coreDiApi))
-    api(project(Dependencies.ProjectModules.coreDbApi))
+    implementation(project(Dependencies.ProjectModules.coreApi))
+    implementation(project(Dependencies.ProjectModules.coreDiApi))
+    implementation(project(Dependencies.ProjectModules.baseCoinsImpl))
 
     implementation(Dependencies.Libraries.androidxCoreKtx)
     implementation(Dependencies.Libraries.androidxAppcompat)
@@ -47,9 +46,6 @@ dependencies {
 
     implementation(Dependencies.Libraries.navigationFragmentKtx)
     implementation(Dependencies.Libraries.navigationUiKtx)
-
-    implementation(Dependencies.Libraries.retrofit)
-    implementation(Dependencies.Libraries.moshi)
 
     implementation(Dependencies.Libraries.adapterDelegates)
 

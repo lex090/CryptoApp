@@ -1,12 +1,12 @@
-package com.github.lex090.featurecoinslistfragmentimpl.data.services
+package com.github.lex090.basecoinsimpl.data.services
 
-import com.github.lex090.featurecoinslistfragmentimpl.data.CoinsListNetworkMap.coinsMarketsEntryPoint
-import com.github.lex090.featurecoinslistfragmentimpl.data.responses.CoinResponse
+import com.github.lex090.basecoinsimpl.data.CoinsListNetworkMap.coinsMarketsEntryPoint
+import com.github.lex090.basecoinsimpl.data.responses.CoinResponse
 import retrofit2.http.GET
 import retrofit2.http.Query
 
 
-interface CoinsNetworkService {
+internal interface CoinsNetworkService {
 
     @GET(coinsMarketsEntryPoint)
     suspend fun getCoinsMarketsList(

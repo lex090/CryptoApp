@@ -3,9 +3,9 @@ package com.github.lex090.featurecoinslistfragmentimpl.presentation.viewmodel
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
+import com.github.lex090.basecoinsapi.domain.entity.CoinsList
+import com.github.lex090.coreapi.ResultOf
 import com.github.lex090.coreapi.domain.IBaseUseCase
-import com.github.lex090.corenetworkapi.ResultOf
-import com.github.lex090.featurecoinslistfragmentimpl.domain.entity.CoinsList
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch

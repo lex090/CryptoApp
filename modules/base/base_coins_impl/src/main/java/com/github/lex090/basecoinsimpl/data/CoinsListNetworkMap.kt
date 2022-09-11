@@ -1,4 +1,4 @@
-package com.github.lex090.featurecoinslistfragmentimpl.data
+package com.github.lex090.basecoinsimpl.data
 
 object CoinsListNetworkMap {
 
