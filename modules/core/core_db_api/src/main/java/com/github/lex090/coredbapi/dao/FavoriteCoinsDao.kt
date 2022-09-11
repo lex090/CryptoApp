@@ -8,7 +8,7 @@ import com.github.lex090.coredbapi.entity.FavoriteCoinEntity
 import kotlinx.coroutines.flow.Flow
 
 @Dao
-interface FavoriteCoinDao {
+interface FavoriteCoinsDao {
 
     @Query("SELECT * FROM favorites")
     suspend fun getFavoriteCoins(): List<FavoriteCoinEntity>

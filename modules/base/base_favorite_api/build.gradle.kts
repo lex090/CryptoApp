@@ -26,4 +26,5 @@ android {
 }
 
 dependencies {
+    implementation(Dependencies.Libraries.dagger2)
 }
