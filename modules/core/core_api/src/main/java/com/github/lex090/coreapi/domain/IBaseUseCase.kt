@@ -1,6 +1,6 @@
 package com.github.lex090.coreapi.domain
 
-interface IBaseUseCase<T : Any> {
+interface IBaseUseCase<I : Any, O : Any> {
 
-    suspend fun execute(): T
+    suspend fun execute(data: I? = null): O
 }

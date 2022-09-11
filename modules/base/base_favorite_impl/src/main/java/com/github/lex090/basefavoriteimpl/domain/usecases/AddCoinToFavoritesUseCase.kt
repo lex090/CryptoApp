@@ -5,10 +5,12 @@ package com.github.lex090.basefavoriteimpl.domain.usecases
 //import javax.inject.Inject
 //
 //class AddCoinToFavoritesUseCase @Inject constructor(
-//    val favoriteCoinDao: FavoriteCoinsDao
-//) : IBaseUseCase<Nothing> {
+//    private val favoriteCoinDao: FavoriteCoinsDao
+//) : IBaseUseCase<String, Unit> {
 //
-//    override suspend fun execute(): Nothing {
+//    override suspend fun execute(data: String?) {
+//        requireNotNull(data)
+//
 //        favoriteCoinDao.addCoinToFavorites()
 //    }
 //}

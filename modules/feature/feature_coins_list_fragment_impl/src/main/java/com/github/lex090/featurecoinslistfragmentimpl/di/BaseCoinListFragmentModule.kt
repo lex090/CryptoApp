@@ -36,7 +36,7 @@ interface CoinListFragmentBindsModule {
     @Binds
     fun bind_GetCoinsListUseCase_to_IBaseUseCase(
         useCase: GetCoinsListUseCase
-    ): IBaseUseCase<ResultOf<@JvmSuppressWildcards CoinsList>>
+    ): IBaseUseCase<Any, ResultOf<@JvmSuppressWildcards CoinsList>>
 
     @Binds
     fun bind_CoinsRepositoryImpl_to_ICoinsRepository(

@@ -12,7 +12,7 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 class CoinListViewModel(
-    private val getCoinsListUseCase: IBaseUseCase<ResultOf<CoinsList>>
+    private val getCoinsListUseCase: IBaseUseCase<Any, ResultOf<CoinsList>>
 ) : ViewModel() {
 
     private val _mutableCoinsListStateFlow: MutableStateFlow<ResultOf.Success<CoinsList>> =
@@ -42,7 +42,7 @@ class CoinListViewModel(
 
 
     class Factory @Inject constructor(
-        private val getCoinsListUseCase: IBaseUseCase<ResultOf<CoinsList>>,
+        private val getCoinsListUseCase: IBaseUseCase<Any, ResultOf<CoinsList>>,
     ) : ViewModelProvider.Factory {
 
         @Suppress("UNCHECKED_CAST")

@@ -8,7 +8,7 @@ import javax.inject.Inject
 
 class GetCoinsListUseCase @Inject constructor(
     private val repository: ICoinsRepository
-) : IBaseUseCase<ResultOf<@JvmSuppressWildcards CoinsList>> {
+) : IBaseUseCase<Any, ResultOf<@JvmSuppressWildcards CoinsList>> {
 
-    override suspend fun execute(): ResultOf<CoinsList> = repository.getCoinsList()
+    override suspend fun execute(data: Any?): ResultOf<CoinsList> = repository.getCoinsList()
 }
