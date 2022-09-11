@@ -49,7 +49,7 @@ dependencies {
 
     implementation(project(Dependencies.ProjectModules.coreDbImpl))
 
-    implementation(project(Dependencies.ProjectModules.baseFavoriteImpl))
+    implementation(project(Dependencies.ProjectModules.baseFavorite))
 
     implementation(project(Dependencies.ProjectModules.baseCoins))
 
