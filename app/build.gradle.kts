@@ -49,6 +49,8 @@ dependencies {
 
     implementation(project(Dependencies.ProjectModules.coreDbImpl))
 
+    implementation(project(Dependencies.ProjectModules.baseFavoriteImpl))
+
     implementation(project(Dependencies.ProjectModules.featureAppActivityImpl))
 
     implementation(project(Dependencies.ProjectModules.featureAppFlowFragmentImpl))

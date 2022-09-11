@@ -4,6 +4,7 @@ import com.github.lex090.cryptoapp.dependencies.Dependencies
 plugins {
     id("com.android.library")
     id("org.jetbrains.kotlin.android")
+    id("kotlin-kapt")
 }
 
 android {
@@ -27,4 +28,9 @@ android {
 
 dependencies {
     api(project(Dependencies.ProjectModules.baseFavoriteApi))
+    implementation(project(Dependencies.ProjectModules.coreDbApi))
+    implementation(project(Dependencies.ProjectModules.coreApi))
+
+    implementation(Dependencies.Libraries.dagger2)
+    kapt(Dependencies.Libraries.dagger2compiler)
 }
