@@ -1,6 +1,6 @@
 package com.github.lex090.featurecoinslistfragmentimpl.presentation.view
 
-import com.github.lex090.basecoinsapi.domain.entity.Coin
+import com.github.lex090.basecoins.domain.entity.Coin
 
 interface DisplayableItem
 

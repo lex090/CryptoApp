@@ -21,7 +21,6 @@ android {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
     }
-
     kotlinOptions {
         jvmTarget = "1.8"
     }
@@ -32,23 +31,15 @@ android {
 }
 
 dependencies {
-    api(project(Dependencies.ProjectModules.featureCoinsListFragmentApi))
+
+    implementation(project(Dependencies.ProjectModules.coreNetworkApi))
+
     implementation(project(Dependencies.ProjectModules.coreApi))
-    implementation(project(Dependencies.ProjectModules.coreDiApi))
-    implementation(project(Dependencies.ProjectModules.baseCoins))
-
-    implementation(Dependencies.Libraries.androidxCoreKtx)
-    implementation(Dependencies.Libraries.androidxAppcompat)
-    implementation(Dependencies.Libraries.material)
-    implementation(Dependencies.Libraries.androidxConstraintLayout)
-
-    implementation(Dependencies.Libraries.fragmentKtx)
-
-    implementation(Dependencies.Libraries.navigationFragmentKtx)
-    implementation(Dependencies.Libraries.navigationUiKtx)
-
-    implementation(Dependencies.Libraries.adapterDelegates)
 
     implementation(Dependencies.Libraries.dagger2)
     kapt(Dependencies.Libraries.dagger2compiler)
+
+    implementation(Dependencies.Libraries.retrofit)
+
+    implementation(Dependencies.Libraries.moshi)
 }

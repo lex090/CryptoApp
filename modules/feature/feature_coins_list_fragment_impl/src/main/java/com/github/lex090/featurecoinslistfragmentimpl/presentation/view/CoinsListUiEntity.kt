@@ -1,6 +1,6 @@
 package com.github.lex090.featurecoinslistfragmentimpl.presentation.view
 
-import com.github.lex090.basecoinsapi.domain.entity.CoinsList
+import com.github.lex090.basecoins.domain.entity.CoinsList
 
 data class CoinsListUiEntity(
     val coinsList: List<CoinUiEntity>
