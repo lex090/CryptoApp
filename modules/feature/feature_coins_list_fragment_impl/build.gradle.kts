@@ -36,6 +36,7 @@ dependencies {
     api(project(Dependencies.ProjectModules.coreApi))
     api(project(Dependencies.ProjectModules.coreNetworkApi))
     api(project(Dependencies.ProjectModules.coreDiApi))
+    api(project(Dependencies.ProjectModules.coreDbApi))
 
     implementation(Dependencies.Libraries.androidxCoreKtx)
     implementation(Dependencies.Libraries.androidxAppcompat)

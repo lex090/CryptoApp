@@ -18,6 +18,7 @@ import com.github.lex090.cryptoapp.dependencies.Dependencies.Versions.okHttp3Log
 import com.github.lex090.cryptoapp.dependencies.Dependencies.Versions.okHttp3Version
 import com.github.lex090.cryptoapp.dependencies.Dependencies.Versions.retrofitConverterMoshiVersion
 import com.github.lex090.cryptoapp.dependencies.Dependencies.Versions.retrofitVersion
+import com.github.lex090.cryptoapp.dependencies.Dependencies.Versions.roomVersion
 
 object Dependencies {
 
@@ -41,6 +42,7 @@ object Dependencies {
         const val activityKtxVersion = "1.5.1"
         const val fragmentKtxVersion = "1.5.2"
         const val adapterDelegatesVersion = "4.3.2"
+        const val roomVersion = "2.4.3"
     }
 
     object ProjectModules {
@@ -54,6 +56,9 @@ object Dependencies {
         const val coreFactory = ":modules:core:core_factory"
 
         const val coreApi = ":modules:core:core_api"
+
+        const val coreDbApi = ":modules:core:core_db_api"
+        const val coreDbImpl = ":modules:core:core_db_impl"
 
         const val featureAppActivityApi = ":modules:feature:feature_app_activity_api"
         const val featureAppActivityImpl = ":modules:feature:feature_app_activity_impl"
@@ -105,6 +110,10 @@ object Dependencies {
 
         const val adapterDelegates =
             "com.hannesdorfmann:adapterdelegates4-kotlin-dsl-viewbinding:$adapterDelegatesVersion"
+
+        const val room = "androidx.room:room-runtime:$roomVersion"
+        const val roomCompiler = "androidx.room:room-compiler:$roomVersion"
+        const val roomKtxCompiler = "androidx.room:room-ktx:$roomVersion"
     }
 }
 

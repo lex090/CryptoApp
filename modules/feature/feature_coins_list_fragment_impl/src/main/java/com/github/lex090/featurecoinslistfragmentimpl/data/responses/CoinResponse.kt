@@ -56,7 +56,7 @@ data class CoinResponse(
     @Json(name = "price_change_percentage_14d_in_currency")
     val priceChangePercentage14DInCurrency: Double = 0.0,
     @Json(name = "price_change_percentage_1h_in_currency")
-    val priceChangePercentage1HInCurrency: Double = 0.0,
+    val priceChangePercentage1HInCurrency: Double? = 0.0,
     @Json(name = "price_change_percentage_30d_in_currency")
     val priceChangePercentage30DInCurrency: Double = 0.0
 )

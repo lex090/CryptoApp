@@ -27,15 +27,12 @@ android {
 }
 
 dependencies {
-    api(project(Dependencies.ProjectModules.coreDiApi))
-    implementation(project(Dependencies.ProjectModules.coreNetworkImpl))
-    implementation(project(Dependencies.ProjectModules.coreDbImpl))
+    api(project(Dependencies.ProjectModules.coreDbApi))
+    implementation(project(Dependencies.ProjectModules.coreDiApi))
 
-    implementation(Dependencies.Libraries.retrofit)
-    implementation(Dependencies.Libraries.retrofitConverterMoshi)
-
-    implementation(Dependencies.Libraries.okHttp3)
-    implementation(Dependencies.Libraries.okHttp3LoggingInterceptor)
+    implementation(Dependencies.Libraries.room)
+    implementation(Dependencies.Libraries.roomKtxCompiler)
+    kapt(Dependencies.Libraries.roomCompiler)
 
     implementation(Dependencies.Libraries.dagger2)
     kapt(Dependencies.Libraries.dagger2compiler)

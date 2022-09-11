@@ -27,6 +27,7 @@ android {
 
 dependencies {
     api(project(Dependencies.ProjectModules.coreNetworkApi))
+    api(project(Dependencies.ProjectModules.coreDbApi))
 
     implementation(Dependencies.Libraries.dagger2)
 }
