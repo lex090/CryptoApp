@@ -18,7 +18,12 @@ fun Coin.toCoinUiEntity(position: Int): CoinUiEntity =
         id = id,
         name = this.name,
         price = price,
-        isFavorite = false
+        isFavorite = isFavorite
     )
 
-fun CoinUiEntity.toCoin(): Coin = Coin(id = id, name = name, price = price)
+fun CoinUiEntity.toCoin(): Coin = Coin(
+    id = id,
+    name = name,
+    price = price,
+    isFavorite = isFavorite
+)
