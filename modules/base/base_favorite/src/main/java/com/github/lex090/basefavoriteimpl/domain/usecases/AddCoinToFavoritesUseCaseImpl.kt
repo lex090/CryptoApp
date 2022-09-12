@@ -1,7 +1,7 @@
 package com.github.lex090.basefavoriteimpl.domain.usecases
 
 import com.github.lex090.basecoins.domain.entity.Coin
-import com.github.lex090.basefavoriteimpl.data.toCoin
+import com.github.lex090.basefavoriteimpl.data.toFavoriteCoinEntity
 import com.github.lex090.coreapi.domain.IBaseUseCase
 import com.github.lex090.coredbapi.dao.FavoriteCoinsDao
 import kotlinx.coroutines.withContext
@@ -17,6 +17,6 @@ internal class AddCoinToFavoritesUseCaseImpl @Inject constructor(
 
     override suspend fun execute(data: Coin) =
         withContext(dispatcherIo) {
-            favoriteCoinDao.addCoinToFavorites(data.toCoin())
+            favoriteCoinDao.addCoinToFavorites(data.toFavoriteCoinEntity())
         }
 }
