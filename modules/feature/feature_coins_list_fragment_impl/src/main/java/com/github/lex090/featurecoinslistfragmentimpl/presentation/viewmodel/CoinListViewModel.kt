@@ -5,9 +5,9 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
 import com.github.lex090.basecoins.di.GetCoinsListUseCaseDependence
 import com.github.lex090.basecoins.domain.entity.CoinsList
+import com.github.lex090.basecoins.domain.usecases.IGetCoinsListUseCase
 import com.github.lex090.basefavoriteimpl.domain.usecases.IAddCoinToFavoritesUseCase
 import com.github.lex090.coreapi.ResultOf
-import com.github.lex090.coreapi.domain.IBaseUseCase
 import com.github.lex090.featurecoinslistfragmentimpl.presentation.view.CoinUiEntity
 import com.github.lex090.featurecoinslistfragmentimpl.presentation.view.toCoin
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -16,7 +16,7 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 class CoinListViewModel(
-    private val getCoinsListUseCase: IBaseUseCase<Any, ResultOf<CoinsList>>,
+    private val getCoinsListUseCase: IGetCoinsListUseCase,
     private val addCoinToFavoritesUseCase: IAddCoinToFavoritesUseCase
 ) : ViewModel() {
 
@@ -54,7 +54,7 @@ class CoinListViewModel(
 
     class Factory @Inject constructor(
         @GetCoinsListUseCaseDependence
-        private val getCoinsListUseCase: IBaseUseCase<Any, ResultOf<CoinsList>>,
+        private val getCoinsListUseCase: IGetCoinsListUseCase,
         private val addCoinToFavoritesUseCase: IAddCoinToFavoritesUseCase
     ) : ViewModelProvider.Factory {
 

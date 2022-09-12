@@ -6,10 +6,9 @@ import com.github.lex090.basecoins.data.responses.CoinResponse
 import com.github.lex090.basecoins.data.services.CoinsNetworkService
 import com.github.lex090.basecoins.domain.ICoinsRepository
 import com.github.lex090.basecoins.domain.entity.CoinsList
-import com.github.lex090.basecoins.domain.usecases.GetCoinsListUseCase
-import com.github.lex090.coreapi.ResultOf
+import com.github.lex090.basecoins.domain.usecases.GetCoinsListUseCaseImpl
+import com.github.lex090.basecoins.domain.usecases.IGetCoinsListUseCase
 import com.github.lex090.coreapi.data.IMapper
-import com.github.lex090.coreapi.domain.IBaseUseCase
 import com.github.lex090.corenetworkapi.IRemoteNetworkServiceGenerator
 import dagger.Binds
 import dagger.Module
@@ -30,8 +29,8 @@ internal interface CoinsBindsModule {
     @Binds
     @GetCoinsListUseCaseDependence
     fun bind_GetCoinsListUseCase_to_IBaseUseCase(
-        useCase: GetCoinsListUseCase
-    ): IBaseUseCase<Any, ResultOf<@JvmSuppressWildcards CoinsList>>
+        useCase: GetCoinsListUseCaseImpl
+    ): IGetCoinsListUseCase
 
     @Binds
     fun bind_CoinsRepositoryImpl_to_ICoinsRepository(

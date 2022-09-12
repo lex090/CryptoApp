@@ -15,11 +15,8 @@ internal class AddCoinToFavoritesUseCaseImpl @Inject constructor(
     private val dispatcherIo: CoroutineContext
 ) : IAddCoinToFavoritesUseCase {
 
-    override suspend fun execute(data: Coin?) {
-        requireNotNull(data)
-
+    override suspend fun execute(data: Coin) =
         withContext(dispatcherIo) {
             favoriteCoinDao.addCoinToFavorites(data.toCoin())
         }
-    }
 }

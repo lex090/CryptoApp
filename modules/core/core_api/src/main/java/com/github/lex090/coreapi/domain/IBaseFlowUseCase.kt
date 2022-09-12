@@ -2,7 +2,7 @@ package com.github.lex090.coreapi.domain
 
 import kotlinx.coroutines.flow.Flow
 
-interface IBaseFlowUseCase<O : Any, T : Any> {
+interface IBaseFlowUseCase<in I : Any, out O : Any> {
 
-    suspend fun execute(data: O? = null): Flow<T>
+    suspend fun execute(data: I): Flow<O>
 }
