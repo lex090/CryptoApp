@@ -122,6 +122,11 @@ class CoinsListFragment : Fragment() {
     }
 
     private fun onListItemClick(position: Int, coinUiEntity: CoinUiEntity, isFavorite: Boolean) {
+        if (isFavorite) {
+            viewModel.onAddToFavoriteClick(coinUiEntity = coinUiEntity)
+        } else {
+
+        }
         val items = mutableListOf<DisplayableItem>()
         items.addAll(adapter.items)
         items[position] = coinUiEntity.copy(isFavorite = isFavorite)

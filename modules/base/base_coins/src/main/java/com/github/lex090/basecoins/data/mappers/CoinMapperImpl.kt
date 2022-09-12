@@ -13,6 +13,7 @@ internal class CoinMapperImpl @Inject constructor() :
         CoinsList(
             coinsList = oldData.map {
                 Coin(
+                    id = it.id,
                     name = it.name,
                     price = it.currentPrice
                 )

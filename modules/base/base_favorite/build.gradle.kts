@@ -29,6 +29,9 @@ android {
 dependencies {
     implementation(project(Dependencies.ProjectModules.coreDbApi))
     implementation(project(Dependencies.ProjectModules.coreApi))
+    implementation(project(Dependencies.ProjectModules.baseCoins))
+
+    implementation(Dependencies.Libraries.kotlinxCoroutines)
 
     implementation(Dependencies.Libraries.dagger2)
     kapt(Dependencies.Libraries.dagger2compiler)

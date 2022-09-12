@@ -10,6 +10,7 @@ import com.github.lex090.cryptoapp.dependencies.Dependencies.Versions.androidxJu
 import com.github.lex090.cryptoapp.dependencies.Dependencies.Versions.dagger2Version
 import com.github.lex090.cryptoapp.dependencies.Dependencies.Versions.fragmentKtxVersion
 import com.github.lex090.cryptoapp.dependencies.Dependencies.Versions.junitVersion
+import com.github.lex090.cryptoapp.dependencies.Dependencies.Versions.kotlinxCoroutinesVersion
 import com.github.lex090.cryptoapp.dependencies.Dependencies.Versions.materialVersion
 import com.github.lex090.cryptoapp.dependencies.Dependencies.Versions.moshiVersion
 import com.github.lex090.cryptoapp.dependencies.Dependencies.Versions.multidexVersion
@@ -24,6 +25,7 @@ object Dependencies {
 
     private object Versions {
 
+        const val kotlinxCoroutinesVersion = "1.6.4"
         const val androidxCoreKtxVersion = "1.7.0"
         const val androidxAppcompatVersion = "1.5.0"
         const val materialVersion = "1.6.1"
@@ -80,6 +82,9 @@ object Dependencies {
     }
 
     object Libraries {
+
+        const val kotlinxCoroutines =
+            "org.jetbrains.kotlinx:kotlinx-coroutines-core:$kotlinxCoroutinesVersion"
 
         const val androidxCoreKtx = "androidx.core:core-ktx:$androidxCoreKtxVersion"
         const val androidxAppcompat = "androidx.appcompat:appcompat:$androidxAppcompatVersion"
