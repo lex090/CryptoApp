@@ -15,7 +15,10 @@ class CryptoAppApplication : MultiDexApplication(), AppDependenciesProvidersHold
         return aggregatingProvider ?: DaggerApplicationComponent
             .factory()
             .create(
-                coreComponentDependencies = CoreComponentDependenciesFactory.create()
-            )
+                coreComponentDependencies = CoreComponentDependenciesFactory
+                    .create(applicationContext = this)
+            ).apply {
+                aggregatingProvider = this
+            }
     }
 }

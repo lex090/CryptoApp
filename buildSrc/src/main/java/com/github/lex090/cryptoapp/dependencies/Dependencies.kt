@@ -10,6 +10,7 @@ import com.github.lex090.cryptoapp.dependencies.Dependencies.Versions.androidxJu
 import com.github.lex090.cryptoapp.dependencies.Dependencies.Versions.dagger2Version
 import com.github.lex090.cryptoapp.dependencies.Dependencies.Versions.fragmentKtxVersion
 import com.github.lex090.cryptoapp.dependencies.Dependencies.Versions.junitVersion
+import com.github.lex090.cryptoapp.dependencies.Dependencies.Versions.kotlinxCoroutinesVersion
 import com.github.lex090.cryptoapp.dependencies.Dependencies.Versions.materialVersion
 import com.github.lex090.cryptoapp.dependencies.Dependencies.Versions.moshiVersion
 import com.github.lex090.cryptoapp.dependencies.Dependencies.Versions.multidexVersion
@@ -18,11 +19,13 @@ import com.github.lex090.cryptoapp.dependencies.Dependencies.Versions.okHttp3Log
 import com.github.lex090.cryptoapp.dependencies.Dependencies.Versions.okHttp3Version
 import com.github.lex090.cryptoapp.dependencies.Dependencies.Versions.retrofitConverterMoshiVersion
 import com.github.lex090.cryptoapp.dependencies.Dependencies.Versions.retrofitVersion
+import com.github.lex090.cryptoapp.dependencies.Dependencies.Versions.roomVersion
 
 object Dependencies {
 
     private object Versions {
 
+        const val kotlinxCoroutinesVersion = "1.6.4"
         const val androidxCoreKtxVersion = "1.7.0"
         const val androidxAppcompatVersion = "1.5.0"
         const val materialVersion = "1.6.1"
@@ -41,6 +44,7 @@ object Dependencies {
         const val activityKtxVersion = "1.5.1"
         const val fragmentKtxVersion = "1.5.2"
         const val adapterDelegatesVersion = "4.3.2"
+        const val roomVersion = "2.4.3"
     }
 
     object ProjectModules {
@@ -54,6 +58,13 @@ object Dependencies {
         const val coreFactory = ":modules:core:core_factory"
 
         const val coreApi = ":modules:core:core_api"
+
+        const val coreDbApi = ":modules:core:core_db_api"
+        const val coreDbImpl = ":modules:core:core_db_impl"
+
+        const val baseFavorite = ":modules:base:base_favorite"
+
+        const val baseCoins = ":modules:base:base_coins"
 
         const val featureAppActivityApi = ":modules:feature:feature_app_activity_api"
         const val featureAppActivityImpl = ":modules:feature:feature_app_activity_impl"
@@ -71,6 +82,9 @@ object Dependencies {
     }
 
     object Libraries {
+
+        const val kotlinxCoroutines =
+            "org.jetbrains.kotlinx:kotlinx-coroutines-core:$kotlinxCoroutinesVersion"
 
         const val androidxCoreKtx = "androidx.core:core-ktx:$androidxCoreKtxVersion"
         const val androidxAppcompat = "androidx.appcompat:appcompat:$androidxAppcompatVersion"
@@ -105,6 +119,10 @@ object Dependencies {
 
         const val adapterDelegates =
             "com.hannesdorfmann:adapterdelegates4-kotlin-dsl-viewbinding:$adapterDelegatesVersion"
+
+        const val room = "androidx.room:room-runtime:$roomVersion"
+        const val roomCompiler = "androidx.room:room-compiler:$roomVersion"
+        const val roomKtxCompiler = "androidx.room:room-ktx:$roomVersion"
     }
 }
 

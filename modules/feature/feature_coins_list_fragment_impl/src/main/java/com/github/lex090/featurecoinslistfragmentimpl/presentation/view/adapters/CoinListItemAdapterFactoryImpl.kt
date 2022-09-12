@@ -13,7 +13,8 @@ import javax.inject.Inject
 class CoinListItemAdapterFactoryImpl @Inject constructor() : ICoinListItemAdapterFactory {
 
     override fun createCommonCoinListItemAdapterFactory(
-        addToFavoriteClickListener: (Int, CoinUiEntity, Boolean) -> Unit
+        addCoinToFavoritesClickListener: (position: Int, coinUiEntity: CoinUiEntity) -> Unit,
+        removeCoinFromFavoritesListener: (position: Int, coinUiEntity: CoinUiEntity) -> Unit
     ): AdapterDelegate<List<DisplayableItem>> =
         adapterDelegateViewBinding<CoinUiEntity, DisplayableItem, ItemSmallCoinInfoBinding>(
             { layoutInflater, root ->
@@ -25,7 +26,10 @@ class CoinListItemAdapterFactoryImpl @Inject constructor() : ICoinListItemAdapte
             }
         ) {
             binding.btnFavorite.setOnClickListener {
-                addToFavoriteClickListener(this.adapterPosition, item, !item.isFavorite)
+                if (item.isFavorite)
+                    removeCoinFromFavoritesListener(this.adapterPosition, item)
+                else
+                    addCoinToFavoritesClickListener(this.adapterPosition, item)
             }
 
             bind {

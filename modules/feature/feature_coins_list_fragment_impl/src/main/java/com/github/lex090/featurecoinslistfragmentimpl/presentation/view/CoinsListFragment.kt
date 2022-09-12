@@ -2,7 +2,6 @@ package com.github.lex090.featurecoinslistfragmentimpl.presentation.view
 
 import android.content.Context
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,14 +11,13 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.github.lex090.coreapi.ResultOf
 import com.github.lex090.corediapi.AppDependenciesProvidersHolder
-import com.github.lex090.corenetworkapi.ResultOf
 import com.github.lex090.featurecoinslistfragmentimpl.databinding.FragmentCoinsListBinding
 import com.github.lex090.featurecoinslistfragmentimpl.di.DaggerCoinListFragmentComponent
 import com.github.lex090.featurecoinslistfragmentimpl.presentation.view.adapters.ICoinListItemAdapterFactory
 import com.github.lex090.featurecoinslistfragmentimpl.presentation.view.diffutil.CoinListDiffAdapter
 import com.github.lex090.featurecoinslistfragmentimpl.presentation.viewmodel.CoinListViewModel
-import com.google.android.material.snackbar.Snackbar
 import com.hannesdorfmann.adapterdelegates4.AdapterDelegatesManager
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
@@ -48,7 +46,10 @@ class CoinsListFragment : Fragment() {
         AdapterDelegatesManager<List<DisplayableItem>>().apply {
             addDelegate(
                 coinListItemAdapterFactory
-                    .createCommonCoinListItemAdapterFactory(this@CoinsListFragment::onListItemClick)
+                    .createCommonCoinListItemAdapterFactory(
+                        this@CoinsListFragment::clickOnAddCoinToFavorites,
+                        this@CoinsListFragment::clickOnRemoveCoinFromFavorites,
+                    )
             )
         }
     }
@@ -86,15 +87,8 @@ class CoinsListFragment : Fragment() {
         _viewBinding = null
     }
 
-    private fun processCoinsList(result: ResultOf<CoinsListUiEntity>) {
-        when (result) {
-            is ResultOf.Success -> viewCoinsList(result.data)
-            is ResultOf.Error -> showError(result)
-        }
-    }
-
-    private fun viewCoinsList(data: CoinsListUiEntity) {
-        adapter.items = data.coinsList
+    private fun processCoinsList(result: List<CoinUiEntity>) {
+        adapter.items = result
     }
 
     private fun showError(error: ResultOf.Error) {
@@ -107,7 +101,9 @@ class CoinsListFragment : Fragment() {
                 viewModel
                     .coinsList
                     .map { result ->
-                        ResultOf.Success(data = result.data.toCoinsListUiEntity())
+                        result.mapIndexed { index, value ->
+                            value.toCoinUiEntity(index)
+                        }
                     }
                     .collect { result ->
                         processCoinsList(result = result)
@@ -121,13 +117,16 @@ class CoinsListFragment : Fragment() {
         viewBinding.rvCoinsList.layoutManager = LinearLayoutManager(context)
     }
 
-    private fun onListItemClick(position: Int, coinUiEntity: CoinUiEntity, isFavorite: Boolean) {
-        val items = mutableListOf<DisplayableItem>()
-        items.addAll(adapter.items)
-        items[position] = coinUiEntity.copy(isFavorite = isFavorite)
-        Log.i("myDebug", "onListItemClick: items -> $items")
-        adapter.items = items
-        Snackbar.make(viewBinding.root, coinUiEntity.name, Snackbar.LENGTH_SHORT).show()
+    private fun clickOnAddCoinToFavorites(position: Int, coinUiEntity: CoinUiEntity) {
+        viewModel.clickOnAddCoinToFavorites(
+            position = position, coin = coinUiEntity.toCoin()
+        )
+    }
+
+    private fun clickOnRemoveCoinFromFavorites(position: Int, coinUiEntity: CoinUiEntity) {
+        viewModel.clickOnRemoveCoinFromFavorites(
+            position = position, coin = coinUiEntity.toCoin()
+        )
     }
 
     private fun injectDependencies() {

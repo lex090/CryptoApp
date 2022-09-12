@@ -14,7 +14,7 @@ import dagger.Component
         CoreComponentDependencies::class
     ]
 )
-interface ApplicationComponent: AppDependenciesProvider {
+interface ApplicationComponent : AppDependenciesProvider {
 
     @Component.Factory
     interface Factory {

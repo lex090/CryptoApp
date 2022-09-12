@@ -7,6 +7,7 @@ import com.hannesdorfmann.adapterdelegates4.AdapterDelegate
 interface ICoinListItemAdapterFactory {
 
     fun createCommonCoinListItemAdapterFactory(
-        addToFavoriteClickListener: (Int, CoinUiEntity, Boolean) -> Unit
+        addCoinToFavoritesClickListener: (position: Int, coinUiEntity: CoinUiEntity) -> Unit,
+        removeCoinFromFavoritesListener: (position: Int, coinUiEntity: CoinUiEntity) -> Unit,
     ): AdapterDelegate<List<DisplayableItem>>
 }
