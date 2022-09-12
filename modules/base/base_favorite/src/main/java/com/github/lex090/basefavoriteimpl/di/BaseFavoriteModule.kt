@@ -1,9 +1,13 @@
 package com.github.lex090.basefavoriteimpl.di
 
+import com.github.lex090.basefavoriteimpl.data.repositoryimpl.FavoritesRepositoryImpl
+import com.github.lex090.basefavoriteimpl.domain.IFavoritesRepository
 import com.github.lex090.basefavoriteimpl.domain.usecases.AddCoinToFavoritesUseCaseImpl
 import com.github.lex090.basefavoriteimpl.domain.usecases.FavoritesCoinsCountChangedUseCaseImpl
+import com.github.lex090.basefavoriteimpl.domain.usecases.GetFavoriteCoinsUseCaseImpl
 import com.github.lex090.basefavoriteimpl.domain.usecases.IAddCoinToFavoritesUseCase
 import com.github.lex090.basefavoriteimpl.domain.usecases.IFavoritesCoinsCountChangedUseCase
+import com.github.lex090.basefavoriteimpl.domain.usecases.IGetFavoriteCoinsUseCase
 import com.github.lex090.basefavoriteimpl.domain.usecases.IRemoveCoinFromFavoritesUseCase
 import com.github.lex090.basefavoriteimpl.domain.usecases.RemoveCoinFromFavoritesUseCaseImpl
 import dagger.Binds
@@ -35,4 +39,14 @@ internal interface FavoriteBindsModule {
     fun bind_FavoritesCoinsCountChangedUseCaseImpl_to_IFavoritesCoinsCountChangedUseCase(
         useCase: FavoritesCoinsCountChangedUseCaseImpl
     ): IFavoritesCoinsCountChangedUseCase
+
+    @Binds
+    fun bind_FavoritesRepositoryImpl_to_IFavoritesRepository(
+        repository: FavoritesRepositoryImpl
+    ): IFavoritesRepository
+
+    @Binds
+    fun binds_GetFavoriteCoinsUseCaseImpl_to_IGetFavoriteCoinsUseCase(
+        useCase: GetFavoriteCoinsUseCaseImpl
+    ): IGetFavoriteCoinsUseCase
 }
