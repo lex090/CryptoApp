@@ -59,8 +59,8 @@ class CoinsListFragment : Fragment() {
     }
 
     override fun onAttach(context: Context) {
-        super.onAttach(context)
         injectDependencies()
+        super.onAttach(context)
     }
 
     override fun onCreateView(
@@ -83,8 +83,8 @@ class CoinsListFragment : Fragment() {
     }
 
     override fun onDestroyView() {
-        super.onDestroyView()
         _viewBinding = null
+        super.onDestroyView()
     }
 
     private fun processCoinsList(result: List<CoinUiEntity>) {

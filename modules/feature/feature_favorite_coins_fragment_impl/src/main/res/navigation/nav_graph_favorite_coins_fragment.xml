@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@id/favoriteCoinsFragment"
-        android:name="com.github.lex090.featurefavoritecoinsfragmentimpl.FavoriteCoinsFragment"
+        android:name="com.github.lex090.featurefavoritecoinsfragmentimpl.presentation.view.FavoriteCoinsFragment"
         android:label="FavoriteCoinsFragment"
         tools:layout="@layout/fragment_favorite_coins" />
 
