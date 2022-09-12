@@ -8,15 +8,11 @@ import com.github.lex090.basefavoriteimpl.domain.usecases.IRemoveCoinFromFavorit
 import com.github.lex090.basefavoriteimpl.domain.usecases.RemoveCoinFromFavoritesUseCaseImpl
 import dagger.Binds
 import dagger.Module
-import dagger.Provides
-import kotlinx.coroutines.Dispatchers
-import kotlin.coroutines.CoroutineContext
 
 
 @Module(
     includes = [
-        FavoriteBindsModule::class,
-        FavoriteModule::class
+        FavoriteBindsModule::class
     ]
 )
 object BaseFavoriteModule
@@ -39,11 +35,4 @@ internal interface FavoriteBindsModule {
     fun bind_FavoritesCoinsCountChangedUseCaseImpl_to_IFavoritesCoinsCountChangedUseCase(
         useCase: FavoritesCoinsCountChangedUseCaseImpl
     ): IFavoritesCoinsCountChangedUseCase
-}
-
-@Module
-internal object FavoriteModule {
-
-    @Provides
-    fun provideDispatcherIo(): CoroutineContext = Dispatchers.IO
 }

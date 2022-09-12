@@ -36,10 +36,14 @@ dependencies {
 
     implementation(project(Dependencies.ProjectModules.coreApi))
 
+    implementation(project(Dependencies.ProjectModules.coreDbApi))
+
     implementation(Dependencies.Libraries.dagger2)
     kapt(Dependencies.Libraries.dagger2compiler)
 
     implementation(Dependencies.Libraries.retrofit)
 
     implementation(Dependencies.Libraries.moshi)
+
+    implementation(Dependencies.Libraries.kotlinxCoroutines)
 }

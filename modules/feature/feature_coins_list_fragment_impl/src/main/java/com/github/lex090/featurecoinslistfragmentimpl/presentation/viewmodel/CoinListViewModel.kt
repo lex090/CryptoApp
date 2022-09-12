@@ -5,7 +5,6 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
 import com.github.lex090.basecoins.di.GetCoinsListUseCaseDependence
 import com.github.lex090.basecoins.domain.entity.Coin
-import com.github.lex090.basecoins.domain.entity.CoinsList
 import com.github.lex090.basecoins.domain.usecases.IGetCoinsListUseCase
 import com.github.lex090.basefavoriteimpl.domain.usecases.IAddCoinToFavoritesUseCase
 import com.github.lex090.basefavoriteimpl.domain.usecases.IRemoveCoinFromFavoritesUseCase
@@ -35,7 +34,7 @@ class CoinListViewModel(
 
                 }
                 is ResultOf.Success -> {
-                    _mutableCoinsListStateFlow.value = result.data.coinsList
+                    _mutableCoinsListStateFlow.value = result.data
                 }
             }
         }
@@ -68,7 +67,7 @@ class CoinListViewModel(
         _mutableCoinsListStateFlow.value = items
     }
 
-    private suspend fun getCoinsFromRepository(): ResultOf<CoinsList> =
+    private suspend fun getCoinsFromRepository(): ResultOf<List<Coin>> =
         getCoinsListUseCase.execute()
 
 
