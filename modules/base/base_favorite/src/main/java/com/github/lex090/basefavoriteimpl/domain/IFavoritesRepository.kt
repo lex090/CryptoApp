@@ -11,5 +11,7 @@ internal interface IFavoritesRepository {
 
     suspend fun removeCoinFromFavorites(coin: Coin)
 
+    suspend fun clearFavorites()
+
     fun subscribeOnFavoriteCoinsUpdating(): Flow<Int>
 }

@@ -35,6 +35,8 @@ internal class FavoritesRepositoryImpl @Inject constructor(
     override suspend fun removeCoinFromFavorites(coin: Coin) =
         favoriteCoinDao.removeCoinFromFavorites(coin.toFavoriteCoinEntity().coinId)
 
+    override suspend fun clearFavorites() = favoriteCoinDao.clearFavorites()
+
     override fun subscribeOnFavoriteCoinsUpdating(): Flow<Int> =
         favoriteCoinDao
             .subscribeOnFavoriteCoinsDbUpdating()
