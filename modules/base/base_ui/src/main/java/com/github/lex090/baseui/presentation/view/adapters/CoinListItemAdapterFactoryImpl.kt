@@ -1,16 +1,16 @@
-package com.github.lex090.featurecoinslistfragmentimpl.presentation.view.adapters
+package com.github.lex090.baseui.presentation.view.adapters
 
 import androidx.core.content.ContextCompat
-import com.github.lex090.featurecoinslistfragmentimpl.R
-import com.github.lex090.featurecoinslistfragmentimpl.databinding.ItemSmallCoinInfoBinding
-import com.github.lex090.featurecoinslistfragmentimpl.presentation.view.CoinUiEntity
-import com.github.lex090.featurecoinslistfragmentimpl.presentation.view.DisplayableItem
+import com.github.lex090.baseui.R
+import com.github.lex090.baseui.databinding.ItemSmallCoinInfoBinding
+import com.github.lex090.baseui.presentation.view.entity.CoinUiEntity
+import com.github.lex090.baseui.presentation.view.entity.DisplayableItem
 import com.hannesdorfmann.adapterdelegates4.AdapterDelegate
 import com.hannesdorfmann.adapterdelegates4.dsl.AdapterDelegateViewBindingViewHolder
 import com.hannesdorfmann.adapterdelegates4.dsl.adapterDelegateViewBinding
 import javax.inject.Inject
 
-class CoinListItemAdapterFactoryImpl @Inject constructor() : ICoinListItemAdapterFactory {
+internal class CoinListItemAdapterFactoryImpl @Inject constructor() : ICoinListItemAdapterFactory {
 
     override fun createCommonCoinListItemAdapterFactory(
         addCoinToFavoritesClickListener: (position: Int, coinUiEntity: CoinUiEntity) -> Unit,
@@ -27,9 +27,9 @@ class CoinListItemAdapterFactoryImpl @Inject constructor() : ICoinListItemAdapte
         ) {
             binding.btnFavorite.setOnClickListener {
                 if (item.isFavorite)
-                    removeCoinFromFavoritesListener(this.adapterPosition, item)
+                    removeCoinFromFavoritesListener(adapterPosition, item)
                 else
-                    addCoinToFavoritesClickListener(this.adapterPosition, item)
+                    addCoinToFavoritesClickListener(adapterPosition, item)
             }
 
             bind {

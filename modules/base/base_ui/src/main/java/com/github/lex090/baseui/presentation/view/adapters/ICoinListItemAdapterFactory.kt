@@ -1,7 +1,7 @@
-package com.github.lex090.featurecoinslistfragmentimpl.presentation.view.adapters
+package com.github.lex090.baseui.presentation.view.adapters
 
-import com.github.lex090.featurecoinslistfragmentimpl.presentation.view.CoinUiEntity
-import com.github.lex090.featurecoinslistfragmentimpl.presentation.view.DisplayableItem
+import com.github.lex090.baseui.presentation.view.entity.CoinUiEntity
+import com.github.lex090.baseui.presentation.view.entity.DisplayableItem
 import com.hannesdorfmann.adapterdelegates4.AdapterDelegate
 
 interface ICoinListItemAdapterFactory {

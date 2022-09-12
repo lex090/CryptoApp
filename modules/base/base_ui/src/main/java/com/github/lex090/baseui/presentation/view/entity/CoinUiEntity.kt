@@ -1,4 +1,4 @@
-package com.github.lex090.featurecoinslistfragmentimpl.presentation.view
+package com.github.lex090.baseui.presentation.view.entity
 
 import com.github.lex090.basecoins.domain.entity.Coin
 

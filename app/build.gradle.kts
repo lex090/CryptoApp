@@ -47,6 +47,8 @@ dependencies {
 
     implementation(project(Dependencies.ProjectModules.coreApi))
 
+    implementation(project(Dependencies.ProjectModules.baseUI))
+
     implementation(project(Dependencies.ProjectModules.coreDbImpl))
 
     implementation(project(Dependencies.ProjectModules.baseFavorite))

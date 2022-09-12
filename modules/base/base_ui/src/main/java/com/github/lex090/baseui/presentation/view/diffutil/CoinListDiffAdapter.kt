@@ -1,7 +1,7 @@
-package com.github.lex090.featurecoinslistfragmentimpl.presentation.view.diffutil
+package com.github.lex090.baseui.presentation.view.diffutil
 
 import androidx.recyclerview.widget.DiffUtil
-import com.github.lex090.featurecoinslistfragmentimpl.presentation.view.DisplayableItem
+import com.github.lex090.baseui.presentation.view.entity.DisplayableItem
 import com.hannesdorfmann.adapterdelegates4.AdapterDelegatesManager
 import com.hannesdorfmann.adapterdelegates4.AsyncListDifferDelegationAdapter
 import dagger.assisted.Assisted
