@@ -1,11 +1,11 @@
 package com.github.lex090.basecoins.di
 
-import com.github.lex090.basecoins.domain.entity.CoinsList
 import com.github.lex090.basecoins.data.mappers.CoinMapperImpl
 import com.github.lex090.basecoins.data.repositoryimpl.CoinsRepositoryImpl
 import com.github.lex090.basecoins.data.responses.CoinResponse
 import com.github.lex090.basecoins.data.services.CoinsNetworkService
 import com.github.lex090.basecoins.domain.ICoinsRepository
+import com.github.lex090.basecoins.domain.entity.CoinsList
 import com.github.lex090.basecoins.domain.usecases.GetCoinsListUseCase
 import com.github.lex090.coreapi.ResultOf
 import com.github.lex090.coreapi.data.IMapper
@@ -28,6 +28,7 @@ object BaseCoinsModule
 internal interface CoinsBindsModule {
 
     @Binds
+    @GetCoinsListUseCaseDependence
     fun bind_GetCoinsListUseCase_to_IBaseUseCase(
         useCase: GetCoinsListUseCase
     ): IBaseUseCase<Any, ResultOf<@JvmSuppressWildcards CoinsList>>

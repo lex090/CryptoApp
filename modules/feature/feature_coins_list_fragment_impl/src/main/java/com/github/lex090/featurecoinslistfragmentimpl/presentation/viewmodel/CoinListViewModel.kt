@@ -3,6 +3,7 @@ package com.github.lex090.featurecoinslistfragmentimpl.presentation.viewmodel
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
+import com.github.lex090.basecoins.di.GetCoinsListUseCaseDependence
 import com.github.lex090.basecoins.domain.entity.CoinsList
 import com.github.lex090.coreapi.ResultOf
 import com.github.lex090.coreapi.domain.IBaseUseCase
@@ -42,6 +43,7 @@ class CoinListViewModel(
 
 
     class Factory @Inject constructor(
+        @GetCoinsListUseCaseDependence
         private val getCoinsListUseCase: IBaseUseCase<Any, ResultOf<CoinsList>>,
     ) : ViewModelProvider.Factory {
 
