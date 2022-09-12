@@ -106,7 +106,7 @@ class CoinsListFragment : Fragment() {
                     .coinsList
                     .map { result ->
                         result.mapIndexed { index, value ->
-                            value.toCoinUiEntity(index)
+                            value.toCoinUiEntity(index + 1)
                         }
                     }
                     .collect { result ->

@@ -24,7 +24,7 @@ internal class FavoritesRepositoryImpl @Inject constructor(
         val favoriteCoins = favoriteCoinDao.getFavoriteCoins()
         return@withContext coinsNetworkService
             .getCoinsMarketsList(
-                ids = favoriteCoins.joinToString(",")
+                ids = favoriteCoins.joinToString(",") { it.coinId }
             )
             .mapData { true }
     }
