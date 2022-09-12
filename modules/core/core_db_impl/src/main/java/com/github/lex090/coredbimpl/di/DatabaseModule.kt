@@ -2,7 +2,7 @@ package com.github.lex090.coredbimpl.di
 
 import android.content.Context
 import androidx.room.Room
-import com.github.lex090.coredbapi.dao.FavoriteCoinsDao
+import com.github.lex090.coredbapi.data.dao.FavoriteCoinsDao
 import com.github.lex090.coredbimpl.database.AppDatabase
 import com.github.lex090.coredbimpl.database.DATABASE_NAME
 import com.github.lex090.corediapi.ApplicationContext

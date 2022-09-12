@@ -1,7 +1,7 @@
 package com.github.lex090.corediimpl
 
 import android.content.Context
-import com.github.lex090.coredbapi.dao.FavoriteCoinsDao
+import com.github.lex090.coredbapi.data.dao.FavoriteCoinsDao
 import com.github.lex090.coredbimpl.di.DatabaseModule
 import com.github.lex090.corediapi.ApplicationContext
 import com.github.lex090.corediapi.ApplicationScope

@@ -37,6 +37,7 @@ dependencies {
     implementation(project(Dependencies.ProjectModules.coreApi))
     implementation(project(Dependencies.ProjectModules.coreDiApi))
     implementation(project(Dependencies.ProjectModules.baseFavorite))
+    implementation(project(Dependencies.ProjectModules.baseCoins))
 
     implementation(Dependencies.Libraries.androidxCoreKtx)
     implementation(Dependencies.Libraries.androidxAppcompat)

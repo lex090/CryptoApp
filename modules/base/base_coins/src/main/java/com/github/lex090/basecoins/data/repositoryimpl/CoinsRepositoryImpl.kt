@@ -6,7 +6,7 @@ import com.github.lex090.basecoins.data.services.CoinsNetworkService
 import com.github.lex090.basecoins.domain.ICoinsRepository
 import com.github.lex090.basecoins.domain.entity.Coin
 import com.github.lex090.coreapi.ResultOf
-import com.github.lex090.coredbapi.dao.FavoriteCoinsDao
+import com.github.lex090.coredbapi.data.dao.FavoriteCoinsDao
 import kotlinx.coroutines.async
 import kotlinx.coroutines.withContext
 import javax.inject.Inject

@@ -1,4 +1,4 @@
-package com.github.lex090.coredbapi.entity
+package com.github.lex090.coredbapi.data.entity
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity

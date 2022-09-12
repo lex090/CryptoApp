@@ -1,10 +1,10 @@
-package com.github.lex090.coredbapi.dao
+package com.github.lex090.coredbapi.data.dao
 
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import com.github.lex090.coredbapi.entity.FavoriteCoinEntity
+import com.github.lex090.coredbapi.data.entity.FavoriteCoinEntity
 import kotlinx.coroutines.flow.Flow
 
 @Dao
