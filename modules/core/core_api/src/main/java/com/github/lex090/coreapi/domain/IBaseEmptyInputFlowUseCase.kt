@@ -4,5 +4,5 @@ import kotlinx.coroutines.flow.Flow
 
 interface IBaseEmptyInputFlowUseCase<out O : Any> {
 
-    suspend fun execute(): Flow<O>
+    fun execute(): Flow<O>
 }

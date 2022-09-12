@@ -23,7 +23,9 @@ object DatabaseModule {
         DATABASE_NAME
     ).build()
 
+    @ApplicationScope
     @Provides
-    fun provideFavoriteCoinsDao(appDatabase: AppDatabase): FavoriteCoinsDao =
-        appDatabase.favoriteCoinsDao()
+    fun provideFavoriteCoinsDao(
+        appDatabase: AppDatabase
+    ): FavoriteCoinsDao = appDatabase.favoriteCoinsDao()
 }

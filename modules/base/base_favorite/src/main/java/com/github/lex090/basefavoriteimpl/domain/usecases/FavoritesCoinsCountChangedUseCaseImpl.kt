@@ -16,7 +16,7 @@ internal class FavoritesCoinsCountChangedUseCaseImpl @Inject constructor(
     private val dispatcherIo: CoroutineContext
 ) : IFavoritesCoinsCountChangedUseCase {
 
-    override suspend fun execute(): Flow<Int> =
+    override fun execute(): Flow<Int> =
         favoriteCoinDao
             .subscribeOnFavoriteCoinsDbUpdating()
             .map { items ->

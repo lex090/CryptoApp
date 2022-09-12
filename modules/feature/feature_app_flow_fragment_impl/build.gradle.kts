@@ -4,6 +4,7 @@ import com.github.lex090.cryptoapp.dependencies.Dependencies
 plugins {
     id("com.android.library")
     id("org.jetbrains.kotlin.android")
+    id("kotlin-kapt")
 }
 
 android {
@@ -31,8 +32,11 @@ android {
 
 dependencies {
     api(project(Dependencies.ProjectModules.featureAppFlowFragmentApi))
-    api(project(Dependencies.ProjectModules.featureCoinsListFragmentApi))
-    api(project(Dependencies.ProjectModules.featureFavoriteCoinsFragmentApi))
+    implementation(project(Dependencies.ProjectModules.featureCoinsListFragmentApi))
+    implementation(project(Dependencies.ProjectModules.featureFavoriteCoinsFragmentApi))
+    implementation(project(Dependencies.ProjectModules.coreApi))
+    implementation(project(Dependencies.ProjectModules.coreDiApi))
+    implementation(project(Dependencies.ProjectModules.baseFavorite))
 
     implementation(Dependencies.Libraries.androidxCoreKtx)
     implementation(Dependencies.Libraries.androidxAppcompat)
@@ -41,4 +45,7 @@ dependencies {
 
     implementation(Dependencies.Libraries.navigationFragmentKtx)
     implementation(Dependencies.Libraries.navigationUiKtx)
+
+    implementation(Dependencies.Libraries.dagger2)
+    kapt(Dependencies.Libraries.dagger2compiler)
 }

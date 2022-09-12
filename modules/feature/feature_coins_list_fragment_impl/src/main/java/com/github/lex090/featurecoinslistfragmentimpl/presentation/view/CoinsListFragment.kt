@@ -18,7 +18,6 @@ import com.github.lex090.featurecoinslistfragmentimpl.di.DaggerCoinListFragmentC
 import com.github.lex090.featurecoinslistfragmentimpl.presentation.view.adapters.ICoinListItemAdapterFactory
 import com.github.lex090.featurecoinslistfragmentimpl.presentation.view.diffutil.CoinListDiffAdapter
 import com.github.lex090.featurecoinslistfragmentimpl.presentation.viewmodel.CoinListViewModel
-import com.google.android.material.snackbar.Snackbar
 import com.hannesdorfmann.adapterdelegates4.AdapterDelegatesManager
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
@@ -122,16 +121,12 @@ class CoinsListFragment : Fragment() {
         viewModel.clickOnAddCoinToFavorites(
             position = position, coin = coinUiEntity.toCoin()
         )
-        Snackbar.make(viewBinding.root, "${coinUiEntity.name} was add", Snackbar.LENGTH_SHORT)
-            .show()
     }
 
     private fun clickOnRemoveCoinFromFavorites(position: Int, coinUiEntity: CoinUiEntity) {
         viewModel.clickOnRemoveCoinFromFavorites(
             position = position, coin = coinUiEntity.toCoin()
         )
-        Snackbar.make(viewBinding.root, "${coinUiEntity.name} was remove", Snackbar.LENGTH_SHORT)
-            .show()
     }
 
     private fun injectDependencies() {

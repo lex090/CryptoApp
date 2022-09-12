@@ -17,6 +17,8 @@ class CryptoAppApplication : MultiDexApplication(), AppDependenciesProvidersHold
             .create(
                 coreComponentDependencies = CoreComponentDependenciesFactory
                     .create(applicationContext = this)
-            )
+            ).apply {
+                aggregatingProvider = this
+            }
     }
 }
