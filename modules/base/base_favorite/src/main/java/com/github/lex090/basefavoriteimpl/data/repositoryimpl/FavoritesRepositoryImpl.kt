@@ -3,6 +3,7 @@ package com.github.lex090.basefavoriteimpl.data.repositoryimpl
 import com.github.lex090.basecoins.data.mapData
 import com.github.lex090.basecoins.data.services.CoinsNetworkService
 import com.github.lex090.basecoins.domain.entity.Coin
+import com.github.lex090.basefavoriteimpl.data.toCoin
 import com.github.lex090.basefavoriteimpl.data.toFavoriteCoinEntity
 import com.github.lex090.basefavoriteimpl.domain.IFavoritesRepository
 import com.github.lex090.coredbapi.data.dao.FavoriteCoinsDao
@@ -22,11 +23,15 @@ internal class FavoritesRepositoryImpl @Inject constructor(
 
     override suspend fun getFavoriteCoins(): List<Coin> = withContext(dispatcherIo) {
         val favoriteCoins = favoriteCoinDao.getFavoriteCoins()
-        return@withContext coinsNetworkService
-            .getCoinsMarketsList(
-                ids = favoriteCoins.joinToString(",") { it.coinId }
-            )
-            .mapData { true }
+        return@withContext if (favoriteCoins.isEmpty()) {
+            listOf()
+        } else {
+            coinsNetworkService
+                .getCoinsMarketsList(
+                    ids = favoriteCoins.joinToString(",") { it.coinId }
+                )
+                .mapData { true }
+        }
     }
 
     override suspend fun addCoinToFavorites(coin: Coin) =
@@ -37,12 +42,14 @@ internal class FavoritesRepositoryImpl @Inject constructor(
 
     override suspend fun clearFavorites() = favoriteCoinDao.clearFavorites()
 
-    override fun subscribeOnFavoriteCoinsUpdating(): Flow<Int> =
+    override fun subscribeOnFavoriteCoinsUpdating(): Flow<List<Coin>> =
         favoriteCoinDao
             .subscribeOnFavoriteCoinsDbUpdating()
-            .map { items ->
-                items.size
-            }
             .distinctUntilChanged()
+            .map { items ->
+                items.map { item ->
+                    item.toCoin()
+                }
+            }
             .flowOn(dispatcherIo)
 }

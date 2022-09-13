@@ -51,7 +51,7 @@ class FavoriteCoinsFragment : Fragment() {
             addDelegate(
                 coinListItemAdapterFactory
                     .createCommonCoinListItemAdapterFactory(
-                        this@FavoriteCoinsFragment::clickOnAddCoinToFavorites,
+                        { _, _ -> },
                         this@FavoriteCoinsFragment::clickOnRemoveCoinFromFavorites,
                     )
             )
@@ -81,11 +81,6 @@ class FavoriteCoinsFragment : Fragment() {
         initDataSubscriptions()
     }
 
-    override fun onResume() {
-        super.onResume()
-        viewModel.onViewsInit()
-    }
-
     override fun onDestroyView() {
         _viewBinding = null
         super.onDestroyView()
@@ -113,12 +108,6 @@ class FavoriteCoinsFragment : Fragment() {
 
     private fun processCoinsList(result: List<CoinUiEntity>) {
         adapter.items = result
-    }
-
-    private fun clickOnAddCoinToFavorites(position: Int, coinUiEntity: CoinUiEntity) {
-        viewModel.clickOnAddCoinToFavorites(
-            position = position, coin = coinUiEntity.toCoin()
-        )
     }
 
     private fun clickOnRemoveCoinFromFavorites(position: Int, coinUiEntity: CoinUiEntity) {

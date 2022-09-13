@@ -11,14 +11,14 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.github.lex090.coreapi.ResultOf
-import com.github.lex090.corediapi.AppDependenciesProvidersHolder
 import com.github.lex090.baseui.presentation.view.adapters.ICoinListItemAdapterFactory
 import com.github.lex090.baseui.presentation.view.diffutil.CoinListDiffAdapter
 import com.github.lex090.baseui.presentation.view.entity.CoinUiEntity
 import com.github.lex090.baseui.presentation.view.entity.DisplayableItem
 import com.github.lex090.baseui.presentation.view.entity.toCoin
 import com.github.lex090.baseui.presentation.view.entity.toCoinUiEntity
+import com.github.lex090.coreapi.ResultOf
+import com.github.lex090.corediapi.AppDependenciesProvidersHolder
 import com.github.lex090.featurecoinslistfragmentimpl.databinding.FragmentCoinsListBinding
 import com.github.lex090.featurecoinslistfragmentimpl.di.DaggerCoinListFragmentComponent
 import com.github.lex090.featurecoinslistfragmentimpl.presentation.viewmodel.CoinListViewModel
@@ -123,13 +123,13 @@ class CoinsListFragment : Fragment() {
 
     private fun clickOnAddCoinToFavorites(position: Int, coinUiEntity: CoinUiEntity) {
         viewModel.clickOnAddCoinToFavorites(
-            position = position, coin = coinUiEntity.toCoin()
+            position = position, coin = coinUiEntity.toCoin(isFavoriteNewValue = true)
         )
     }
 
     private fun clickOnRemoveCoinFromFavorites(position: Int, coinUiEntity: CoinUiEntity) {
         viewModel.clickOnRemoveCoinFromFavorites(
-            position = position, coin = coinUiEntity.toCoin()
+            position = position, coin = coinUiEntity.toCoin(isFavoriteNewValue = false)
         )
     }
 

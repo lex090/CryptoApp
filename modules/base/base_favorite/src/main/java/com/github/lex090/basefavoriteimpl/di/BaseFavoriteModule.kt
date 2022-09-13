@@ -7,10 +7,12 @@ import com.github.lex090.basefavoriteimpl.domain.usecases.AddCoinToFavoritesUseC
 import com.github.lex090.basefavoriteimpl.domain.usecases.ClearFavoritesUseCaseImpl
 import com.github.lex090.basefavoriteimpl.domain.usecases.FavoritesCoinsCountChangedUseCaseImpl
 import com.github.lex090.basefavoriteimpl.domain.usecases.GetFavoriteCoinsUseCaseImpl
+import com.github.lex090.basefavoriteimpl.domain.usecases.GetFavoriteCoinsWithRemoteUpdatingUseCaseImpl
 import com.github.lex090.basefavoriteimpl.domain.usecases.IAddCoinToFavoritesUseCase
 import com.github.lex090.basefavoriteimpl.domain.usecases.IClearFavoritesUseCaseUseCase
 import com.github.lex090.basefavoriteimpl.domain.usecases.IFavoritesCoinsCountChangedUseCase
 import com.github.lex090.basefavoriteimpl.domain.usecases.IGetFavoriteCoinsUseCase
+import com.github.lex090.basefavoriteimpl.domain.usecases.IGetFavoriteCoinsWithRemoteUpdatingUseCase
 import com.github.lex090.basefavoriteimpl.domain.usecases.IRemoveCoinFromFavoritesUseCase
 import com.github.lex090.basefavoriteimpl.domain.usecases.RemoveCoinFromFavoritesUseCaseImpl
 import dagger.Binds
@@ -58,4 +60,9 @@ internal interface FavoriteBindsModule {
     fun binds_ClearFavoritesUseCaseImpl_to_IClearFavoritesUseCaseUseCase(
         useCase: ClearFavoritesUseCaseImpl
     ): IClearFavoritesUseCaseUseCase
+
+    @Binds
+    fun binds_GetFavoriteCoinsWithRemoteUpdatingUseCaseImpl_to_IGetFavoriteCoinsWithRemoteUpdatingUseCase(
+        useCase: GetFavoriteCoinsWithRemoteUpdatingUseCaseImpl
+    ): IGetFavoriteCoinsWithRemoteUpdatingUseCase
 }
