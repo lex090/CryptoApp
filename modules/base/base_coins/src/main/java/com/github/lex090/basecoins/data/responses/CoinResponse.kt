@@ -2,7 +2,7 @@ package com.github.lex090.basecoins.data.responses
 
 import com.squareup.moshi.Json
 
-internal data class CoinResponse(
+data class CoinResponse(
     @Json(name = "price_change_percentage_24h")
     val priceChangePercentage24H: Double = 0.0,
     @Json(name = "symbol")

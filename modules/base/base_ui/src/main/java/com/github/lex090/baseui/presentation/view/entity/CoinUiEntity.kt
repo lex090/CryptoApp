@@ -1,4 +1,4 @@
-package com.github.lex090.featurecoinslistfragmentimpl.presentation.view
+package com.github.lex090.baseui.presentation.view.entity
 
 import com.github.lex090.basecoins.domain.entity.Coin
 
@@ -21,9 +21,9 @@ fun Coin.toCoinUiEntity(position: Int): CoinUiEntity =
         isFavorite = isFavorite
     )
 
-fun CoinUiEntity.toCoin(): Coin = Coin(
+fun CoinUiEntity.toCoin(isFavoriteNewValue: Boolean? = null): Coin = Coin(
     id = id,
     name = name,
     price = price,
-    isFavorite = isFavorite
+    isFavorite = isFavoriteNewValue ?: isFavorite
 )

@@ -1,4 +1,4 @@
-package com.github.lex090.coredbapi.entity
+package com.github.lex090.coredbapi.data.entity
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity
@@ -14,5 +14,11 @@ data class FavoriteCoinEntity(
     @PrimaryKey(autoGenerate = true)
     val id: Int? = null,
     @ColumnInfo(name = "coin_id")
-    val coinId: String
+    val coinId: String,
+    @ColumnInfo(name = "coin_name")
+    val coinName: String,
+    @ColumnInfo(name = "coin_price")
+    val coinPrice: Double,
+    @ColumnInfo(name = "is_favorite_coin")
+    val isFavoriteCoin: Boolean
 )

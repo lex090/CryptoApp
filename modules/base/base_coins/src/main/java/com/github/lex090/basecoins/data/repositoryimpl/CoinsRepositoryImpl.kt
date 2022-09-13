@@ -1,24 +1,37 @@
 package com.github.lex090.basecoins.data.repositoryimpl
 
 import android.accounts.NetworkErrorException
-import com.github.lex090.basecoins.domain.entity.CoinsList
-import com.github.lex090.basecoins.data.responses.CoinResponse
+import com.github.lex090.basecoins.data.mapData
 import com.github.lex090.basecoins.data.services.CoinsNetworkService
 import com.github.lex090.basecoins.domain.ICoinsRepository
+import com.github.lex090.basecoins.domain.entity.Coin
 import com.github.lex090.coreapi.ResultOf
-import com.github.lex090.coreapi.data.IMapper
+import com.github.lex090.coredbapi.data.dao.FavoriteCoinsDao
+import kotlinx.coroutines.async
+import kotlinx.coroutines.withContext
 import javax.inject.Inject
+import kotlin.coroutines.CoroutineContext
 
 internal class CoinsRepositoryImpl @Inject constructor(
     private val service: CoinsNetworkService,
-    private val mapper: IMapper<@JvmSuppressWildcards List<@JvmSuppressWildcards CoinResponse>, CoinsList>
+    private val favoriteCoinsDao: FavoriteCoinsDao,
+    private val dispatcherIo: CoroutineContext
 ) : ICoinsRepository {
 
-    override suspend fun getCoinsList(): ResultOf<CoinsList> =
+    override suspend fun getCoinsList(): ResultOf<List<Coin>> = withContext(dispatcherIo) {
         try {
-            val coinsList = mapper.map(service.getCoinsMarketsList())
+            val favoriteCoins = async { favoriteCoinsDao.getFavoriteCoins() }
+            val coinsMarketList = async { service.getCoinsMarketsList() }
+
+            val listOfPairs = favoriteCoins.await().map { it.coinId to it }.toTypedArray()
+            val favoritesMap = hashMapOf(*listOfPairs)
+
+            val coinsList = coinsMarketList.await().mapData { coinId ->
+                favoritesMap[coinId] != null
+            }
             ResultOf.Success(coinsList)
         } catch (e: NetworkErrorException) {
             ResultOf.Error(exception = e)
         }
+    }
 }

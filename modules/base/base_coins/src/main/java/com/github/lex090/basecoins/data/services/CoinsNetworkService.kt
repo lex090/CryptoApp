@@ -6,7 +6,7 @@ import retrofit2.http.GET
 import retrofit2.http.Query
 
 
-internal interface CoinsNetworkService {
+interface CoinsNetworkService {
 
     @GET(coinsMarketsEntryPoint)
     suspend fun getCoinsMarketsList(

@@ -23,7 +23,9 @@ import javax.inject.Inject
 
 class AppFlowFragment : Fragment() {
 
-    private var binding: FragmentAppFlowBinding? = null
+    private var _viewBinding: FragmentAppFlowBinding? = null
+    private val viewBinding: FragmentAppFlowBinding
+        get() = _viewBinding!!
 
     @Inject
     lateinit var viewModelFactory: AppFlowViewModel.Factory
@@ -40,9 +42,9 @@ class AppFlowFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        binding = FragmentAppFlowBinding.inflate(inflater, container, false)
-        return binding?.root
+    ): View {
+        _viewBinding = FragmentAppFlowBinding.inflate(inflater, container, false)
+        return viewBinding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -53,7 +55,7 @@ class AppFlowFragment : Fragment() {
     }
 
     override fun onDestroyView() {
-        binding = null
+        _viewBinding = null
         super.onDestroyView()
     }
 
@@ -62,7 +64,7 @@ class AppFlowFragment : Fragment() {
             childFragmentManager.findFragmentById(R.id.mainFlowFragmentContainer) as NavHostFragment
         val navController = navHostFragment.navController
 
-        binding?.bottomNavigationView?.setupWithNavController(navController = navController)
+        viewBinding.bottomNavigationView?.setupWithNavController(navController = navController)
     }
 
     private fun initSubscriptionOnViewModel() {
@@ -76,7 +78,7 @@ class AppFlowFragment : Fragment() {
     }
 
     private fun processFavoritesCount(favoritesCont: Int) {
-        val badge = binding
+        val badge = viewBinding
             ?.bottomNavigationView
             ?.getOrCreateBadge(nav_graph_favorite_coins_fragment)
         badge?.isVisible = favoritesCont > 0

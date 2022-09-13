@@ -66,6 +66,8 @@ object Dependencies {
 
         const val baseCoins = ":modules:base:base_coins"
 
+        const val baseUI = ":modules:base:base_ui"
+
         const val featureAppActivityApi = ":modules:feature:feature_app_activity_api"
         const val featureAppActivityImpl = ":modules:feature:feature_app_activity_impl"
 

@@ -3,12 +3,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".FavoriteCoinsFragment">
+    tools:context=".presentation.view.FavoriteCoinsFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvFavoritesList"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/fragment_text" />
+        android:layout_height="match_parent" />
 
 </FrameLayout>
