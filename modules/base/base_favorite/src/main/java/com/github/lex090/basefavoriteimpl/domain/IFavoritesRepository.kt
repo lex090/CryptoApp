@@ -7,7 +7,11 @@ internal interface IFavoritesRepository {
 
     suspend fun getFavoriteCoins(): List<Coin>
 
+    suspend fun updateFavoriteCoin(coin: Coin)
+
     suspend fun addCoinToFavorites(coin: Coin)
+
+    suspend fun addCoinsToFavorites(coins: List<Coin>)
 
     suspend fun removeCoinFromFavorites(coin: Coin)
 
