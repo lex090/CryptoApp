@@ -1,6 +1,5 @@
 package com.github.lex090.basefavoriteimpl.data.repositoryimpl
 
-import android.util.Log
 import com.github.lex090.basecoins.data.mapData
 import com.github.lex090.basecoins.data.services.CoinsNetworkService
 import com.github.lex090.basecoins.domain.entity.Coin
@@ -32,22 +31,20 @@ internal class FavoritesRepositoryImpl @Inject constructor(
                     ids = favoriteCoins.joinToString(",") { it.coinId }
                 )
                 .mapData { true }
-                .onEach {
-                    Log.i("myDebug", "getFavoriteCoins: it -> $it")
-                }
         }
     }
 
-    override suspend fun updateFavoriteCoin(coin: Coin) {
+    override suspend fun updateFavoriteCoin(coin: Coin) =
         favoriteCoinDao.updateFavoriteCoin(coin.toFavoriteCoinEntity())
-    }
+
+    override suspend fun updateFavoriteCoins(coins: List<Coin>) =
+        favoriteCoinDao.updateFavoriteCoin(coins.map { it.toFavoriteCoinEntity() })
 
     override suspend fun addCoinToFavorites(coin: Coin) =
         favoriteCoinDao.addCoinToFavorites(coin.toFavoriteCoinEntity())
 
     override suspend fun addCoinsToFavorites(coins: List<Coin>) =
         favoriteCoinDao.addCoinsToFavorites(coins.map { it.toFavoriteCoinEntity() })
-
 
     override suspend fun removeCoinFromFavorites(coin: Coin) =
         favoriteCoinDao.removeCoinFromFavorites(coin.toFavoriteCoinEntity().coinId)

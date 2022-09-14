@@ -26,6 +26,9 @@ interface FavoriteCoinsDao {
     @Update
     fun updateFavoriteCoin(favoriteCoinEntity: FavoriteCoinEntity)
 
+    @Update
+    fun updateFavoriteCoin(favoriteCoinEntity: List<FavoriteCoinEntity>)
+
     @Query("DELETE FROM favorites WHERE coin_id = :coinId")
     suspend fun removeCoinFromFavorites(coinId: String)
 
