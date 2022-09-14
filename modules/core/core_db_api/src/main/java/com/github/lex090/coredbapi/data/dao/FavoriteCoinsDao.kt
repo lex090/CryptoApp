@@ -4,6 +4,7 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
+import androidx.room.Update
 import com.github.lex090.coredbapi.data.entity.FavoriteCoinEntity
 import kotlinx.coroutines.flow.Flow
 
@@ -18,6 +19,15 @@ interface FavoriteCoinsDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun addCoinToFavorites(favoriteCoin: FavoriteCoinEntity)
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun addCoinsToFavorites(favoriteCoin: List<FavoriteCoinEntity>)
+
+    @Update
+    fun updateFavoriteCoin(favoriteCoinEntity: FavoriteCoinEntity)
+
+    @Update
+    fun updateFavoriteCoin(favoriteCoinEntity: List<FavoriteCoinEntity>)
 
     @Query("DELETE FROM favorites WHERE coin_id = :coinId")
     suspend fun removeCoinFromFavorites(coinId: String)

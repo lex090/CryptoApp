@@ -34,8 +34,17 @@ internal class FavoritesRepositoryImpl @Inject constructor(
         }
     }
 
+    override suspend fun updateFavoriteCoin(coin: Coin) =
+        favoriteCoinDao.updateFavoriteCoin(coin.toFavoriteCoinEntity())
+
+    override suspend fun updateFavoriteCoins(coins: List<Coin>) =
+        favoriteCoinDao.updateFavoriteCoin(coins.map { it.toFavoriteCoinEntity() })
+
     override suspend fun addCoinToFavorites(coin: Coin) =
         favoriteCoinDao.addCoinToFavorites(coin.toFavoriteCoinEntity())
+
+    override suspend fun addCoinsToFavorites(coins: List<Coin>) =
+        favoriteCoinDao.addCoinsToFavorites(coins.map { it.toFavoriteCoinEntity() })
 
     override suspend fun removeCoinFromFavorites(coin: Coin) =
         favoriteCoinDao.removeCoinFromFavorites(coin.toFavoriteCoinEntity().coinId)
