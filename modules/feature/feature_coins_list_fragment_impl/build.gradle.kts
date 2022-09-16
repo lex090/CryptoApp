@@ -50,6 +50,8 @@ dependencies {
     implementation(Dependencies.Libraries.navigationUiKtx)
 
     implementation(Dependencies.Libraries.adapterDelegates)
+    implementation(Dependencies.Libraries.paging)
+    implementation(Dependencies.Libraries.delegationAdapterPaging)
 
     implementation(Dependencies.Libraries.dagger2)
     kapt(Dependencies.Libraries.dagger2compiler)

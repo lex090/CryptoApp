@@ -8,9 +8,9 @@ fun List<CoinResponse>.mapData(
 ): List<Coin> =
     map { coinResponse ->
         Coin(
-            id = coinResponse.id,
-            name = coinResponse.name,
-            price = coinResponse.currentPrice,
-            isFavorite = isFavoritePredicate.invoke(coinResponse.id)
+            id = coinResponse.id ?: "",
+            name = coinResponse.name ?: "",
+            price = coinResponse.currentPrice ?: 0.0,
+            isFavorite = isFavoritePredicate.invoke(coinResponse.id ?: "")
         )
     }

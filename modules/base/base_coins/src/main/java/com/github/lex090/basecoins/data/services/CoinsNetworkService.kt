@@ -8,6 +8,10 @@ import retrofit2.http.Query
 
 interface CoinsNetworkService {
 
+    companion object {
+        const val MAX_PAGE_SIZE = 250
+    }
+
     @GET(coinsMarketsEntryPoint)
     suspend fun getCoinsMarketsList(
         @Query("vs_currency") vsCurrency: String = "usd",

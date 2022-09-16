@@ -17,6 +17,7 @@ import com.github.lex090.cryptoapp.dependencies.Dependencies.Versions.multidexVe
 import com.github.lex090.cryptoapp.dependencies.Dependencies.Versions.navigationVersion
 import com.github.lex090.cryptoapp.dependencies.Dependencies.Versions.okHttp3LoggingInterceptorVersion
 import com.github.lex090.cryptoapp.dependencies.Dependencies.Versions.okHttp3Version
+import com.github.lex090.cryptoapp.dependencies.Dependencies.Versions.pagingVersion
 import com.github.lex090.cryptoapp.dependencies.Dependencies.Versions.retrofitConverterMoshiVersion
 import com.github.lex090.cryptoapp.dependencies.Dependencies.Versions.retrofitVersion
 import com.github.lex090.cryptoapp.dependencies.Dependencies.Versions.roomVersion
@@ -45,6 +46,7 @@ object Dependencies {
         const val fragmentKtxVersion = "1.5.2"
         const val adapterDelegatesVersion = "4.3.2"
         const val roomVersion = "2.4.3"
+        const val pagingVersion = "3.1.1"
     }
 
     object ProjectModules {
@@ -125,6 +127,10 @@ object Dependencies {
         const val room = "androidx.room:room-runtime:$roomVersion"
         const val roomCompiler = "androidx.room:room-compiler:$roomVersion"
         const val roomKtxCompiler = "androidx.room:room-ktx:$roomVersion"
+
+        const val paging = "androidx.paging:paging-runtime:$pagingVersion"
+        const val delegationAdapterPaging =
+            "com.hannesdorfmann:adapterdelegates4-pagination:$adapterDelegatesVersion"
     }
 }
 

@@ -2,6 +2,7 @@ package com.github.lex090.featurecoinslistfragmentimpl.presentation.view
 
 import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,7 +11,13 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import androidx.lifecycle.viewModelScope
+import androidx.paging.PagingDataAdapter
+import androidx.paging.cachedIn
+import androidx.paging.map
+import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.github.lex090.baseui.presentation.view.adapters.ICoinListItemAdapterFactory
 import com.github.lex090.baseui.presentation.view.diffutil.CoinListDiffAdapter
 import com.github.lex090.baseui.presentation.view.entity.CoinUiEntity
@@ -23,7 +30,9 @@ import com.github.lex090.featurecoinslistfragmentimpl.databinding.FragmentCoinsL
 import com.github.lex090.featurecoinslistfragmentimpl.di.DaggerCoinListFragmentComponent
 import com.github.lex090.featurecoinslistfragmentimpl.presentation.viewmodel.CoinListViewModel
 import com.hannesdorfmann.adapterdelegates4.AdapterDelegatesManager
+import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -42,6 +51,9 @@ class CoinsListFragment : Fragment() {
     @Inject
     lateinit var coinListDiffAdapterFactory: CoinListDiffAdapter.Factory
 
+    @Inject
+    lateinit var diffUtil: DiffUtil.ItemCallback<DisplayableItem>
+
     private val viewModel by viewModels<CoinListViewModel> {
         viewModelFactory
     }
@@ -59,7 +71,7 @@ class CoinsListFragment : Fragment() {
     }
 
     private val adapter by lazy {
-        coinListDiffAdapterFactory.create(adapterDelegatesManager)
+        PagedDelegationAdapter(adapterDelegatesManager, diffUtil)
     }
 
     override fun onAttach(context: Context) {
@@ -81,23 +93,16 @@ class CoinsListFragment : Fragment() {
         initDataSubscriptions()
     }
 
-    override fun onResume() {
-        super.onResume()
-        viewModel.onViewsInit()
-    }
-
     override fun onDestroyView() {
         _viewBinding = null
         super.onDestroyView()
     }
 
-    private fun processCoinsList(result: List<CoinUiEntity>) {
-        adapter.items = result
-    }
-
     private fun showError(error: ResultOf.Error) {
 
     }
+
+    private var index = 0
 
     private fun initDataSubscriptions() {
         viewLifecycleOwner.lifecycleScope.launch {
@@ -105,12 +110,15 @@ class CoinsListFragment : Fragment() {
                 viewModel
                     .coinsList
                     .map { result ->
-                        result.mapIndexed { index, value ->
-                            value.toCoinUiEntity(index + 1)
+                        result.map {
+                            it.toCoinUiEntity(index++) as DisplayableItem
                         }
                     }
-                    .collect { result ->
-                        processCoinsList(result = result)
+                    .onEach {
+                        Log.i("myDebug", "onEach: $it")
+                    }
+                    .collect {
+                        adapter.submitData(it)
                     }
             }
         }
@@ -119,6 +127,13 @@ class CoinsListFragment : Fragment() {
     private fun initRecyclerView() {
         viewBinding.rvCoinsList.adapter = adapter
         viewBinding.rvCoinsList.layoutManager = LinearLayoutManager(context)
+        adapter.addOnPagesUpdatedListener {
+            Log.i("myDebug", "addOnPagesUpdatedListener")
+        }
+
+        adapter.addLoadStateListener {
+            Log.i("myDebug", "addLoadStateListener it -> $it")
+        }
     }
 
     private fun clickOnAddCoinToFavorites(position: Int, coinUiEntity: CoinUiEntity) {
@@ -142,6 +157,49 @@ class CoinsListFragment : Fragment() {
                     dependencies = it.getProvider()
                 )
             component.inject(this)
+        }
+    }
+
+    class PagedDelegationAdapter<T : Any>(
+        private var delegatesManager: AdapterDelegatesManager<List<T>>,
+        diffCallback: DiffUtil.ItemCallback<T>
+    ) : PagingDataAdapter<T, RecyclerView.ViewHolder>(diffCallback) {
+
+        override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
+            return delegatesManager.onCreateViewHolder(parent, viewType)
+        }
+
+        override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
+            getItem(position) // Internally triggers loading items around items around the given position
+            delegatesManager.onBindViewHolder(snapshot().items, position, holder, null)
+        }
+
+        override fun onBindViewHolder(
+            holder: RecyclerView.ViewHolder, position: Int,
+            payloads: List<*>
+        ) {
+            getItem(position) // Internally triggers loading items around items around the given position
+            delegatesManager.onBindViewHolder(snapshot().items, position, holder, payloads)
+        }
+
+        override fun getItemViewType(position: Int): Int {
+            return delegatesManager.getItemViewType(snapshot().items, position)
+        }
+
+        override fun onViewRecycled(holder: RecyclerView.ViewHolder) {
+            delegatesManager.onViewRecycled(holder)
+        }
+
+        override fun onFailedToRecycleView(holder: RecyclerView.ViewHolder): Boolean {
+            return delegatesManager.onFailedToRecycleView(holder)
+        }
+
+        override fun onViewAttachedToWindow(holder: RecyclerView.ViewHolder) {
+            delegatesManager.onViewAttachedToWindow(holder)
+        }
+
+        override fun onViewDetachedFromWindow(holder: RecyclerView.ViewHolder) {
+            delegatesManager.onViewDetachedFromWindow(holder)
         }
     }
 }

@@ -46,4 +46,6 @@ dependencies {
     implementation(Dependencies.Libraries.moshi)
 
     implementation(Dependencies.Libraries.kotlinxCoroutines)
+
+    implementation(Dependencies.Libraries.paging)
 }
