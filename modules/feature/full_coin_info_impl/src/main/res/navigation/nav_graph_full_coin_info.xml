@@ -9,6 +9,12 @@
         android:id="@+id/fullCoinInfo"
         android:name="com.github.lex090.fullcoininfoimpl.FullCoinInfo"
         android:label="Full Coin Info"
-        tools:layout="@layout/full_coin_info_bsdf_layout"/>
+        tools:layout="@layout/full_coin_info_bsdf_layout">
+
+        <argument
+            android:name="coinId"
+            android:defaultValue="null"
+            app:argType="string" />
+    </dialog>
 
 </navigation>

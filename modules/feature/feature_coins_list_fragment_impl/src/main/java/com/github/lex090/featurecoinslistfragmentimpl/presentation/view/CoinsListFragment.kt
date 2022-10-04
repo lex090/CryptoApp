@@ -138,7 +138,12 @@ class CoinsListFragment : Fragment() {
 
     private fun onCoinItemClick(coinUiEntity: CoinUiEntity) {
         findNavController()
-            .navigate(R.id.action_coinsListFragment_to_nav_graph_full_coin_info)
+            .navigate(
+                CoinsListFragmentDirections
+                    .actionCoinsListFragmentToNavGraphFullCoinInfo(
+                        coinUiEntity.id
+                    )
+            )
     }
 
     private fun injectDependencies() {

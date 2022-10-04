@@ -4,10 +4,13 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.navArgs
 import com.github.lex090.fullcoininfoimpl.databinding.FullCoinInfoBsdfLayoutBinding
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 
 class FullCoinInfo : BottomSheetDialogFragment() {
+
+    private val screenArgs by navArgs<FullCoinInfoArgs>()
 
     private var _viewBinding: FullCoinInfoBsdfLayoutBinding? = null
     private val viewBinding: FullCoinInfoBsdfLayoutBinding
