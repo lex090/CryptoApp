@@ -81,6 +81,9 @@ object Dependencies {
             ":modules:feature:feature_favorite_coins_fragment_api"
         const val featureFavoriteCoinsFragmentImpl =
             ":modules:feature:feature_favorite_coins_fragment_impl"
+
+        const val featureFullCoinInfoApi = ":modules:feature:full_coin_info_api"
+        const val featureFullCoinInfoImpl = ":modules:feature:full_coin_info_impl"
     }
 
     object Libraries {
