@@ -9,6 +9,20 @@
         android:id="@id/favoriteCoinsFragment"
         android:name="com.github.lex090.featurefavoritecoinsfragmentimpl.presentation.view.FavoriteCoinsFragment"
         android:label="FavoriteCoinsFragment"
-        tools:layout="@layout/fragment_favorite_coins" />
+        tools:layout="@layout/fragment_favorite_coins">
+        <action
+            android:id="@+id/action_coinsListFragment_to_nav_graph_full_coin_info"
+            app:destination="@id/nav_graph_full_coin_info">
+
+            <argument
+                android:name="coinId"
+                android:defaultValue="null"
+                app:argType="string" />
+        </action>
+    </fragment>
+
+    <include
+        android:id="@id/nav_graph_full_coin_info"
+        app:graph="@navigation/nav_graph_full_coin_info" />
 
 </navigation>

@@ -19,8 +19,6 @@
                 android:defaultValue="null"
                 app:argType="string" />
         </action>
-
-
     </fragment>
 
     <include
