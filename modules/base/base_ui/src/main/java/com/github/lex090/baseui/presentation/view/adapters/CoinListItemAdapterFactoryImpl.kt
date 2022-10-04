@@ -13,6 +13,7 @@ import javax.inject.Inject
 internal class CoinListItemAdapterFactoryImpl @Inject constructor() : ICoinListItemAdapterFactory {
 
     override fun createCommonCoinListItemAdapterFactory(
+        onCoinItemClick: (coinUiEntity: CoinUiEntity) -> Unit,
         addCoinToFavoritesClickListener: (position: Int, coinUiEntity: CoinUiEntity) -> Unit,
         removeCoinFromFavoritesListener: (position: Int, coinUiEntity: CoinUiEntity) -> Unit
     ): AdapterDelegate<List<DisplayableItem>> =
@@ -30,6 +31,10 @@ internal class CoinListItemAdapterFactoryImpl @Inject constructor() : ICoinListI
                     removeCoinFromFavoritesListener(adapterPosition, item)
                 else
                     addCoinToFavoritesClickListener(adapterPosition, item)
+            }
+
+            binding.root.setOnClickListener {
+                onCoinItemClick(item)
             }
 
             bind {

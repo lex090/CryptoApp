@@ -10,6 +10,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.github.lex090.baseui.presentation.view.adapters.ICoinListItemAdapterFactory
 import com.github.lex090.baseui.presentation.view.diffutil.CoinListDiffAdapter
@@ -19,6 +20,7 @@ import com.github.lex090.baseui.presentation.view.entity.toCoin
 import com.github.lex090.baseui.presentation.view.entity.toCoinUiEntity
 import com.github.lex090.coreapi.ResultOf
 import com.github.lex090.corediapi.AppDependenciesProvidersHolder
+import com.github.lex090.featurecoinslistfragmentimpl.R
 import com.github.lex090.featurecoinslistfragmentimpl.databinding.FragmentCoinsListBinding
 import com.github.lex090.featurecoinslistfragmentimpl.di.DaggerCoinListFragmentComponent
 import com.github.lex090.featurecoinslistfragmentimpl.presentation.viewmodel.CoinListViewModel
@@ -51,6 +53,7 @@ class CoinsListFragment : Fragment() {
             addDelegate(
                 coinListItemAdapterFactory
                     .createCommonCoinListItemAdapterFactory(
+                        this@CoinsListFragment::onCoinItemClick,
                         this@CoinsListFragment::clickOnAddCoinToFavorites,
                         this@CoinsListFragment::clickOnRemoveCoinFromFavorites,
                     )
@@ -131,6 +134,11 @@ class CoinsListFragment : Fragment() {
         viewModel.clickOnRemoveCoinFromFavorites(
             position = position, coin = coinUiEntity.toCoin(isFavoriteNewValue = false)
         )
+    }
+
+    private fun onCoinItemClick(coinUiEntity: CoinUiEntity) {
+        findNavController()
+            .navigate(R.id.action_coinsListFragment_to_nav_graph_full_coin_info)
     }
 
     private fun injectDependencies() {

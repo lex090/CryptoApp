@@ -51,6 +51,7 @@ class FavoriteCoinsFragment : Fragment() {
             addDelegate(
                 coinListItemAdapterFactory
                     .createCommonCoinListItemAdapterFactory(
+                        { _ -> },
                         { _, _ -> },
                         this@FavoriteCoinsFragment::clickOnRemoveCoinFromFavorites,
                     )

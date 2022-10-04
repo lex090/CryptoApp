@@ -63,6 +63,8 @@ dependencies {
 
     implementation(project(Dependencies.ProjectModules.featureFavoriteCoinsFragmentImpl))
 
+    implementation(project(Dependencies.ProjectModules.featureFullCoinInfoImpl))
+
     implementation(Dependencies.Libraries.androidxCoreKtx)
     implementation(Dependencies.Libraries.androidxAppcompat)
     implementation(Dependencies.Libraries.material)

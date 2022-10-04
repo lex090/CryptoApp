@@ -26,4 +26,6 @@ android {
 }
 
 dependencies {
+    implementation(Dependencies.Libraries.navigationFragmentKtx)
+    implementation(Dependencies.Libraries.navigationUiKtx)
 }

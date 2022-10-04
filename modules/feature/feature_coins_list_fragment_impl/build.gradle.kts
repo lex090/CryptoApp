@@ -35,6 +35,7 @@ dependencies {
     api(project(Dependencies.ProjectModules.featureCoinsListFragmentApi))
     implementation(project(Dependencies.ProjectModules.coreApi))
     implementation(project(Dependencies.ProjectModules.coreDiApi))
+    implementation(project(Dependencies.ProjectModules.featureFullCoinInfoApi))
     implementation(project(Dependencies.ProjectModules.baseUI))
     implementation(project(Dependencies.ProjectModules.baseCoins))
     implementation(project(Dependencies.ProjectModules.baseFavorite))
