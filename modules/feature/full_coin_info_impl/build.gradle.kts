@@ -34,6 +34,9 @@ android {
 
 dependencies {
     api(project(Dependencies.ProjectModules.featureFullCoinInfoApi))
+    implementation(project(Dependencies.ProjectModules.baseCoins))
+    implementation(project(Dependencies.ProjectModules.coreApi))
+    implementation(project(Dependencies.ProjectModules.coreDiApi))
 
     implementation(Dependencies.Libraries.androidxCoreKtx)
     implementation(Dependencies.Libraries.androidxAppcompat)

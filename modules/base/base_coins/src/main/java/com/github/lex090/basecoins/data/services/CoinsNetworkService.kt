@@ -1,8 +1,10 @@
 package com.github.lex090.basecoins.data.services
 
+import com.github.lex090.basecoins.data.CoinsListNetworkMap.coinsInfoEntryPoint
 import com.github.lex090.basecoins.data.CoinsListNetworkMap.coinsMarketsEntryPoint
 import com.github.lex090.basecoins.data.responses.CoinResponse
 import retrofit2.http.GET
+import retrofit2.http.Path
 import retrofit2.http.Query
 
 
@@ -19,4 +21,15 @@ interface CoinsNetworkService {
         @Query("sparkline") sparkline: Boolean = false,
         @Query("price_change_percentage") priceChangePercentage: String = "1h,24h,7d,14d,30d",
     ): List<CoinResponse>
+
+    @GET("$coinsInfoEntryPoint/{id}")
+    suspend fun getCoinInfo(
+        @Path("id") id: String,
+        @Query("localization") localization: Boolean = false,
+        @Query("tickers") tickers: Boolean = false,
+        @Query("market_data") marketData: Boolean = false,
+        @Query("community_data") communityData: Boolean = true,
+        @Query("developer_data") developerData: Boolean = true,
+        @Query("sparkline") sparkline: Boolean = false,
+    )
 }
