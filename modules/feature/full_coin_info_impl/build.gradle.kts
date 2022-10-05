@@ -37,6 +37,7 @@ dependencies {
     implementation(project(Dependencies.ProjectModules.baseCoins))
     implementation(project(Dependencies.ProjectModules.coreApi))
     implementation(project(Dependencies.ProjectModules.coreDiApi))
+    implementation(project(Dependencies.ProjectModules.baseFavorite))
 
     implementation(Dependencies.Libraries.androidxCoreKtx)
     implementation(Dependencies.Libraries.androidxAppcompat)
@@ -45,6 +46,8 @@ dependencies {
 
     implementation(Dependencies.Libraries.navigationFragmentKtx)
     implementation(Dependencies.Libraries.navigationUiKtx)
+
+    implementation(Dependencies.Libraries.moshi)
 
     implementation(Dependencies.Libraries.dagger2)
     kapt(Dependencies.Libraries.dagger2compiler)

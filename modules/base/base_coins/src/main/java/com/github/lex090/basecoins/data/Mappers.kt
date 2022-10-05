@@ -7,10 +7,14 @@ fun List<CoinResponse>.mapData(
     isFavoritePredicate: (id: String) -> Boolean
 ): List<Coin> =
     map { coinResponse ->
-        Coin(
-            id = coinResponse.id,
-            name = coinResponse.name,
-            price = coinResponse.currentPrice,
-            isFavorite = isFavoritePredicate.invoke(coinResponse.id)
-        )
+        coinResponse.toCoin(isFavoritePredicate)
     }
+
+fun CoinResponse.toCoin(
+    isFavoritePredicate: (id: String) -> Boolean
+): Coin = Coin(
+    id = this.id,
+    name = this.name,
+    price = this.currentPrice,
+    isFavorite = isFavoritePredicate.invoke(this.id)
+)

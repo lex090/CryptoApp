@@ -93,7 +93,7 @@ class FullCoinInfo : BottomSheetDialogFragment() {
     }
 
     private fun readyCoinInfoState(coinInfo: CoinInfoUiEntity) {
-        TODO("Not yet implemented")
+//        TODO("Not yet implemented")
     }
 
     private fun injectDependencies() {

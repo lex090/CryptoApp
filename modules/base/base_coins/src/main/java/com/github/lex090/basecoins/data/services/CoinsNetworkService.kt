@@ -3,6 +3,7 @@ package com.github.lex090.basecoins.data.services
 import com.github.lex090.basecoins.data.CoinsListNetworkMap.coinsInfoEntryPoint
 import com.github.lex090.basecoins.data.CoinsListNetworkMap.coinsMarketsEntryPoint
 import com.github.lex090.basecoins.data.responses.CoinResponse
+import com.github.lex090.basecoins.data.responses.FullCoinInfoResponse
 import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query
@@ -31,5 +32,5 @@ interface CoinsNetworkService {
         @Query("community_data") communityData: Boolean = true,
         @Query("developer_data") developerData: Boolean = true,
         @Query("sparkline") sparkline: Boolean = false,
-    )
+    ): FullCoinInfoResponse
 }

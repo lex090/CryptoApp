@@ -1,5 +1,6 @@
 package com.github.lex090.fullcoininfoimpl.presentation.viewmodel
 
+import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
@@ -24,12 +25,13 @@ class FullCoinInfoViewModel(
         viewModelScope.launch {
             try {
                 val coinInfo = getCoinInfoFlowUseCase.execute(coinId)
+                Log.i("myDebug", "getCoinInfo: $coinInfo")
                 _mutableCoinInfoStateFlow.value = coinInfo
-                getLiveTimePriceOfCoinFlowUseCase.execute().collect {
-                    _mutableCoinInfoStateFlow.value = coinInfo.copy(price = it)
-                }
+//                getLiveTimePriceOfCoinFlowUseCase.execute(coinId).collect {
+//                    _mutableCoinInfoStateFlow.value = coinInfo.copy(price = it)
+//                }
             } catch (e: Exception) {
-
+                Log.i("myDebug", "getCoinInfo: ${e.localizedMessage}")
             }
         }
     }
