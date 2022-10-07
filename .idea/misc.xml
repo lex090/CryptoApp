@@ -16,7 +16,9 @@
         <entry key="modules/feature/feature_coins_list_fragment_impl/src/main/res/layout/item_small_coin_info.xml" value="0.6036458333333333" />
         <entry key="modules/feature/feature_favorite_coins_fragment_impl/src/main/res/layout/fragment_favorite_coins.xml" value="0.4317708333333333" />
         <entry key="modules/feature/feature_favorite_coins_fragment_impl/src/main/res/layout/fragment_favorite_coins_list.xml" value="0.41770833333333335" />
-        <entry key="modules/feature/full_coin_info_impl/src/main/res/layout/full_coin_info_bsdf_layout.xml" value="0.10092592592592593" />
+        <entry key="modules/feature/full_coin_info_impl/src/main/res/drawable/bottomsheet_round_background.xml" value="0.1" />
+        <entry key="modules/feature/full_coin_info_impl/src/main/res/drawable/round_background.xml" value="0.179" />
+        <entry key="modules/feature/full_coin_info_impl/src/main/res/layout/full_coin_info_bsdf_layout.xml" value="0.375" />
         <entry key="modules/feature/full_coin_info_impl/src/main/res/layout/layout_full_coin_info.xml" value="0.24954710144927536" />
       </map>
     </option>

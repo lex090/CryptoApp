@@ -10,6 +10,7 @@ import com.github.lex090.corenetworkapi.IRemoteNetworkServiceGenerator
 import com.github.lex090.corenetworkimpl.BaseNetworkModule
 import dagger.BindsInstance
 import dagger.Component
+import okhttp3.OkHttpClient
 import kotlin.coroutines.CoroutineContext
 
 @ApplicationScope
@@ -27,6 +28,8 @@ interface CoreComponent : CoreComponentDependencies {
     override val favoriteCoinDao: FavoriteCoinsDao
 
     override val dispatcherIo: CoroutineContext
+
+    override val okHttpClient: OkHttpClient
 
     @Component.Factory
     interface Factory {

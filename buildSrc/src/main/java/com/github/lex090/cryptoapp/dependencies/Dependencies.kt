@@ -20,6 +20,7 @@ import com.github.lex090.cryptoapp.dependencies.Dependencies.Versions.okHttp3Ver
 import com.github.lex090.cryptoapp.dependencies.Dependencies.Versions.retrofitConverterMoshiVersion
 import com.github.lex090.cryptoapp.dependencies.Dependencies.Versions.retrofitVersion
 import com.github.lex090.cryptoapp.dependencies.Dependencies.Versions.roomVersion
+import com.github.lex090.cryptoapp.dependencies.Dependencies.Versions.scarletVersion
 
 object Dependencies {
 
@@ -45,6 +46,7 @@ object Dependencies {
         const val fragmentKtxVersion = "1.5.2"
         const val adapterDelegatesVersion = "4.3.2"
         const val roomVersion = "2.4.3"
+        const val scarletVersion = "0.1.12"
     }
 
     object ProjectModules {
@@ -128,6 +130,15 @@ object Dependencies {
         const val room = "androidx.room:room-runtime:$roomVersion"
         const val roomCompiler = "androidx.room:room-compiler:$roomVersion"
         const val roomKtxCompiler = "androidx.room:room-ktx:$roomVersion"
+
+        const val scarlet = "com.tinder.scarlet:scarlet:$scarletVersion"
+        const val scarletCore = "com.tinder.scarlet:scarlet-core:$scarletVersion"
+        const val scarletWebsocketOkhttp = "com.tinder.scarlet:websocket-okhttp:$scarletVersion"
+        const val scarletLifecycleAndroid = "com.tinder.scarlet:lifecycle-android:$scarletVersion"
+        const val scarletMessageAdapterMoshi = "com.tinder.scarlet:message-adapter-moshi:$scarletVersion"
+        const val scarletStreamAdapterCoroutines =
+            "com.tinder.scarlet:stream-adapter-coroutines:$scarletVersion"
+
     }
 }
 

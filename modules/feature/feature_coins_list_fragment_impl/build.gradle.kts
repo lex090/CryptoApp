@@ -47,6 +47,7 @@ dependencies {
     implementation(Dependencies.Libraries.androidxConstraintLayout)
 
     implementation(Dependencies.Libraries.fragmentKtx)
+    implementation(Dependencies.Libraries.okHttp3)
 
     implementation(Dependencies.Libraries.navigationFragmentKtx)
     implementation(Dependencies.Libraries.navigationUiKtx)

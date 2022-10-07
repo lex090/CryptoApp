@@ -15,6 +15,7 @@ import com.github.lex090.fullcoininfoimpl.databinding.FullCoinInfoBsdfLayoutBind
 import com.github.lex090.fullcoininfoimpl.di.DaggerFullCoinInfoComponent
 import com.github.lex090.fullcoininfoimpl.presentation.view.entity.CoinInfoUiEntity
 import com.github.lex090.fullcoininfoimpl.presentation.view.entity.toCoinInfoUiEntity
+import com.github.lex090.fullcoininfoimpl.data.ScarletLifecycle
 import com.github.lex090.fullcoininfoimpl.presentation.viewmodel.FullCoinInfoViewModel
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import kotlinx.coroutines.flow.map
@@ -25,6 +26,9 @@ class FullCoinInfo : BottomSheetDialogFragment() {
 
     @Inject
     lateinit var viewModelFactory: FullCoinInfoViewModel.Factory
+
+    @Inject
+    lateinit var scarletLifecycle: ScarletLifecycle
 
     private val screenArgs by navArgs<FullCoinInfoArgs>()
 
@@ -51,6 +55,7 @@ class FullCoinInfo : BottomSheetDialogFragment() {
             container,
             false
         )
+        scarletLifecycle.start()
         return viewBinding.root
     }
 
@@ -75,6 +80,7 @@ class FullCoinInfo : BottomSheetDialogFragment() {
     }
 
     override fun onDestroyView() {
+        scarletLifecycle.stop()
         viewModel.clear()
         _viewBinding = null
         super.onDestroyView()
@@ -93,7 +99,8 @@ class FullCoinInfo : BottomSheetDialogFragment() {
     }
 
     private fun readyCoinInfoState(coinInfo: CoinInfoUiEntity) {
-//        TODO("Not yet implemented")
+//        viewBinding.text1.text = coinInfo.name
+//        viewBinding.text2.text = coinInfo.price.toString()
     }
 
     private fun injectDependencies() {

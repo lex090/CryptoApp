@@ -74,6 +74,8 @@ dependencies {
     androidTestImplementation(Dependencies.Libraries.androidxJunit)
     androidTestImplementation(Dependencies.Libraries.androidxEspresso)
 
+    implementation(Dependencies.Libraries.okHttp3)
+
     implementation(Dependencies.Libraries.multidex)
 
     implementation(Dependencies.Libraries.dagger2)

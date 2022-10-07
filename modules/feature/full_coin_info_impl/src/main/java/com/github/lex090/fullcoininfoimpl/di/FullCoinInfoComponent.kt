@@ -3,7 +3,9 @@ package com.github.lex090.fullcoininfoimpl.di
 import com.github.lex090.corediapi.AppDependenciesProvider
 import com.github.lex090.fullcoininfoimpl.presentation.view.FullCoinInfo
 import dagger.Component
+import javax.inject.Singleton
 
+@Singleton
 @Component(
     modules = [
         BaseFullCoinInfoModule::class

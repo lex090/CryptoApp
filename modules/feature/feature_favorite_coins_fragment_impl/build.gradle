@@ -44,6 +44,8 @@ dependencies {
 
     implementation(project(Dependencies.ProjectModules.featureFullCoinInfoApi))
 
+    implementation(Dependencies.Libraries.okHttp3)
+
     implementation(Dependencies.Libraries.androidxCoreKtx)
     implementation(Dependencies.Libraries.androidxAppcompat)
     implementation(Dependencies.Libraries.material)

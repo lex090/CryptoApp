@@ -3,7 +3,7 @@ package com.github.lex090.basecoins.data.responses
 import com.squareup.moshi.Json
 
 data class Links(
-    @Json(name = "subreddit_url")
+    @Json(name = "subreddit_url", ignore = true)
     val subredditUrl: String = "",
     @Json(name = "blockchain_site")
     val blockchainSite: List<String>?,

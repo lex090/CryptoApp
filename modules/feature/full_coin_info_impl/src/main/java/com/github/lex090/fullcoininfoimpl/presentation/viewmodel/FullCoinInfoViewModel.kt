@@ -27,9 +27,9 @@ class FullCoinInfoViewModel(
                 val coinInfo = getCoinInfoFlowUseCase.execute(coinId)
                 Log.i("myDebug", "getCoinInfo: $coinInfo")
                 _mutableCoinInfoStateFlow.value = coinInfo
-//                getLiveTimePriceOfCoinFlowUseCase.execute(coinId).collect {
-//                    _mutableCoinInfoStateFlow.value = coinInfo.copy(price = it)
-//                }
+                getLiveTimePriceOfCoinFlowUseCase.execute(coinId).collect {
+                    _mutableCoinInfoStateFlow.value = coinInfo.copy(price = it)
+                }
             } catch (e: Exception) {
                 Log.i("myDebug", "getCoinInfo: ${e.localizedMessage}")
             }
