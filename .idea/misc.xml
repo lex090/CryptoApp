@@ -3,6 +3,10 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="modules/base/base_ui/src/main/res/drawable/favorite_drawable.xml" value="0.1295" />
+        <entry key="modules/base/base_ui/src/main/res/drawable/ic_baseline_favorite_24.xml" value="0.1295" />
+        <entry key="modules/base/base_ui/src/main/res/drawable/ic_baseline_star_24.xml" value="0.1295" />
+        <entry key="modules/base/base_ui/src/main/res/layout/item_small_coin_info.xml" value="0.4195886142012002" />
         <entry key="modules/core/core_ui/src/main/res/drawable/ic_baseline_favorite_border_24.xml" value="0.3585" />
         <entry key="modules/core/core_ui/src/main/res/layout/item_small_coin_info.xml" value="0.4317708333333333" />
         <entry key="modules/feature/feature_app_activity/src/main/res/layout/activity_app.xml" value="0.34010416666666665" />

@@ -49,8 +49,8 @@ internal class CoinListItemAdapterFactoryImpl @Inject constructor() : ICoinListI
 
     private fun AdapterDelegateViewBindingViewHolder<CoinUiEntity, ItemSmallCoinInfoBinding>.bindItem() {
         binding.tvCoinName.text = item.name
-        binding.tvPositionId.text = item.position.toString()
-        binding.tvCoinPrice.text = item.price.toString()
+        binding.tvPositionId.text = "#${item.position.toString()}"
+        binding.tvCoinPrice.text = "${item.price.toString()}$"
         checkFavorite(item.isFavorite)
     }
 
@@ -59,11 +59,11 @@ internal class CoinListItemAdapterFactoryImpl @Inject constructor() : ICoinListI
     ) {
         if (item) {
             binding.btnFavorite.background =
-                ContextCompat.getDrawable(context, R.drawable.ic_baseline_favorite_24)
+                ContextCompat.getDrawable(context, R.drawable.ic_baseline_star_24)
         } else {
             binding.btnFavorite.background = ContextCompat.getDrawable(
                 context,
-                R.drawable.ic_baseline_favorite_border_24
+                R.drawable.ic_baseline_star_outline_24
             )
         }
     }
