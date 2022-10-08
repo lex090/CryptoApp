@@ -49,7 +49,7 @@ internal class CoinListItemAdapterFactoryImpl @Inject constructor() : ICoinListI
 
     private fun AdapterDelegateViewBindingViewHolder<CoinUiEntity, ItemSmallCoinInfoBinding>.bindItem() {
         binding.tvCoinName.text = item.name
-        binding.tvPositionId.text = "#${item.position.toString()}"
+        binding.tvCoinRang.text = "#${item.position.toString()}"
         binding.tvCoinPrice.text = "${item.price.toString()}$"
         checkFavorite(item.isFavorite)
     }

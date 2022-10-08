@@ -5,7 +5,7 @@
     android:layout_height="64dp">
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/tvPositionId"
+        android:id="@+id/tvCoinRang"
         android:layout_width="18dp"
         android:layout_height="18dp"
         android:layout_marginStart="16dp"
@@ -21,7 +21,7 @@
         android:layout_marginStart="16dp"
         android:background="@drawable/round_background_shimmer"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@id/tvPositionId"
+        app:layout_constraintStart_toEndOf="@id/tvCoinRang"
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.appcompat.widget.AppCompatTextView

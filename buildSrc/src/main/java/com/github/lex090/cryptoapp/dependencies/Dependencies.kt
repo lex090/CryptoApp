@@ -18,6 +18,7 @@ import com.github.lex090.cryptoapp.dependencies.Dependencies.Versions.multidexVe
 import com.github.lex090.cryptoapp.dependencies.Dependencies.Versions.navigationVersion
 import com.github.lex090.cryptoapp.dependencies.Dependencies.Versions.okHttp3LoggingInterceptorVersion
 import com.github.lex090.cryptoapp.dependencies.Dependencies.Versions.okHttp3Version
+import com.github.lex090.cryptoapp.dependencies.Dependencies.Versions.picassoVersion
 import com.github.lex090.cryptoapp.dependencies.Dependencies.Versions.retrofitConverterMoshiVersion
 import com.github.lex090.cryptoapp.dependencies.Dependencies.Versions.retrofitVersion
 import com.github.lex090.cryptoapp.dependencies.Dependencies.Versions.roomVersion
@@ -49,6 +50,7 @@ object Dependencies {
         const val roomVersion = "2.4.3"
         const val scarletVersion = "0.1.12"
         const val facebookShimmerVersion = "0.5.0"
+        const val picassoVersion = "2.8"
     }
 
     object ProjectModules {
@@ -137,11 +139,13 @@ object Dependencies {
         const val scarletCore = "com.tinder.scarlet:scarlet-core:$scarletVersion"
         const val scarletWebsocketOkhttp = "com.tinder.scarlet:websocket-okhttp:$scarletVersion"
         const val scarletLifecycleAndroid = "com.tinder.scarlet:lifecycle-android:$scarletVersion"
-        const val scarletMessageAdapterMoshi = "com.tinder.scarlet:message-adapter-moshi:$scarletVersion"
+        const val scarletMessageAdapterMoshi =
+            "com.tinder.scarlet:message-adapter-moshi:$scarletVersion"
         const val scarletStreamAdapterCoroutines =
             "com.tinder.scarlet:stream-adapter-coroutines:$scarletVersion"
 
         const val facebookShimmer = "com.facebook.shimmer:shimmer:$facebookShimmerVersion"
+        const val picasso = "com.squareup.picasso:picasso:$picassoVersion"
     }
 }
 

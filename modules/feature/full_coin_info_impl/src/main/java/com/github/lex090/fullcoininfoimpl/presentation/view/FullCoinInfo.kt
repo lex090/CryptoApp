@@ -5,20 +5,22 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.navArgs
+import com.github.lex090.baseui.R
 import com.github.lex090.corediapi.AppDependenciesProvidersHolder
+import com.github.lex090.fullcoininfoimpl.data.ScarletLifecycle
 import com.github.lex090.fullcoininfoimpl.databinding.FullCoinInfoBsdfLayoutBinding
 import com.github.lex090.fullcoininfoimpl.di.DaggerFullCoinInfoComponent
-import com.github.lex090.fullcoininfoimpl.presentation.view.entity.CoinInfoUiEntity
-import com.github.lex090.fullcoininfoimpl.presentation.view.entity.toCoinInfoUiEntity
-import com.github.lex090.fullcoininfoimpl.data.ScarletLifecycle
 import com.github.lex090.fullcoininfoimpl.presentation.viewmodel.FullCoinInfoViewModel
+import com.github.lex090.fullcoininfoimpl.presentation.viewmodel.entityUI.CoinInfoUiEntity
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
+import com.squareup.picasso.Picasso
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
@@ -67,10 +69,10 @@ class FullCoinInfo : BottomSheetDialogFragment() {
                 viewModel
                     .coinInfo
                     .map { result ->
-                        result?.toCoinInfoUiEntity()
+//                        result?.toCoinInfoUiEntity()
                     }
                     .collect { result ->
-                        processCoinInfo(coinInfo = result)
+//                        processCoinInfo(coinInfo = result)
                     }
             }
         }
@@ -105,9 +107,48 @@ class FullCoinInfo : BottomSheetDialogFragment() {
         viewBinding.shimmerLayout.startShimmer()
     }
 
-    private fun readyCoinInfoState(coinInfo: CoinInfoUiEntity) {
-//        viewBinding.text1.text = coinInfo.name
-//        viewBinding.text2.text = coinInfo.price.toString()
+    private fun setAndShowFullCoinDataToScreen(coinInfo: CoinInfoUiEntity) {
+        viewBinding.mainIdGroup.isVisible = true
+        viewBinding.shimmerLayout.stopShimmer()
+        viewBinding.shimmerLayout.isVisible = false
+
+        viewBinding.coinInfoLayout.tvCoinSymbol.text = coinInfo.symbol
+        viewBinding.coinInfoLayout.tvCoinName.text = coinInfo.name
+        viewBinding.coinInfoLayout.tvCoinRang.text = coinInfo.rang
+        viewBinding.coinInfoLayout.tvCoinPrice.text = "${coinInfo.price}$"
+        viewBinding.coinInfoLayout.tvCoinPricePercentage.visibility = View.INVISIBLE
+        loadCoinImageToIV(coinInfo)
+        setIsFavoriteIv(coinInfo)
+
+        viewBinding.marketCapAmount.text = "${coinInfo.marketCap / 1000000} B"
+        viewBinding.volume24hAmount.text = "${coinInfo.volume24H / 1000000} B"
+        viewBinding.fullyDillMCapAmount.text = "${coinInfo.fullyDillMCap / 1000000} B"
+
+        viewBinding.tvDescription.text = coinInfo.description
+    }
+
+    private fun setIsFavoriteIv(coinInfo: CoinInfoUiEntity) {
+        if (coinInfo.isFavorite) {
+            viewBinding.coinInfoLayout.btnFavorite.background =
+                ContextCompat.getDrawable(
+                    requireContext(),
+                    R.drawable.ic_baseline_star_24
+                )
+        } else {
+            viewBinding.coinInfoLayout.btnFavorite.background = ContextCompat.getDrawable(
+                requireContext(),
+                R.drawable.ic_baseline_star_outline_24
+            )
+        }
+    }
+
+    private fun loadCoinImageToIV(coinInfo: CoinInfoUiEntity) {
+        Picasso
+            .get()
+            .load(coinInfo.imageUrl)
+            .placeholder(com.github.lex090.baseui.R.drawable.round_background_shimmer)
+            .error(com.github.lex090.baseui.R.drawable.round_background_shimmer)
+            .into(viewBinding.coinInfoLayout.ivCoin)
     }
 
     private fun injectDependencies() {

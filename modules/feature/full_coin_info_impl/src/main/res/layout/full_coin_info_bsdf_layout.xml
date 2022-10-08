@@ -19,79 +19,12 @@
 
     </com.facebook.shimmer.ShimmerFrameLayout>
 
-    <View
-        android:layout_width="36dp"
-        android:layout_height="4dp"
-        android:layout_marginTop="4dp"
-        android:background="@drawable/round_background"
+    <include
+        android:id="@+id/coinInfoLayout"
+        layout="@layout/item_small_coin_info"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/topGuidLine"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_begin="24dp" />
-
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/coinRang"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:text="#1"
-        android:textSize="14sp"
-        android:textStyle="bold"
-        android:typeface="monospace"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/topGuidLine" />
-
-    <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/coinImg"
-        android:layout_width="36dp"
-        android:layout_height="36dp"
-        android:layout_marginStart="16dp"
-        android:src="@drawable/round_background"
-        app:layout_constraintBottom_toBottomOf="@id/coinRang"
-        app:layout_constraintStart_toEndOf="@id/coinRang"
-        app:layout_constraintTop_toTopOf="@id/coinRang" />
-
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/coinName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:text="BTC"
-        android:textSize="14sp"
-        android:textStyle="bold"
-        android:typeface="monospace"
-        app:layout_constraintBottom_toBottomOf="@id/coinImg"
-        app:layout_constraintStart_toEndOf="@id/coinImg"
-        app:layout_constraintTop_toTopOf="@id/coinImg" />
-
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/coinPrice"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="1224214 $"
-        android:textSize="14sp"
-        android:textStyle="bold"
-        android:typeface="monospace"
-        app:layout_constraintBottom_toBottomOf="@id/coinImg"
-        app:layout_constraintEnd_toStartOf="@id/coinIsFavorite"
-        app:layout_constraintStart_toEndOf="@id/coinName"
-        app:layout_constraintTop_toTopOf="@id/coinImg" />
-
-    <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/coinIsFavorite"
-        android:layout_width="36dp"
-        android:layout_height="36dp"
-        android:layout_marginEnd="16dp"
-        android:src="@drawable/round_background"
-        app:layout_constraintBottom_toBottomOf="@id/coinRang"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@id/coinRang" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/marketGuideLine"
@@ -294,7 +227,7 @@
         android:id="@+id/mainIdGroup"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:visibility="invisible"
-        app:constraint_referenced_ids="coinImg,coinIsFavorite,coinName,coinPrice,coinRang,marketTitle,marketCardView,tvDescription,tvDescriptionTitle,tvSeeModeDescription" />
+        android:visibility="visible"
+        app:constraint_referenced_ids="coinInfoLayout,marketTitle,marketCardView,tvDescription,tvDescriptionTitle,tvSeeModeDescription" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
