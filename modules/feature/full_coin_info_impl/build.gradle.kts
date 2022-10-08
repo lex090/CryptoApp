@@ -56,4 +56,5 @@ dependencies {
     implementation(Dependencies.Libraries.dagger2)
     kapt(Dependencies.Libraries.dagger2compiler)
 
+    implementation(Dependencies.Libraries.facebookShimmer)
 }

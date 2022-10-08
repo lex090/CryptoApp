@@ -2,22 +2,8 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="vertical"
-    android:paddingBottom="64dp">
-
-    <com.facebook.shimmer.ShimmerFrameLayout
-        android:id="@+id/shimmerLayout"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <include layout="@layout/full_coin_info_bsdf_shimmer_layout" />
-
-    </com.facebook.shimmer.ShimmerFrameLayout>
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
     <View
         android:layout_width="36dp"
@@ -37,13 +23,10 @@
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/coinRang"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="16dp"
+        android:layout_height="16dp"
         android:layout_marginStart="16dp"
-        android:text="#1"
-        android:textSize="14sp"
-        android:textStyle="bold"
-        android:typeface="monospace"
+        android:background="@drawable/round_background_shimmer"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@id/topGuidLine" />
 
@@ -52,32 +35,26 @@
         android:layout_width="36dp"
         android:layout_height="36dp"
         android:layout_marginStart="16dp"
-        android:src="@drawable/round_background"
+        android:background="@drawable/round_background_shimmer"
         app:layout_constraintBottom_toBottomOf="@id/coinRang"
         app:layout_constraintStart_toEndOf="@id/coinRang"
         app:layout_constraintTop_toTopOf="@id/coinRang" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/coinName"
-        android:layout_width="wrap_content"
+        android:layout_width="124dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:text="BTC"
-        android:textSize="14sp"
-        android:textStyle="bold"
-        android:typeface="monospace"
+        android:background="@drawable/round_background_shimmer"
         app:layout_constraintBottom_toBottomOf="@id/coinImg"
         app:layout_constraintStart_toEndOf="@id/coinImg"
         app:layout_constraintTop_toTopOf="@id/coinImg" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/coinPrice"
-        android:layout_width="wrap_content"
+        android:layout_width="124dp"
         android:layout_height="wrap_content"
-        android:text="1224214 $"
-        android:textSize="14sp"
-        android:textStyle="bold"
-        android:typeface="monospace"
+        android:background="@drawable/round_background_shimmer"
         app:layout_constraintBottom_toBottomOf="@id/coinImg"
         app:layout_constraintEnd_toStartOf="@id/coinIsFavorite"
         app:layout_constraintStart_toEndOf="@id/coinName"
@@ -88,7 +65,7 @@
         android:layout_width="36dp"
         android:layout_height="36dp"
         android:layout_marginEnd="16dp"
-        android:src="@drawable/round_background"
+        android:background="@drawable/round_background_shimmer"
         app:layout_constraintBottom_toBottomOf="@id/coinRang"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@id/coinRang" />
@@ -102,13 +79,10 @@
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/marketTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="256dp"
+        android:layout_height="24dp"
         android:layout_marginStart="16dp"
-        android:text="Market Statistics"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        android:typeface="monospace"
+        android:background="@drawable/round_background_shimmer"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@id/marketGuideLine" />
 
@@ -131,13 +105,11 @@
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/marketCap"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="128dp"
+                android:layout_height="20dp"
                 android:layout_marginStart="24dp"
                 android:layout_marginTop="24dp"
-                android:text="Market Cap"
-                android:textSize="14sp"
-                android:typeface="monospace"
+                android:background="@drawable/round_background_shimmer"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -152,26 +124,21 @@
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/marketCapAmount"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="128dp"
+                android:layout_height="20dp"
                 android:layout_marginTop="24dp"
                 android:layout_marginEnd="24dp"
-                android:text="$383.48 B"
-                android:textSize="14sp"
-                android:textStyle="bold"
-                android:typeface="monospace"
+                android:background="@drawable/round_background_shimmer"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/volume24h"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="128dp"
+                android:layout_height="20dp"
                 android:layout_marginStart="24dp"
                 android:layout_marginTop="24dp"
-                android:text="Volume 24h"
-                android:textSize="14sp"
-                android:typeface="monospace"
+                android:background="@drawable/round_background_shimmer"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/divider1" />
 
@@ -186,26 +153,21 @@
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/volume24hAmount"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="128dp"
+                android:layout_height="20dp"
                 android:layout_marginTop="24dp"
                 android:layout_marginEnd="24dp"
-                android:text="$20.9 B"
-                android:textSize="14sp"
-                android:textStyle="bold"
-                android:typeface="monospace"
+                android:background="@drawable/round_background_shimmer"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/divider1" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/fullyDillMCap"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="128dp"
+                android:layout_height="20dp"
                 android:layout_marginStart="24dp"
                 android:layout_marginTop="24dp"
-                android:text="Fully Dill. M. Cap"
-                android:textSize="14sp"
-                android:typeface="monospace"
+                android:background="@drawable/round_background_shimmer"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/divider2" />
 
@@ -220,30 +182,23 @@
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/fullyDillMCapAmount"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="128dp"
+                android:layout_height="20dp"
                 android:layout_marginTop="24dp"
                 android:layout_marginEnd="24dp"
-                android:text="$20.9 B"
-                android:textSize="14sp"
-                android:textStyle="bold"
-                android:typeface="monospace"
+                android:background="@drawable/round_background_shimmer"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/divider2" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tvSeeAll"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="128dp"
+                android:layout_height="20dp"
                 android:layout_marginTop="24dp"
-                android:text="See All"
-                android:textSize="14sp"
-                android:textStyle="bold"
-                android:typeface="monospace"
+                android:background="@drawable/round_background_shimmer"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/divider3" />
-
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -251,50 +206,33 @@
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tvDescriptionTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="128dp"
+        android:layout_height="24dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="24dp"
-        android:text="About BTC"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        android:typeface="monospace"
+        android:background="@drawable/round_background_shimmer"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/marketCardView" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tvDescription"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="64dp"
         android:layout_marginHorizontal="16dp"
         android:layout_marginTop="8dp"
-        android:ellipsize="end"
-        android:maxLines="4"
-        android:text="Bigtext Aboutbsdmvkl sdmsdvlk sdvklmlsd ssldmsld sdmvsldktc fdfgfjd lgdlvdk vdfmdkflvmfdlkvkd flgkjsdf lgsglkdfjgl dkfs vfdkddfklmdfvld fvkldfmvfdkl vmfdfdvfdkvmdlk fvmfld kdml"
-        android:textSize="14sp"
-        android:typeface="monospace"
+        android:background="@drawable/round_background_shimmer"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tvDescriptionTitle" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tvSeeModeDescription"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="128dp"
+        android:layout_height="20dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
-        android:text="See more details"
-        android:textSize="14sp"
-        android:textStyle="bold"
-        android:typeface="monospace"
+        android:background="@drawable/round_background_shimmer"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tvDescription" />
-
-    <androidx.constraintlayout.widget.Group
-        android:id="@+id/mainIdGroup"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:visibility="invisible"
-        app:constraint_referenced_ids="coinImg,coinIsFavorite,coinName,coinPrice,coinRang,marketTitle,marketCardView,tvDescription,tvDescriptionTitle,tvSeeModeDescription" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

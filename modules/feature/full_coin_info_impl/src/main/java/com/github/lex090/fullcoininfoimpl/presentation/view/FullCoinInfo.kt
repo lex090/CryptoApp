@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
@@ -18,6 +19,7 @@ import com.github.lex090.fullcoininfoimpl.presentation.view.entity.toCoinInfoUiE
 import com.github.lex090.fullcoininfoimpl.data.ScarletLifecycle
 import com.github.lex090.fullcoininfoimpl.presentation.viewmodel.FullCoinInfoViewModel
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -87,15 +89,23 @@ class FullCoinInfo : BottomSheetDialogFragment() {
     }
 
     private fun processCoinInfo(coinInfo: CoinInfoUiEntity?) {
-        if (coinInfo == null) {
-            showLoadingState()
-        } else {
-            readyCoinInfoState(coinInfo)
+//        if (coinInfo == null) {
+        showLoadingState()
+        lifecycleScope.launch {
+            delay(3000)
+            viewBinding.mainIdGroup.visibility = View.VISIBLE
+            viewBinding.shimmerLayout.stopShimmer()
+            viewBinding.shimmerLayout.isVisible = false
         }
+//        } else {
+//            readyCoinInfoState(coinInfo)
+//        }
     }
 
     private fun showLoadingState() {
-
+        viewBinding.mainIdGroup.visibility = View.INVISIBLE
+        viewBinding.shimmerLayout.isVisible = true
+        viewBinding.shimmerLayout.startShimmer()
     }
 
     private fun readyCoinInfoState(coinInfo: CoinInfoUiEntity) {

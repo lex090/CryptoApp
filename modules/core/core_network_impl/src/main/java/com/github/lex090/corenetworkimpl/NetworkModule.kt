@@ -67,15 +67,15 @@ internal object NetworkModule {
 
     @Provides
     @ConnectionTimeout
-    fun provideConnectTimeoutSeconds(): Timeout = Timeout(timeout = 10, unit = TimeUnit.SECONDS)
+    fun provideConnectTimeoutSeconds(): Timeout = Timeout(timeout = 15, unit = TimeUnit.SECONDS)
 
     @Provides
     @CallTimeout
-    fun provideCallTimeoutSeconds(): Timeout = Timeout(timeout = 10, unit = TimeUnit.SECONDS)
+    fun provideCallTimeoutSeconds(): Timeout = Timeout(timeout = 15, unit = TimeUnit.SECONDS)
 
     @Provides
     @ReadTimeout
-    fun provideReadTimeoutSeconds(): Timeout = Timeout(timeout = 10, unit = TimeUnit.SECONDS)
+    fun provideReadTimeoutSeconds(): Timeout = Timeout(timeout = 15, unit = TimeUnit.SECONDS)
 
     @Provides
     fun provideMoshi(): Moshi =

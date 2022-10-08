@@ -8,6 +8,7 @@ import com.github.lex090.cryptoapp.dependencies.Dependencies.Versions.androidxCo
 import com.github.lex090.cryptoapp.dependencies.Dependencies.Versions.androidxEspressoVersion
 import com.github.lex090.cryptoapp.dependencies.Dependencies.Versions.androidxJunitVersion
 import com.github.lex090.cryptoapp.dependencies.Dependencies.Versions.dagger2Version
+import com.github.lex090.cryptoapp.dependencies.Dependencies.Versions.facebookShimmerVersion
 import com.github.lex090.cryptoapp.dependencies.Dependencies.Versions.fragmentKtxVersion
 import com.github.lex090.cryptoapp.dependencies.Dependencies.Versions.junitVersion
 import com.github.lex090.cryptoapp.dependencies.Dependencies.Versions.kotlinxCoroutinesVersion
@@ -47,6 +48,7 @@ object Dependencies {
         const val adapterDelegatesVersion = "4.3.2"
         const val roomVersion = "2.4.3"
         const val scarletVersion = "0.1.12"
+        const val facebookShimmerVersion = "0.5.0"
     }
 
     object ProjectModules {
@@ -139,6 +141,7 @@ object Dependencies {
         const val scarletStreamAdapterCoroutines =
             "com.tinder.scarlet:stream-adapter-coroutines:$scarletVersion"
 
+        const val facebookShimmer = "com.facebook.shimmer:shimmer:$facebookShimmerVersion"
     }
 }
 
