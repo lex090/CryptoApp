@@ -93,13 +93,10 @@ class FullCoinInfo : BottomSheetDialogFragment() {
         showLoadingState()
         lifecycleScope.launch {
             delay(3000)
+            viewBinding.shimmerLayout.isVisible = false
             viewBinding.mainIdGroup.visibility = View.VISIBLE
             viewBinding.shimmerLayout.stopShimmer()
-            viewBinding.shimmerLayout.isVisible = false
         }
-//        } else {
-//            readyCoinInfoState(coinInfo)
-//        }
     }
 
     private fun showLoadingState() {

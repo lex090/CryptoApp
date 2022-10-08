@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
@@ -20,7 +21,6 @@ import com.github.lex090.baseui.presentation.view.entity.toCoin
 import com.github.lex090.baseui.presentation.view.entity.toCoinUiEntity
 import com.github.lex090.coreapi.ResultOf
 import com.github.lex090.corediapi.AppDependenciesProvidersHolder
-import com.github.lex090.featurecoinslistfragmentimpl.R
 import com.github.lex090.featurecoinslistfragmentimpl.databinding.FragmentCoinsListBinding
 import com.github.lex090.featurecoinslistfragmentimpl.di.DaggerCoinListFragmentComponent
 import com.github.lex090.featurecoinslistfragmentimpl.presentation.viewmodel.CoinListViewModel
@@ -85,6 +85,8 @@ class CoinsListFragment : Fragment() {
     }
 
     override fun onResume() {
+        viewBinding.shimmerLayout.root.isVisible = true
+        viewBinding.shimmerLayout.root.startShimmer()
         super.onResume()
         viewModel.onViewsInit()
     }
@@ -95,7 +97,11 @@ class CoinsListFragment : Fragment() {
     }
 
     private fun processCoinsList(result: List<CoinUiEntity>) {
-        adapter.items = result
+        adapter.setItems(result) {
+            viewBinding.rvCoinsList.isVisible = true
+            viewBinding.shimmerLayout.root.stopShimmer()
+            viewBinding.shimmerLayout.root.isVisible = false
+        }
     }
 
     private fun showError(error: ResultOf.Error) {

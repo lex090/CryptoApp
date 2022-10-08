@@ -5,8 +5,13 @@
     android:layout_height="match_parent"
     tools:context=".presentation.view.FavoriteCoinsFragment">
 
+    <include
+        android:id="@+id/shimmerLayout"
+        layout="@layout/shimmer_layout" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvFavoritesList"
+        android:visibility="invisible"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
