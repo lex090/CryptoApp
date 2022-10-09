@@ -5,6 +5,7 @@ plugins {
     id("com.android.library")
     id("org.jetbrains.kotlin.android")
     id("kotlin-kapt")
+    id("androidx.navigation.safeargs.kotlin")
 }
 
 android {
@@ -41,6 +42,10 @@ dependencies {
     implementation(project(Dependencies.ProjectModules.baseFavorite))
     implementation(project(Dependencies.ProjectModules.baseCoins))
 
+    implementation(project(Dependencies.ProjectModules.featureFullCoinInfoApi))
+
+    implementation(Dependencies.Libraries.okHttp3)
+
     implementation(Dependencies.Libraries.androidxCoreKtx)
     implementation(Dependencies.Libraries.androidxAppcompat)
     implementation(Dependencies.Libraries.material)
@@ -53,4 +58,6 @@ dependencies {
 
     implementation(Dependencies.Libraries.dagger2)
     kapt(Dependencies.Libraries.dagger2compiler)
+
+    implementation(Dependencies.Libraries.facebookShimmer)
 }

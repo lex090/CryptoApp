@@ -6,34 +6,80 @@
     android:layout_height="64dp">
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/tvPositionId"
+        android:id="@+id/tvCoinRang"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
+        android:textSize="14sp"
+        android:typeface="monospace"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:text="#1" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/ivCoin"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_marginStart="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@id/tvCoinRang"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:background="@drawable/round_background" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvCoinSymbol"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        android:typeface="monospace"
+        app:layout_constraintBottom_toTopOf="@id/tvCoinName"
+        app:layout_constraintStart_toEndOf="@id/ivCoin"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="packed"
+        tools:text="BTC" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tvCoinName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
+        android:textSize="12sp"
+        android:typeface="monospace"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@id/tvPositionId"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:text="BTC" />
+        app:layout_constraintStart_toEndOf="@id/ivCoin"
+        app:layout_constraintTop_toBottomOf="@id/tvCoinSymbol"
+        tools:text="Bitcoin" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tvCoinPrice"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginEnd="32dp"
+        android:gravity="end"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        android:typeface="monospace"
+        app:layout_constraintBottom_toTopOf="@id/tvCoinPricePercentage"
         app:layout_constraintEnd_toStartOf="@id/btnFavorite"
         app:layout_constraintTop_toTopOf="parent"
-        tools:text="10000$" />
+        app:layout_constraintVertical_chainStyle="packed"
+        tools:text="10000 $" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvCoinPricePercentage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="32dp"
+        android:gravity="end"
+        android:text="0.012 %"
+        android:textSize="12sp"
+        android:typeface="monospace"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/btnFavorite"
+        app:layout_constraintTop_toBottomOf="@id/tvCoinPrice" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/btnFavorite"

@@ -30,4 +30,5 @@ dependencies {
     api(project(Dependencies.ProjectModules.coreDbApi))
 
     implementation(Dependencies.Libraries.dagger2)
+    implementation(Dependencies.Libraries.okHttp3)
 }

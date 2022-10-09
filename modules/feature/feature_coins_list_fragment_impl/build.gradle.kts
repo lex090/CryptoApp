@@ -5,6 +5,7 @@ plugins {
     id("com.android.library")
     id("org.jetbrains.kotlin.android")
     id("kotlin-kapt")
+    id("androidx.navigation.safeargs.kotlin")
 }
 
 android {
@@ -35,6 +36,7 @@ dependencies {
     api(project(Dependencies.ProjectModules.featureCoinsListFragmentApi))
     implementation(project(Dependencies.ProjectModules.coreApi))
     implementation(project(Dependencies.ProjectModules.coreDiApi))
+    implementation(project(Dependencies.ProjectModules.featureFullCoinInfoApi))
     implementation(project(Dependencies.ProjectModules.baseUI))
     implementation(project(Dependencies.ProjectModules.baseCoins))
     implementation(project(Dependencies.ProjectModules.baseFavorite))
@@ -45,6 +47,7 @@ dependencies {
     implementation(Dependencies.Libraries.androidxConstraintLayout)
 
     implementation(Dependencies.Libraries.fragmentKtx)
+    implementation(Dependencies.Libraries.okHttp3)
 
     implementation(Dependencies.Libraries.navigationFragmentKtx)
     implementation(Dependencies.Libraries.navigationUiKtx)
@@ -53,4 +56,6 @@ dependencies {
 
     implementation(Dependencies.Libraries.dagger2)
     kapt(Dependencies.Libraries.dagger2compiler)
+
+    implementation(Dependencies.Libraries.facebookShimmer)
 }

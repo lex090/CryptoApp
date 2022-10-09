@@ -8,6 +8,7 @@ import com.github.lex090.cryptoapp.dependencies.Dependencies.Versions.androidxCo
 import com.github.lex090.cryptoapp.dependencies.Dependencies.Versions.androidxEspressoVersion
 import com.github.lex090.cryptoapp.dependencies.Dependencies.Versions.androidxJunitVersion
 import com.github.lex090.cryptoapp.dependencies.Dependencies.Versions.dagger2Version
+import com.github.lex090.cryptoapp.dependencies.Dependencies.Versions.facebookShimmerVersion
 import com.github.lex090.cryptoapp.dependencies.Dependencies.Versions.fragmentKtxVersion
 import com.github.lex090.cryptoapp.dependencies.Dependencies.Versions.junitVersion
 import com.github.lex090.cryptoapp.dependencies.Dependencies.Versions.kotlinxCoroutinesVersion
@@ -17,9 +18,11 @@ import com.github.lex090.cryptoapp.dependencies.Dependencies.Versions.multidexVe
 import com.github.lex090.cryptoapp.dependencies.Dependencies.Versions.navigationVersion
 import com.github.lex090.cryptoapp.dependencies.Dependencies.Versions.okHttp3LoggingInterceptorVersion
 import com.github.lex090.cryptoapp.dependencies.Dependencies.Versions.okHttp3Version
+import com.github.lex090.cryptoapp.dependencies.Dependencies.Versions.picassoVersion
 import com.github.lex090.cryptoapp.dependencies.Dependencies.Versions.retrofitConverterMoshiVersion
 import com.github.lex090.cryptoapp.dependencies.Dependencies.Versions.retrofitVersion
 import com.github.lex090.cryptoapp.dependencies.Dependencies.Versions.roomVersion
+import com.github.lex090.cryptoapp.dependencies.Dependencies.Versions.scarletVersion
 
 object Dependencies {
 
@@ -45,6 +48,9 @@ object Dependencies {
         const val fragmentKtxVersion = "1.5.2"
         const val adapterDelegatesVersion = "4.3.2"
         const val roomVersion = "2.4.3"
+        const val scarletVersion = "0.1.12"
+        const val facebookShimmerVersion = "0.5.0"
+        const val picassoVersion = "2.8"
     }
 
     object ProjectModules {
@@ -81,6 +87,9 @@ object Dependencies {
             ":modules:feature:feature_favorite_coins_fragment_api"
         const val featureFavoriteCoinsFragmentImpl =
             ":modules:feature:feature_favorite_coins_fragment_impl"
+
+        const val featureFullCoinInfoApi = ":modules:feature:full_coin_info_api"
+        const val featureFullCoinInfoImpl = ":modules:feature:full_coin_info_impl"
     }
 
     object Libraries {
@@ -125,6 +134,18 @@ object Dependencies {
         const val room = "androidx.room:room-runtime:$roomVersion"
         const val roomCompiler = "androidx.room:room-compiler:$roomVersion"
         const val roomKtxCompiler = "androidx.room:room-ktx:$roomVersion"
+
+        const val scarlet = "com.tinder.scarlet:scarlet:$scarletVersion"
+        const val scarletCore = "com.tinder.scarlet:scarlet-core:$scarletVersion"
+        const val scarletWebsocketOkhttp = "com.tinder.scarlet:websocket-okhttp:$scarletVersion"
+        const val scarletLifecycleAndroid = "com.tinder.scarlet:lifecycle-android:$scarletVersion"
+        const val scarletMessageAdapterMoshi =
+            "com.tinder.scarlet:message-adapter-moshi:$scarletVersion"
+        const val scarletStreamAdapterCoroutines =
+            "com.tinder.scarlet:stream-adapter-coroutines:$scarletVersion"
+
+        const val facebookShimmer = "com.facebook.shimmer:shimmer:$facebookShimmerVersion"
+        const val picasso = "com.squareup.picasso:picasso:$picassoVersion"
     }
 }
 

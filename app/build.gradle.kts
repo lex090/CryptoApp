@@ -63,6 +63,8 @@ dependencies {
 
     implementation(project(Dependencies.ProjectModules.featureFavoriteCoinsFragmentImpl))
 
+    implementation(project(Dependencies.ProjectModules.featureFullCoinInfoImpl))
+
     implementation(Dependencies.Libraries.androidxCoreKtx)
     implementation(Dependencies.Libraries.androidxAppcompat)
     implementation(Dependencies.Libraries.material)
@@ -71,6 +73,8 @@ dependencies {
     testImplementation(Dependencies.Libraries.junit)
     androidTestImplementation(Dependencies.Libraries.androidxJunit)
     androidTestImplementation(Dependencies.Libraries.androidxEspresso)
+
+    implementation(Dependencies.Libraries.okHttp3)
 
     implementation(Dependencies.Libraries.multidex)
 

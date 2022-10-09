@@ -4,9 +4,14 @@
     android:layout_height="match_parent"
     tools:context="com.github.lex090.featurecoinslistfragmentimpl.presentation.view.CoinsListFragment">
 
+    <include
+        android:id="@+id/shimmerLayout"
+        layout="@layout/shimmer_layout" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvCoinsList"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:visibility="invisible" />
 
 </FrameLayout>

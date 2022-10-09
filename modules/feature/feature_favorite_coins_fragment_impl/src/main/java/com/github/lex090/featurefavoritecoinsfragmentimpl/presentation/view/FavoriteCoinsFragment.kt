@@ -10,6 +10,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.github.lex090.baseui.presentation.view.adapters.ICoinListItemAdapterFactory
 import com.github.lex090.baseui.presentation.view.diffutil.CoinListDiffAdapter
@@ -51,6 +52,7 @@ class FavoriteCoinsFragment : Fragment() {
             addDelegate(
                 coinListItemAdapterFactory
                     .createCommonCoinListItemAdapterFactory(
+                        this@FavoriteCoinsFragment::onCoinItemClick,
                         { _, _ -> },
                         this@FavoriteCoinsFragment::clickOnRemoveCoinFromFavorites,
                     )
@@ -114,6 +116,16 @@ class FavoriteCoinsFragment : Fragment() {
         viewModel.clickOnRemoveCoinFromFavorites(
             position = position, coin = coinUiEntity.toCoin()
         )
+    }
+
+    private fun onCoinItemClick(coinUiEntity: CoinUiEntity) {
+        findNavController()
+            .navigate(
+                FavoriteCoinsFragmentDirections
+                    .actionCoinsListFragmentToNavGraphFullCoinInfo(
+                        coinUiEntity.id
+                    )
+            )
     }
 
     private fun injectDependencies() {

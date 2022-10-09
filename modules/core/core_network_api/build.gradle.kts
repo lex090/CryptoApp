@@ -1,8 +1,10 @@
 import com.github.lex090.cryptoapp.dependencies.AppConfiguration
+import com.github.lex090.cryptoapp.dependencies.Dependencies.Libraries
 
 plugins {
     id("com.android.library")
     id("org.jetbrains.kotlin.android")
+    id("kotlin-kapt")
 }
 
 android {
@@ -25,4 +27,16 @@ android {
 }
 
 dependencies {
+
+    implementation(Libraries.okHttp3)
+
+    implementation(Libraries.scarlet)
+    implementation(Libraries.scarletCore)
+    implementation(Libraries.scarletWebsocketOkhttp)
+    implementation(Libraries.scarletLifecycleAndroid)
+    implementation(Libraries.scarletMessageAdapterMoshi)
+    implementation(Libraries.scarletStreamAdapterCoroutines)
+
+    implementation(Libraries.dagger2)
+    kapt(Libraries.dagger2compiler)
 }

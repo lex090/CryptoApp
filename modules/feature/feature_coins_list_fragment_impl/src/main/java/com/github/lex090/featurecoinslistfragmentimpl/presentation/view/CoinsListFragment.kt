@@ -5,11 +5,13 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.github.lex090.baseui.presentation.view.adapters.ICoinListItemAdapterFactory
 import com.github.lex090.baseui.presentation.view.diffutil.CoinListDiffAdapter
@@ -51,6 +53,7 @@ class CoinsListFragment : Fragment() {
             addDelegate(
                 coinListItemAdapterFactory
                     .createCommonCoinListItemAdapterFactory(
+                        this@CoinsListFragment::onCoinItemClick,
                         this@CoinsListFragment::clickOnAddCoinToFavorites,
                         this@CoinsListFragment::clickOnRemoveCoinFromFavorites,
                     )
@@ -82,6 +85,8 @@ class CoinsListFragment : Fragment() {
     }
 
     override fun onResume() {
+        viewBinding.shimmerLayout.root.isVisible = true
+        viewBinding.shimmerLayout.root.startShimmer()
         super.onResume()
         viewModel.onViewsInit()
     }
@@ -92,7 +97,11 @@ class CoinsListFragment : Fragment() {
     }
 
     private fun processCoinsList(result: List<CoinUiEntity>) {
-        adapter.items = result
+        adapter.setItems(result) {
+            viewBinding.rvCoinsList.isVisible = true
+            viewBinding.shimmerLayout.root.stopShimmer()
+            viewBinding.shimmerLayout.root.isVisible = false
+        }
     }
 
     private fun showError(error: ResultOf.Error) {
@@ -131,6 +140,16 @@ class CoinsListFragment : Fragment() {
         viewModel.clickOnRemoveCoinFromFavorites(
             position = position, coin = coinUiEntity.toCoin(isFavoriteNewValue = false)
         )
+    }
+
+    private fun onCoinItemClick(coinUiEntity: CoinUiEntity) {
+        findNavController()
+            .navigate(
+                CoinsListFragmentDirections
+                    .actionCoinsListFragmentToNavGraphFullCoinInfo(
+                        coinUiEntity.id
+                    )
+            )
     }
 
     private fun injectDependencies() {
