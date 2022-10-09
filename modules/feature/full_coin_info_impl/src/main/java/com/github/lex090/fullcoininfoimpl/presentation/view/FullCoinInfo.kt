@@ -23,9 +23,6 @@ import com.github.lex090.fullcoininfoimpl.databinding.FullCoinInfoBsdfLayoutBind
 import com.github.lex090.fullcoininfoimpl.di.DaggerFullCoinInfoComponent
 import com.github.lex090.fullcoininfoimpl.presentation.viewmodel.FullCoinInfoViewModel
 import com.github.lex090.fullcoininfoimpl.presentation.viewmodel.entityUI.CoinInfoUiEntity
-import com.github.lex090.fullcoininfoimpl.presentation.viewmodel.entityUI.DecreasePriceUiEntity
-import com.github.lex090.fullcoininfoimpl.presentation.viewmodel.entityUI.FavoriteUiEntity
-import com.github.lex090.fullcoininfoimpl.presentation.viewmodel.entityUI.IncreasePriceUiEntity
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
@@ -124,15 +121,6 @@ class FullCoinInfo : BottomSheetDialogFragment() {
             is CoinInfoUiEntity -> {
                 setAndShowFullCoinDataToScreen(uiStateEntity)
             }
-            is IncreasePriceUiEntity -> {
-
-            }
-            is DecreasePriceUiEntity -> {
-
-            }
-            is FavoriteUiEntity -> {
-
-            }
         }
     }
 
@@ -164,16 +152,25 @@ class FullCoinInfo : BottomSheetDialogFragment() {
 
     private fun setIsFavoriteIv(coinInfo: CoinInfoUiEntity) {
         if (coinInfo.isFavorite) {
-            viewBinding.coinInfoLayout.btnFavorite.background =
-                ContextCompat.getDrawable(
+            viewBinding.coinInfoLayout.btnFavorite.apply {
+                background = ContextCompat.getDrawable(
                     requireContext(),
                     R.drawable.ic_baseline_star_24
                 )
+                setOnClickListener {
+                    viewModel.clickOnRemoveCoinFromFavorites()
+                }
+            }
         } else {
-            viewBinding.coinInfoLayout.btnFavorite.background = ContextCompat.getDrawable(
-                requireContext(),
-                R.drawable.ic_baseline_star_outline_24
-            )
+            viewBinding.coinInfoLayout.btnFavorite.apply {
+                background = ContextCompat.getDrawable(
+                    requireContext(),
+                    R.drawable.ic_baseline_star_outline_24
+                )
+                setOnClickListener {
+                    viewModel.clickOnAddCoinToFavorites()
+                }
+            }
         }
     }
 

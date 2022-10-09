@@ -15,7 +15,8 @@ data class CoinInfoUiEntity(
     val volume24H: String,
     val fullyDillMCap: String,
     val description: String,
-    val links: List<LinkUI>
+    val links: List<LinkUI>,
+    val originalData: Coin
 ) : UiStateEntity
 
 data class LinkUI(
@@ -39,7 +40,8 @@ fun Coin.toCoinInfoUiEntity(): CoinInfoUiEntity =
         volume24H = volume24h.toFormattedMarketDataText(),
         fullyDillMCap = fullyDilutedValuation.toFormattedMarketDataText(),
         description = description ?: DEFAULT_VALUE,
-        links = listOf()
+        links = listOf(),
+        originalData = this
     )
 
 private fun String?.toFormattedRangText() = if (this == null) DEFAULT_VALUE else "#$this"
