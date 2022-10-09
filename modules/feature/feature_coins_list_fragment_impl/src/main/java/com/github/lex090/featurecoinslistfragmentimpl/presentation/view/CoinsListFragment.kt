@@ -16,18 +16,22 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.github.lex090.baseui.presentation.view.adapters.ICoinListItemAdapterFactory
 import com.github.lex090.baseui.presentation.view.diffutil.CoinListDiffAdapter
 import com.github.lex090.baseui.presentation.viewmodel.entity.CoinUiEntity
+import com.github.lex090.baseui.presentation.viewmodel.entity.CoinUiEntityList
 import com.github.lex090.baseui.presentation.viewmodel.entity.DisplayableItem
 import com.github.lex090.baseui.presentation.viewmodel.entity.toCoin
-import com.github.lex090.baseui.presentation.viewmodel.entity.toCoinUiEntity
-import com.github.lex090.coreapi.ResultOf
+import com.github.lex090.coreapi.presentation.uiSate.BaseUiState
+import com.github.lex090.coreapi.presentation.uiSate.UiStateEntity
 import com.github.lex090.corediapi.AppDependenciesProvidersHolder
 import com.github.lex090.featurecoinslistfragmentimpl.databinding.FragmentCoinsListBinding
 import com.github.lex090.featurecoinslistfragmentimpl.di.DaggerCoinListFragmentComponent
 import com.github.lex090.featurecoinslistfragmentimpl.presentation.viewmodel.CoinListViewModel
+import com.google.android.material.snackbar.Snackbar
 import com.hannesdorfmann.adapterdelegates4.AdapterDelegatesManager
-import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.flow.onStart
 import kotlinx.coroutines.launch
 import javax.inject.Inject
+import com.github.lex090.baseui.R as MainR
+
 
 class CoinsListFragment : Fragment() {
 
@@ -84,43 +88,71 @@ class CoinsListFragment : Fragment() {
         initDataSubscriptions()
     }
 
-    override fun onResume() {
-        viewBinding.shimmerLayout.root.isVisible = true
-        viewBinding.shimmerLayout.root.startShimmer()
-        super.onResume()
-        viewModel.onViewsInit()
-    }
-
     override fun onDestroyView() {
         _viewBinding = null
         super.onDestroyView()
     }
 
-    private fun processCoinsList(result: List<CoinUiEntity>) {
-        adapter.setItems(result) {
-            viewBinding.rvCoinsList.isVisible = true
-            viewBinding.shimmerLayout.root.stopShimmer()
-            viewBinding.shimmerLayout.root.isVisible = false
+    private fun processState(state: BaseUiState<UiStateEntity>) {
+        when (state) {
+            is BaseUiState.Error -> {
+                val errorMessage =
+                    state.message ?: requireContext().getString(MainR.string.defaultErrorText)
+                processErrorScreenState(errorMessage)
+            }
+            BaseUiState.Loading -> showLoadingScreenState()
+            is BaseUiState.Success -> {
+                processSuccessScreenState(state.data)
+            }
         }
     }
 
-    private fun showError(error: ResultOf.Error) {
+    private fun processSuccessScreenState(data: UiStateEntity) {
+        when (data) {
+            is CoinUiEntityList -> {
+                adapter.setItems(data.items) {
+                    showSuccessSate()
+                }
+            }
+        }
+    }
 
+    private fun showLoadingScreenState() {
+        viewBinding.contextMenuItemSnackBarHost.isVisible = false
+        viewBinding.rvCoinsList.isVisible = false
+        viewBinding.shimmerLayout.root.isVisible = true
+        viewBinding.shimmerLayout.root.startShimmer()
+    }
+
+    private fun showSuccessSate() {
+        viewBinding.contextMenuItemSnackBarHost.isVisible = false
+        viewBinding.rvCoinsList.isVisible = true
+        viewBinding.shimmerLayout.root.stopShimmer()
+        viewBinding.shimmerLayout.root.isVisible = false
+    }
+
+    private fun processErrorScreenState(
+        message: String
+    ) {
+        viewBinding.contextMenuItemSnackBarHost.isVisible = true
+        val view = viewBinding.contextMenuItemSnackBarHost
+        Snackbar.make(view, message, Snackbar.LENGTH_INDEFINITE).apply {
+            setAction(MainR.string.retryErrorButton) {
+                initDataSubscriptions()
+                dismiss()
+            }
+        }.show()
     }
 
     private fun initDataSubscriptions() {
         viewLifecycleOwner.lifecycleScope.launch {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
                 viewModel
-                    .coinsList
-                    .map { result ->
-                        result.map { value ->
-                            value.toCoinUiEntity()
-                        }
+                    .screenState
+                    .onStart {
+                        viewModel.onViewsInit()
                     }
-                    .collect { result ->
-                        processCoinsList(result = result)
-                    }
+                    .collect(::processState)
             }
         }
     }

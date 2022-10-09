@@ -8,9 +8,12 @@ import com.github.lex090.basecoins.domain.entity.Coin
 import com.github.lex090.basecoins.domain.usecases.IGetCoinsListUseCase
 import com.github.lex090.basefavoriteimpl.domain.usecases.IAddCoinToFavoritesUseCase
 import com.github.lex090.basefavoriteimpl.domain.usecases.IRemoveCoinFromFavoritesUseCase
+import com.github.lex090.baseui.presentation.viewmodel.entity.toCoinUiEntity
+import com.github.lex090.baseui.presentation.viewmodel.entity.toCoinUiEntityList
 import com.github.lex090.coreapi.ResultOf
+import com.github.lex090.coreapi.presentation.uiSate.BaseUiState
+import com.github.lex090.coreapi.presentation.uiSate.UiStateEntity
 import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -20,21 +23,21 @@ class CoinListViewModel(
     private val removeCoinFromFavoritesUseCase: IRemoveCoinFromFavoritesUseCase,
 ) : ViewModel() {
 
-    private val _mutableCoinsListStateFlow: MutableStateFlow<List<Coin>> =
-        MutableStateFlow(
-            listOf()
-        )
-    val coinsList: StateFlow<List<Coin>> = _mutableCoinsListStateFlow
-
+    private val _mutableScreenStateFlow: MutableStateFlow<BaseUiState<UiStateEntity>> =
+        MutableStateFlow(BaseUiState.Loading)
+    val screenState: MutableStateFlow<BaseUiState<UiStateEntity>> = _mutableScreenStateFlow
 
     fun onViewsInit() {
         viewModelScope.launch {
+            _mutableScreenStateFlow.value = BaseUiState.Loading
             when (val result = getCoinsFromRepository()) {
                 is ResultOf.Error -> {
-
+                    _mutableScreenStateFlow.value =
+                        BaseUiState.Error(result.exception, result.message)
                 }
                 is ResultOf.Success -> {
-                    _mutableCoinsListStateFlow.value = result.data
+                    val data = result.data.map { it.toCoinUiEntity() }.toCoinUiEntityList()
+                    _mutableScreenStateFlow.value = BaseUiState.Success(data)
                 }
             }
         }
@@ -56,15 +59,16 @@ class CoinListViewModel(
         }
     }
 
+    @SuppressWarnings("UnusedPrivateMember")
     private fun changeListItem(
         position: Int,
         coin: Coin
     ) {
-        val coinList = coinsList.value
-        val items = mutableListOf<Coin>()
-        items.addAll(coinList)
-        items[position] = coin
-        _mutableCoinsListStateFlow.value = items
+//        val coinList = coinsList.value
+//        val items = mutableListOf<Coin>()
+//        items.addAll(coinList)
+//        items[position] = coin
+//        _mutableCoinsListStateFlow.value = items
     }
 
     private suspend fun getCoinsFromRepository(): ResultOf<List<Coin>> =

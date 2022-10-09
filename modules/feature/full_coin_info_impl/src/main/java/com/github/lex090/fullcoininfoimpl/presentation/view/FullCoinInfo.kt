@@ -31,7 +31,7 @@ import com.google.android.material.snackbar.Snackbar
 import kotlinx.coroutines.flow.onStart
 import kotlinx.coroutines.launch
 import javax.inject.Inject
-import com.github.lex090.fullcoininfoimpl.R as MainR
+import com.github.lex090.baseui.R as MainR
 
 class FullCoinInfo : BottomSheetDialogFragment() {
 

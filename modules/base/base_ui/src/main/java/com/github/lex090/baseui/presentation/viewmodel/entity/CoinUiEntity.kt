@@ -1,8 +1,16 @@
 package com.github.lex090.baseui.presentation.viewmodel.entity
 
 import com.github.lex090.basecoins.domain.entity.Coin
+import com.github.lex090.coreapi.presentation.uiSate.UiStateEntity
 
 interface DisplayableItem
+
+data class CoinUiEntityList(
+    val items: List<CoinUiEntity>
+) : UiStateEntity
+
+fun List<CoinUiEntity>.toCoinUiEntityList(): CoinUiEntityList =
+    CoinUiEntityList(items = this)
 
 data class CoinUiEntity(
     val rang: String,
