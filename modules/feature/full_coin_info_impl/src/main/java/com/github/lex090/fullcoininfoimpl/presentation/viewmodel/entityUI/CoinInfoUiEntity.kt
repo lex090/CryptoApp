@@ -24,6 +24,7 @@ data class LinkUI(
 )
 
 private const val DEFAULT_VALUE = "NaN"
+private const val MARKET_DATA_DIVIDER = 1000000000
 
 fun Coin.toCoinInfoUiEntity(): CoinInfoUiEntity =
     CoinInfoUiEntity(
@@ -34,12 +35,21 @@ fun Coin.toCoinInfoUiEntity(): CoinInfoUiEntity =
         imageUrl = imageUrl,
         symbol = if (symbol == null) DEFAULT_VALUE else symbol.toString().uppercase(),
         priceChanging = DEFAULT_VALUE,
-        marketCap = if (marketCap == null) DEFAULT_VALUE else "$$marketCap B",
-        volume24H = if (volume24h == null) DEFAULT_VALUE else "$$volume24h B",
-        fullyDillMCap = if (fullyDilutedValuation == null) DEFAULT_VALUE else "$$fullyDilutedValuation B",
+        marketCap = marketCap.toFormattedMarketDataText(),
+        volume24H = volume24h.toFormattedMarketDataText(),
+        fullyDillMCap = fullyDilutedValuation.toFormattedMarketDataText(),
         description = description ?: DEFAULT_VALUE,
         links = listOf()
     )
+
+private fun Double?.toFormattedMarketDataText() =
+    if (this == null)
+        DEFAULT_VALUE
+    else {
+        val value = this / MARKET_DATA_DIVIDER
+        val formattedValue = "%.2f".format(value)
+        "$$formattedValue B"
+    }
 
 data class IncreasePriceUiEntity(
     val price: Double
