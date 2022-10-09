@@ -12,12 +12,15 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.flow.map
 import javax.inject.Inject
+import kotlin.coroutines.CoroutineContext
 
 internal class CoinsRepositoryImpl @Inject constructor(
     private val service: CoinsNetworkService,
     private val favoriteCoinsDao: FavoriteCoinsDao,
+    private val dispatcherIO: CoroutineContext
 ) : ICoinsRepository {
 
     companion object {
@@ -37,6 +40,7 @@ internal class CoinsRepositoryImpl @Inject constructor(
             .map {
                 ResultOf.Success(it)
             }
+            .flowOn(dispatcherIO)
 
     private fun getPollingCoinsListFromServer(): Flow<List<CoinResponse>> = flow {
         while (true) {

@@ -37,7 +37,7 @@ class CoinListViewModel(
             .execute()
             .map(::processCoinsDataFlow)
             .stateIn(
-                viewModelScope + Dispatchers.IO,
+                viewModelScope,
                 SharingStarted.WhileSubscribed(STOP_TIMEOUT_WHILE_SUBSCRIBE),
                 BaseUiState.Loading
             )

@@ -28,7 +28,7 @@ class FavoriteCoinsViewModel(
 
     fun clickOnRemoveCoinFromFavorites(coin: Coin) {
         viewModelScope.launch {
-            removeCoinFromFavoritesUseCase.execute(data = coin)
+            removeCoinFromFavoritesUseCase.execute(data = coin.copy(isFavorite = false))
         }
     }
 
