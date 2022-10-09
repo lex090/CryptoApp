@@ -21,7 +21,9 @@ fun Coin.toCoinUiEntity(position: Int): CoinUiEntity =
         isFavorite = isFavorite
     )
 
-fun CoinUiEntity.toCoin(isFavoriteNewValue: Boolean? = null): Coin = Coin(
+fun CoinUiEntity.toCoin(
+    isFavoriteNewValue: Boolean? = null
+): Coin = Coin(
     id = id,
     name = name,
     price = price,

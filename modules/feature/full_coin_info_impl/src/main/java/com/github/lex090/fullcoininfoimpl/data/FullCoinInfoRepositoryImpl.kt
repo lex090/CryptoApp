@@ -1,6 +1,8 @@
 package com.github.lex090.fullcoininfoimpl.data
 
+import android.util.Log
 import com.github.lex090.basecoins.data.services.CoinsNetworkService
+import com.github.lex090.basecoins.data.toCoin
 import com.github.lex090.basecoins.domain.entity.Coin
 import com.github.lex090.basefavoriteimpl.domain.usecases.IGetFavoriteCoinsUseCase
 import com.github.lex090.corenetworkapi.RealTimeNetworkServiceFactory
@@ -25,13 +27,8 @@ class FullCoinInfoRepositoryImpl @Inject constructor(
         val coinInfoResponse = service.getCoinInfo(id = coinId)
         val isFavoriteCoin = favoritesRepository.execute().any { it.id == coinId }
 
-//        coinInfoResponse.toCoin { isFavoriteCoin }
-        Coin(
-            id = coinId,
-            coinInfoResponse.name,
-            -1.0,
-            isFavoriteCoin
-        )
+        Log.i("myDebug", "getFullCoinInfo: coinInfoResponse -> $coinInfoResponse")
+        return@withContext coinInfoResponse.toCoin(isFavoriteCoin)
     }
 
     override fun getRealTimePriceOfCoin(coinId: String): Flow<Double> {

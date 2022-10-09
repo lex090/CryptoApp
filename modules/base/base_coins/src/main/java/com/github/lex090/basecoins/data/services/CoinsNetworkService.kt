@@ -28,7 +28,7 @@ interface CoinsNetworkService {
         @Path("id") id: String,
         @Query("localization") localization: Boolean = false,
         @Query("tickers") tickers: Boolean = false,
-        @Query("market_data") marketData: Boolean = false,
+        @Query("market_data") marketData: Boolean = true,
         @Query("community_data") communityData: Boolean = true,
         @Query("developer_data") developerData: Boolean = true,
         @Query("sparkline") sparkline: Boolean = false,

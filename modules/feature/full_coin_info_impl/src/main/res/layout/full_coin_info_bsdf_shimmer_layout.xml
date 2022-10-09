@@ -15,79 +15,79 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/topGuidLine"
+        android:id="@+id/topGuidLineShimmer"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="horizontal"
         app:layout_constraintGuide_begin="24dp" />
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/coinRang"
+        android:id="@+id/coinRangShimmer"
         android:layout_width="16dp"
         android:layout_height="16dp"
         android:layout_marginStart="16dp"
         android:background="@drawable/round_background_shimmer"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/topGuidLine" />
+        app:layout_constraintTop_toTopOf="@id/topGuidLineShimmer" />
 
     <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/coinImg"
+        android:id="@+id/coinImgShimmer"
         android:layout_width="36dp"
         android:layout_height="36dp"
         android:layout_marginStart="16dp"
         android:background="@drawable/round_background_shimmer"
-        app:layout_constraintBottom_toBottomOf="@id/coinRang"
-        app:layout_constraintStart_toEndOf="@id/coinRang"
-        app:layout_constraintTop_toTopOf="@id/coinRang" />
+        app:layout_constraintBottom_toBottomOf="@id/coinRangShimmer"
+        app:layout_constraintStart_toEndOf="@id/coinRangShimmer"
+        app:layout_constraintTop_toTopOf="@id/coinRangShimmer" />
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/coinName"
+        android:id="@+id/coinNameShimmer"
         android:layout_width="124dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:background="@drawable/round_background_shimmer"
-        app:layout_constraintBottom_toBottomOf="@id/coinImg"
-        app:layout_constraintStart_toEndOf="@id/coinImg"
-        app:layout_constraintTop_toTopOf="@id/coinImg" />
+        app:layout_constraintBottom_toBottomOf="@id/coinImgShimmer"
+        app:layout_constraintStart_toEndOf="@id/coinImgShimmer"
+        app:layout_constraintTop_toTopOf="@id/coinImgShimmer" />
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/coinPrice"
+        android:id="@+id/coinPriceShimmer"
         android:layout_width="124dp"
         android:layout_height="wrap_content"
         android:background="@drawable/round_background_shimmer"
-        app:layout_constraintBottom_toBottomOf="@id/coinImg"
-        app:layout_constraintEnd_toStartOf="@id/coinIsFavorite"
-        app:layout_constraintStart_toEndOf="@id/coinName"
-        app:layout_constraintTop_toTopOf="@id/coinImg" />
+        app:layout_constraintBottom_toBottomOf="@id/coinImgShimmer"
+        app:layout_constraintEnd_toStartOf="@id/coinIsFavoriteShimmer"
+        app:layout_constraintStart_toEndOf="@id/coinNameShimmer"
+        app:layout_constraintTop_toTopOf="@id/coinImgShimmer" />
 
     <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/coinIsFavorite"
+        android:id="@+id/coinIsFavoriteShimmer"
         android:layout_width="36dp"
         android:layout_height="36dp"
         android:layout_marginEnd="16dp"
         android:background="@drawable/round_background_shimmer"
-        app:layout_constraintBottom_toBottomOf="@id/coinRang"
+        app:layout_constraintBottom_toBottomOf="@id/coinRangShimmer"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@id/coinRang" />
+        app:layout_constraintTop_toTopOf="@id/coinRangShimmer" />
 
     <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/marketGuideLine"
+        android:id="@+id/marketGuideLineShimmer"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="horizontal"
         app:layout_constraintGuide_begin="70dp" />
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/marketTitle"
+        android:id="@+id/marketTitleShimmer"
         android:layout_width="256dp"
         android:layout_height="24dp"
         android:layout_marginStart="16dp"
         android:background="@drawable/round_background_shimmer"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/marketGuideLine" />
+        app:layout_constraintTop_toTopOf="@id/marketGuideLineShimmer" />
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/marketCardView"
+        android:id="@+id/marketCardViewShimmer"
         android:layout_width="match_parent"
         android:layout_height="256dp"
         android:layout_marginHorizontal="16dp"
@@ -96,15 +96,15 @@
         app:cardElevation="24dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/marketTitle">
+        app:layout_constraintTop_toBottomOf="@id/marketTitleShimmer">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/container"
+            android:id="@+id/containerShimmer"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
             <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/marketCap"
+                android:id="@+id/marketCapShimmer"
                 android:layout_width="128dp"
                 android:layout_height="20dp"
                 android:layout_marginStart="24dp"
@@ -114,16 +114,16 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <View
-                android:id="@+id/divider1"
+                android:id="@+id/divider1Shimmer"
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:layout_marginHorizontal="24dp"
                 android:layout_marginTop="16dp"
                 android:background="@drawable/round_background"
-                app:layout_constraintTop_toBottomOf="@id/marketCap" />
+                app:layout_constraintTop_toBottomOf="@id/marketCapShimmer" />
 
             <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/marketCapAmount"
+                android:id="@+id/marketCapAmountShimmer"
                 android:layout_width="128dp"
                 android:layout_height="20dp"
                 android:layout_marginTop="24dp"
@@ -133,89 +133,89 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/volume24h"
+                android:id="@+id/volume24hShimmer"
                 android:layout_width="128dp"
                 android:layout_height="20dp"
                 android:layout_marginStart="24dp"
                 android:layout_marginTop="24dp"
                 android:background="@drawable/round_background_shimmer"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/divider1" />
+                app:layout_constraintTop_toBottomOf="@id/divider1Shimmer" />
 
             <View
-                android:id="@+id/divider2"
+                android:id="@+id/divider2Shimmer"
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:layout_marginHorizontal="24dp"
                 android:layout_marginTop="16dp"
                 android:background="@drawable/round_background"
-                app:layout_constraintTop_toBottomOf="@id/volume24h" />
+                app:layout_constraintTop_toBottomOf="@id/volume24hShimmer" />
 
             <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/volume24hAmount"
+                android:id="@+id/volume24hAmountShimmer"
                 android:layout_width="128dp"
                 android:layout_height="20dp"
                 android:layout_marginTop="24dp"
                 android:layout_marginEnd="24dp"
                 android:background="@drawable/round_background_shimmer"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/divider1" />
+                app:layout_constraintTop_toBottomOf="@id/divider1Shimmer" />
 
             <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/fullyDillMCap"
+                android:id="@+id/fullyDillMCapShimmer"
                 android:layout_width="128dp"
                 android:layout_height="20dp"
                 android:layout_marginStart="24dp"
                 android:layout_marginTop="24dp"
                 android:background="@drawable/round_background_shimmer"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/divider2" />
+                app:layout_constraintTop_toBottomOf="@id/divider2Shimmer" />
 
             <View
-                android:id="@+id/divider3"
+                android:id="@+id/divider3Shimmer"
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:layout_marginHorizontal="24dp"
                 android:layout_marginTop="16dp"
                 android:background="@drawable/round_background"
-                app:layout_constraintTop_toBottomOf="@id/fullyDillMCap" />
+                app:layout_constraintTop_toBottomOf="@id/fullyDillMCapShimmer" />
 
             <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/fullyDillMCapAmount"
+                android:id="@+id/fullyDillMCapAmountShimmer"
                 android:layout_width="128dp"
                 android:layout_height="20dp"
                 android:layout_marginTop="24dp"
                 android:layout_marginEnd="24dp"
                 android:background="@drawable/round_background_shimmer"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/divider2" />
+                app:layout_constraintTop_toBottomOf="@id/divider2Shimmer" />
 
             <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/tvSeeAll"
+                android:id="@+id/tvSeeAllShimmer"
                 android:layout_width="128dp"
                 android:layout_height="20dp"
                 android:layout_marginTop="24dp"
                 android:background="@drawable/round_background_shimmer"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/divider3" />
+                app:layout_constraintTop_toBottomOf="@id/divider3Shimmer" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.cardview.widget.CardView>
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/tvDescriptionTitle"
+        android:id="@+id/tvDescriptionTitleShimmer"
         android:layout_width="128dp"
         android:layout_height="24dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="24dp"
         android:background="@drawable/round_background_shimmer"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/marketCardView" />
+        app:layout_constraintTop_toBottomOf="@id/marketCardViewShimmer" />
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/tvDescription"
+        android:id="@+id/tvDescriptionShimmer"
         android:layout_width="0dp"
         android:layout_height="64dp"
         android:layout_marginHorizontal="16dp"
@@ -223,16 +223,16 @@
         android:background="@drawable/round_background_shimmer"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvDescriptionTitle" />
+        app:layout_constraintTop_toBottomOf="@id/tvDescriptionTitleShimmer" />
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/tvSeeModeDescription"
+        android:id="@+id/tvSeeModeDescriptionShimmer"
         android:layout_width="128dp"
         android:layout_height="20dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
         android:background="@drawable/round_background_shimmer"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvDescription" />
+        app:layout_constraintTop_toBottomOf="@id/tvDescriptionShimmer" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

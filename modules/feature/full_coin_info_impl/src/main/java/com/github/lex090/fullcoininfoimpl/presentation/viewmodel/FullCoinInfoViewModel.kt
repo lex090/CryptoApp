@@ -1,41 +1,46 @@
 package com.github.lex090.fullcoininfoimpl.presentation.viewmodel
 
-import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
-import com.github.lex090.basecoins.domain.entity.Coin
+import com.github.lex090.coreapi.presentation.uiSate.BaseUiState
+import com.github.lex090.coreapi.presentation.uiSate.UiStateEntity
 import com.github.lex090.fullcoininfoimpl.domain.IGetCoinInfoUseCase
 import com.github.lex090.fullcoininfoimpl.domain.IGetLiveTimePriceOfCoinFlowUseCase
+import com.github.lex090.fullcoininfoimpl.presentation.viewmodel.entityUI.toCoinInfoUiEntity
 import kotlinx.coroutines.cancel
 import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 class FullCoinInfoViewModel(
-    private val getCoinInfoFlowUseCase: IGetCoinInfoUseCase,
+    private val getCoinInfoUseCase: IGetCoinInfoUseCase,
     private val getLiveTimePriceOfCoinFlowUseCase: IGetLiveTimePriceOfCoinFlowUseCase
 ) : ViewModel() {
 
-    private val _mutableCoinInfoStateFlow: MutableStateFlow<Coin?> = MutableStateFlow(null)
-    val coinInfo: StateFlow<Coin?> = _mutableCoinInfoStateFlow
+    private val _mutableScreenStateFlow: MutableStateFlow<BaseUiState<UiStateEntity>> =
+        MutableStateFlow(BaseUiState.Loading)
+    val screenState: MutableStateFlow<BaseUiState<UiStateEntity>> = _mutableScreenStateFlow
 
     fun getCoinInfo(coinId: String) {
         viewModelScope.launch {
             try {
-                val coinInfo = getCoinInfoFlowUseCase.execute(coinId)
-                Log.i("myDebug", "getCoinInfo: $coinInfo")
-                _mutableCoinInfoStateFlow.value = coinInfo
-                getLiveTimePriceOfCoinFlowUseCase.execute(coinId).collect {
-//                    _mutableCoinInfoStateFlow.value = coinInfo.copy(price = it)
-                }
+                val coinInfo = getCoinInfoUseCase.execute(coinId)
+                _mutableScreenStateFlow.value = BaseUiState.Success(coinInfo.toCoinInfoUiEntity())
+                subscribeToRealTimePriceUpdating(coinId)
             } catch (e: Exception) {
-                Log.i("myDebug", "getCoinInfo: ${e.localizedMessage}")
+                _mutableScreenStateFlow.value = BaseUiState.Error(e, e.message)
             }
         }
     }
 
+    private suspend fun subscribeToRealTimePriceUpdating(coinId: String) {
+        getLiveTimePriceOfCoinFlowUseCase
+            .execute(coinId)
+            .collect {
+                //                    _mutableCoinInfoStateFlow.value = coinInfo.copy(price = it)
+            }
+    }
 
     fun clear() {
         viewModelScope.cancel()
@@ -50,7 +55,7 @@ class FullCoinInfoViewModel(
         override fun <T : ViewModel> create(modelClass: Class<T>): T {
             require(modelClass == FullCoinInfoViewModel::class.java)
             return FullCoinInfoViewModel(
-                getCoinInfoFlowUseCase = getCoinInfoFlowUseCase,
+                getCoinInfoUseCase = getCoinInfoFlowUseCase,
                 getLiveTimePriceOfCoinFlowUseCase = getLiveTimePriceOfCoinFlowUseCase
             ) as T
         }

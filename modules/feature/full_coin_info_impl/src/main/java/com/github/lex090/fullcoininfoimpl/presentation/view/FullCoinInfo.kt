@@ -2,6 +2,7 @@ package com.github.lex090.fullcoininfoimpl.presentation.view
 
 import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,16 +14,21 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.navArgs
 import com.github.lex090.baseui.R
+import com.github.lex090.coreapi.presentation.uiSate.BaseUiState
+import com.github.lex090.coreapi.presentation.uiSate.UiStateEntity
 import com.github.lex090.corediapi.AppDependenciesProvidersHolder
 import com.github.lex090.fullcoininfoimpl.data.ScarletLifecycle
 import com.github.lex090.fullcoininfoimpl.databinding.FullCoinInfoBsdfLayoutBinding
 import com.github.lex090.fullcoininfoimpl.di.DaggerFullCoinInfoComponent
 import com.github.lex090.fullcoininfoimpl.presentation.viewmodel.FullCoinInfoViewModel
 import com.github.lex090.fullcoininfoimpl.presentation.viewmodel.entityUI.CoinInfoUiEntity
+import com.github.lex090.fullcoininfoimpl.presentation.viewmodel.entityUI.DecreasePriceUiEntity
+import com.github.lex090.fullcoininfoimpl.presentation.viewmodel.entityUI.FavoriteUiEntity
+import com.github.lex090.fullcoininfoimpl.presentation.viewmodel.entityUI.IncreasePriceUiEntity
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
+import com.google.android.material.snackbar.Snackbar
 import com.squareup.picasso.Picasso
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.flow.onStart
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -59,7 +65,6 @@ class FullCoinInfo : BottomSheetDialogFragment() {
             container,
             false
         )
-        scarletLifecycle.start()
         return viewBinding.root
     }
 
@@ -67,20 +72,14 @@ class FullCoinInfo : BottomSheetDialogFragment() {
         viewLifecycleOwner.lifecycleScope.launch {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
                 viewModel
-                    .coinInfo
-                    .map { result ->
-//                        result?.toCoinInfoUiEntity()
+                    .screenState
+                    .onStart {
+                        scarletLifecycle.start()
+                        viewModel.getCoinInfo(screenArgs.coinId)
                     }
-                    .collect { result ->
-//                        processCoinInfo(coinInfo = result)
-                    }
+                    .collect(::processState)
             }
         }
-    }
-
-    override fun onStart() {
-        super.onStart()
-        viewModel.getCoinInfo(screenArgs.coinId)
     }
 
     override fun onDestroyView() {
@@ -90,14 +89,15 @@ class FullCoinInfo : BottomSheetDialogFragment() {
         super.onDestroyView()
     }
 
-    private fun processCoinInfo(coinInfo: CoinInfoUiEntity?) {
-//        if (coinInfo == null) {
-        showLoadingState()
-        lifecycleScope.launch {
-            delay(3000)
-            viewBinding.shimmerLayout.isVisible = false
-            viewBinding.mainIdGroup.visibility = View.VISIBLE
-            viewBinding.shimmerLayout.stopShimmer()
+    private fun processState(state: BaseUiState<UiStateEntity>) {
+        when (state) {
+            is BaseUiState.Error -> {
+                processError(state.exception, state.message)
+            }
+            BaseUiState.Loading -> showLoadingState()
+            is BaseUiState.Success -> {
+                processSuccessStateData(state.data)
+            }
         }
     }
 
@@ -107,24 +107,56 @@ class FullCoinInfo : BottomSheetDialogFragment() {
         viewBinding.shimmerLayout.startShimmer()
     }
 
+    private fun processError(
+        exception: Throwable,
+        message: String? = null
+    ) {
+        showLoadingState()
+        Snackbar.make(this.requireView(), message ?: "", Snackbar.LENGTH_SHORT).show()
+        Log.i("myDebug", "processError: exception -> ${exception.message}")
+    }
+
+    private fun processSuccessStateData(uiStateEntity: UiStateEntity) {
+        when (uiStateEntity) {
+            is CoinInfoUiEntity -> {
+                setAndShowFullCoinDataToScreen(uiStateEntity)
+            }
+            is IncreasePriceUiEntity -> {
+
+            }
+            is DecreasePriceUiEntity -> {
+
+            }
+            is FavoriteUiEntity -> {
+
+            }
+        }
+    }
+
     private fun setAndShowFullCoinDataToScreen(coinInfo: CoinInfoUiEntity) {
-        viewBinding.mainIdGroup.isVisible = true
-        viewBinding.shimmerLayout.stopShimmer()
-        viewBinding.shimmerLayout.isVisible = false
+        Log.i("myDebug", "setAndShowFullCoinDataToScreen: ${coinInfo}")
+        with(viewBinding) {
+            mainIdGroup.isVisible = true
+            shimmerLayout.stopShimmer()
+            shimmerLayout.isVisible = false
 
-        viewBinding.coinInfoLayout.tvCoinSymbol.text = coinInfo.symbol
-        viewBinding.coinInfoLayout.tvCoinName.text = coinInfo.name
-        viewBinding.coinInfoLayout.tvCoinRang.text = coinInfo.rang
-        viewBinding.coinInfoLayout.tvCoinPrice.text = "${coinInfo.price}$"
-        viewBinding.coinInfoLayout.tvCoinPricePercentage.visibility = View.INVISIBLE
-        loadCoinImageToIV(coinInfo)
-        setIsFavoriteIv(coinInfo)
+            coinInfoLayout.tvCoinRang.text = coinInfo.rang
+            coinInfoLayout.tvCoinSymbol.text = coinInfo.symbol
+            coinInfoLayout.tvCoinName.text = coinInfo.name
+            coinInfoLayout.tvCoinPrice.text = coinInfo.price
+            coinInfoLayout.tvCoinPricePercentage.text = coinInfo.priceChanging
 
-        viewBinding.marketCapAmount.text = "${coinInfo.marketCap / 1000000} B"
-        viewBinding.volume24hAmount.text = "${coinInfo.volume24H / 1000000} B"
-        viewBinding.fullyDillMCapAmount.text = "${coinInfo.fullyDillMCap / 1000000} B"
+            if (!coinInfo.imageUrl.isNullOrEmpty()) {
+                loadCoinImageToIV(coinInfo.imageUrl)
+            }
+            setIsFavoriteIv(coinInfo)
 
-        viewBinding.tvDescription.text = coinInfo.description
+            marketCapAmount.text = coinInfo.marketCap
+            volume24hAmount.text = coinInfo.volume24H
+            fullyDillMCapAmount.text = coinInfo.fullyDillMCap
+
+            tvDescription.text = coinInfo.description
+        }
     }
 
     private fun setIsFavoriteIv(coinInfo: CoinInfoUiEntity) {
@@ -142,12 +174,12 @@ class FullCoinInfo : BottomSheetDialogFragment() {
         }
     }
 
-    private fun loadCoinImageToIV(coinInfo: CoinInfoUiEntity) {
+    private fun loadCoinImageToIV(imageUrl: String) {
         Picasso
             .get()
-            .load(coinInfo.imageUrl)
-            .placeholder(com.github.lex090.baseui.R.drawable.round_background_shimmer)
-            .error(com.github.lex090.baseui.R.drawable.round_background_shimmer)
+            .load(imageUrl)
+            .placeholder(R.drawable.round_background_shimmer)
+            .error(R.drawable.round_background_shimmer)
             .into(viewBinding.coinInfoLayout.ivCoin)
     }
 
