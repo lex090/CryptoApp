@@ -48,6 +48,7 @@ val detektProjectBaseline by tasks.registering(io.gitlab.arturbosch.detekt.Detek
 tasks.register("installGitHook", Copy::class) {
     from(file("$rootDir/githooks/pre-commit"))
     into(file("$rootDir/.git/hooks"))
-    fileMode = 777
+    fileMode = 0b111111111
 }
+
 tasks.getByPath(":app:preBuild").dependsOn(":installGitHook")
