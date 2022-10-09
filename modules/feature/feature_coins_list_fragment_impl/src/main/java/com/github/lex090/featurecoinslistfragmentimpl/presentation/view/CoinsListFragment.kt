@@ -114,8 +114,8 @@ class CoinsListFragment : Fragment() {
                 viewModel
                     .coinsList
                     .map { result ->
-                        result.mapIndexed { index, value ->
-                            value.toCoinUiEntity(index + 1)
+                        result.map { value ->
+                            value.toCoinUiEntity()
                         }
                     }
                     .collect { result ->
@@ -147,7 +147,7 @@ class CoinsListFragment : Fragment() {
             .navigate(
                 CoinsListFragmentDirections
                     .actionCoinsListFragmentToNavGraphFullCoinInfo(
-                        coinUiEntity.id
+                        coinUiEntity.originalData.id
                     )
             )
     }

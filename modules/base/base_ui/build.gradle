@@ -44,4 +44,5 @@ dependencies {
     kapt(Dependencies.Libraries.dagger2compiler)
 
     implementation(Dependencies.Libraries.facebookShimmer)
+    implementation(Dependencies.Libraries.picasso)
 }

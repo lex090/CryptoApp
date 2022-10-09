@@ -6,7 +6,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.content.ContextCompat
+import androidx.appcompat.widget.AppCompatTextView
 import androidx.core.text.parseAsHtml
 import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
@@ -14,7 +14,8 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.navArgs
-import com.github.lex090.baseui.R
+import com.github.lex090.baseui.presentation.view.checkFavorite
+import com.github.lex090.baseui.presentation.view.loadCoinImageToIV
 import com.github.lex090.coreapi.presentation.uiSate.BaseUiState
 import com.github.lex090.coreapi.presentation.uiSate.UiStateEntity
 import com.github.lex090.corediapi.AppDependenciesProvidersHolder
@@ -27,7 +28,6 @@ import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.google.android.material.snackbar.Snackbar
-import com.squareup.picasso.Picasso
 import kotlinx.coroutines.flow.onStart
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -162,9 +162,7 @@ class FullCoinInfo : BottomSheetDialogFragment() {
             coinInfoLayout.tvCoinPrice.text = coinInfo.price
             coinInfoLayout.tvCoinPricePercentage.text = coinInfo.priceChanging
 
-            if (!coinInfo.imageUrl.isNullOrEmpty()) {
-                loadCoinImageToIV(coinInfo.imageUrl)
-            }
+            viewBinding.coinInfoLayout.ivCoin.loadCoinImageToIV(coinInfo.imageUrl)
             setIsFavoriteIv(coinInfo)
 
             marketCapAmount.text = coinInfo.marketCap
@@ -176,36 +174,24 @@ class FullCoinInfo : BottomSheetDialogFragment() {
     }
 
     private fun setIsFavoriteIv(coinInfo: CoinInfoUiEntity) {
-        if (coinInfo.isFavorite) {
-            viewBinding.coinInfoLayout.btnFavorite.apply {
-                background = ContextCompat.getDrawable(
-                    requireContext(),
-                    R.drawable.ic_baseline_star_24
-                )
-                setOnClickListener {
-                    viewModel.clickOnRemoveCoinFromFavorites()
-                }
-            }
-        } else {
-            viewBinding.coinInfoLayout.btnFavorite.apply {
-                background = ContextCompat.getDrawable(
-                    requireContext(),
-                    R.drawable.ic_baseline_star_outline_24
-                )
-                setOnClickListener {
-                    viewModel.clickOnAddCoinToFavorites()
-                }
-            }
+        with(viewBinding.coinInfoLayout) {
+            btnFavorite.checkFavorite(coinInfo.isFavorite)
+            btnFavorite.setOnFavoritesClickBehaviours(coinInfo.isFavorite)
         }
     }
 
-    private fun loadCoinImageToIV(imageUrl: String) {
-        Picasso
-            .get()
-            .load(imageUrl)
-            .placeholder(R.drawable.round_background_shimmer)
-            .error(R.drawable.round_background_shimmer)
-            .into(viewBinding.coinInfoLayout.ivCoin)
+    private fun AppCompatTextView.setOnFavoritesClickBehaviours(
+        isFavorite: Boolean
+    ) {
+        if (isFavorite) {
+            setOnClickListener {
+                viewModel.clickOnRemoveCoinFromFavorites()
+            }
+        } else {
+            setOnClickListener {
+                viewModel.clickOnAddCoinToFavorites()
+            }
+        }
     }
 
     private fun injectDependencies() {

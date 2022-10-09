@@ -11,6 +11,7 @@ data class CoinUiEntity(
     val price: String,
     val priceChanging: String,
     val isFavorite: Boolean,
+    val imageUrl: String?,
     val originalData: Coin
 ) : DisplayableItem
 
@@ -22,6 +23,7 @@ fun Coin.toCoinUiEntity(): CoinUiEntity =
         price = price.toFormattedPriceText(),
         priceChanging = priceChanging.toFormattedPriceChangingText(),
         isFavorite = isFavorite,
+        imageUrl = imageUrl,
         originalData = this
     )
 
@@ -55,4 +57,4 @@ fun Double?.toFormattedPriceChangingText() =
     if (this == null)
         DEFAULT_VALUE
     else
-        "%.2f%".format(this)
+        "${"%.2f".format(this)}%"

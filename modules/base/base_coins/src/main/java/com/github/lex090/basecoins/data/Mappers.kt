@@ -15,9 +15,17 @@ fun CoinResponse.toCoin(
     isFavoritePredicate: (id: String) -> Boolean
 ): Coin = Coin(
     id = this.id,
+    rang = marketCapRank.toString(),
+    symbol = this.symbol,
     name = this.name,
     price = this.currentPrice,
-    isFavorite = isFavoritePredicate.invoke(this.id)
+    priceChanging = priceChangePercentage24H,
+    isFavorite = isFavoritePredicate.invoke(this.id),
+    marketCap = marketCap,
+    volume24h = null,
+    fullyDilutedValuation = null,
+    description = null,
+    imageUrl = image
 )
 
 fun FullCoinInfoResponse.toCoin(isFavorite: Boolean): Coin =

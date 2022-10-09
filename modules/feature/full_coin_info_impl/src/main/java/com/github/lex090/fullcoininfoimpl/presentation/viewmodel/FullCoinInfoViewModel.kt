@@ -5,13 +5,13 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
 import com.github.lex090.basefavoriteimpl.domain.usecases.IAddCoinToFavoritesUseCase
 import com.github.lex090.basefavoriteimpl.domain.usecases.IRemoveCoinFromFavoritesUseCase
+import com.github.lex090.baseui.presentation.viewmodel.entity.toFormattedPriceText
 import com.github.lex090.coreapi.presentation.uiSate.BaseUiState
 import com.github.lex090.coreapi.presentation.uiSate.UiStateEntity
 import com.github.lex090.fullcoininfoimpl.domain.IGetCoinInfoUseCase
 import com.github.lex090.fullcoininfoimpl.domain.IGetLiveTimePriceOfCoinFlowUseCase
 import com.github.lex090.fullcoininfoimpl.presentation.viewmodel.entityUI.CoinInfoUiEntity
 import com.github.lex090.fullcoininfoimpl.presentation.viewmodel.entityUI.toCoinInfoUiEntity
-import com.github.lex090.fullcoininfoimpl.presentation.viewmodel.entityUI.toFormattedPriceText
 import kotlinx.coroutines.cancel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.launch

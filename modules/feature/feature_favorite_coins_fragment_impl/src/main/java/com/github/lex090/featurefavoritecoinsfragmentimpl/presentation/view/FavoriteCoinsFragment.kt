@@ -99,8 +99,8 @@ class FavoriteCoinsFragment : Fragment() {
                 viewModel
                     .favoriteCoinsList
                     .map { result ->
-                        result.mapIndexed { index, value ->
-                            value.toCoinUiEntity(index + 1)
+                        result.map { value ->
+                            value.toCoinUiEntity()
                         }
                     }
                     .collect(::processCoinsList)
@@ -123,7 +123,7 @@ class FavoriteCoinsFragment : Fragment() {
             .navigate(
                 FavoriteCoinsFragmentDirections
                     .actionCoinsListFragmentToNavGraphFullCoinInfo(
-                        coinUiEntity.id
+                        coinUiEntity.originalData.id
                     )
             )
     }

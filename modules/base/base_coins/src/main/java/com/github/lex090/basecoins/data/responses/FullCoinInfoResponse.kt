@@ -16,11 +16,7 @@ data class FullCoinInfoResponse(
     @Json(name = "market_data")
     val marketData: MarketData,
     @Json(name = "description")
-    val description: Description?,
-//    @Json(name = "links")
-//    val links: Links,
-//    @Json(name = "community_data")
-//    val communityData: CommunityData,
+    val description: Description?
 )
 
 data class MarketData(
