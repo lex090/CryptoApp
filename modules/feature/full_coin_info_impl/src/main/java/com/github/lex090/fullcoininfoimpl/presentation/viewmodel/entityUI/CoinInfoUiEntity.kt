@@ -28,12 +28,12 @@ private const val MARKET_DATA_DIVIDER = 1000000000
 
 fun Coin.toCoinInfoUiEntity(): CoinInfoUiEntity =
     CoinInfoUiEntity(
-        rang = if (rang == null) DEFAULT_VALUE else "#$rang",
+        rang = rang.toFormattedRangText(),
         name = this.name,
-        price = "$price$",
+        price = price.toFormattedPriceText(),
         isFavorite = isFavorite,
         imageUrl = imageUrl,
-        symbol = if (symbol == null) DEFAULT_VALUE else symbol.toString().uppercase(),
+        symbol = symbol.toFormattedSymbolText(),
         priceChanging = DEFAULT_VALUE,
         marketCap = marketCap.toFormattedMarketDataText(),
         volume24H = volume24h.toFormattedMarketDataText(),
@@ -41,6 +41,10 @@ fun Coin.toCoinInfoUiEntity(): CoinInfoUiEntity =
         description = description ?: DEFAULT_VALUE,
         links = listOf()
     )
+
+private fun String?.toFormattedRangText() = if (this == null) DEFAULT_VALUE else "#$this"
+
+private fun String?.toFormattedSymbolText() = this?.uppercase() ?: DEFAULT_VALUE
 
 private fun Double?.toFormattedMarketDataText() =
     if (this == null)
@@ -50,6 +54,8 @@ private fun Double?.toFormattedMarketDataText() =
         val formattedValue = "%.2f".format(value)
         "$$formattedValue B"
     }
+
+fun Double?.toFormattedPriceText() = "${this}$" // "%.2f$".format(this)
 
 data class IncreasePriceUiEntity(
     val price: Double

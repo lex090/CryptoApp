@@ -11,6 +11,7 @@ import com.github.lex090.fullcoininfoimpl.domain.IFullCoinInfoRepository
 import com.tinder.scarlet.Message
 import com.tinder.scarlet.WebSocket
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.filter
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
@@ -38,15 +39,15 @@ class FullCoinInfoRepositoryImpl @Inject constructor(
 
         return service
             .observeWebSocketEvent()
+            .filter {
+                it is WebSocket.Event.OnMessageReceived
+            }
             .map {
-                if (it is WebSocket.Event.OnMessageReceived) {
-                    (it.message as Message.Text).value.split(":")[1]
-                        .replace("\"", "")
-                        .replace("}", "")
-                        .toDouble()
-                } else {
-                    0.0
-                }
+                val event = it as WebSocket.Event.OnMessageReceived
+                (event.message as Message.Text).value.split(":")[1]
+                    .replace("\"", "")
+                    .replace("}", "")
+                    .toDouble()
             }
     }
 }

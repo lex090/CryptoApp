@@ -7,7 +7,9 @@ import com.github.lex090.coreapi.presentation.uiSate.BaseUiState
 import com.github.lex090.coreapi.presentation.uiSate.UiStateEntity
 import com.github.lex090.fullcoininfoimpl.domain.IGetCoinInfoUseCase
 import com.github.lex090.fullcoininfoimpl.domain.IGetLiveTimePriceOfCoinFlowUseCase
+import com.github.lex090.fullcoininfoimpl.presentation.viewmodel.entityUI.CoinInfoUiEntity
 import com.github.lex090.fullcoininfoimpl.presentation.viewmodel.entityUI.toCoinInfoUiEntity
+import com.github.lex090.fullcoininfoimpl.presentation.viewmodel.entityUI.toFormattedPriceText
 import kotlinx.coroutines.cancel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.launch
@@ -26,7 +28,8 @@ class FullCoinInfoViewModel(
         viewModelScope.launch {
             try {
                 val coinInfo = getCoinInfoUseCase.execute(coinId)
-                _mutableScreenStateFlow.value = BaseUiState.Success(coinInfo.toCoinInfoUiEntity())
+                _mutableScreenStateFlow.value =
+                    BaseUiState.Success(coinInfo.toCoinInfoUiEntity())
                 subscribeToRealTimePriceUpdating(coinId)
             } catch (e: Exception) {
                 _mutableScreenStateFlow.value = BaseUiState.Error(e, e.message)
@@ -38,7 +41,13 @@ class FullCoinInfoViewModel(
         getLiveTimePriceOfCoinFlowUseCase
             .execute(coinId)
             .collect {
-                //                    _mutableCoinInfoStateFlow.value = coinInfo.copy(price = it)
+                val state = screenState.value as? BaseUiState.Success
+                if (state != null) {
+                    val newValue = (state.data as CoinInfoUiEntity).copy(
+                        price = it.toFormattedPriceText()
+                    )
+                    _mutableScreenStateFlow.value = BaseUiState.Success(newValue)
+                }
             }
     }
 
