@@ -3,8 +3,8 @@ package com.github.lex090.basecoins.di
 import com.github.lex090.basecoins.data.repositoryimpl.CoinsRepositoryImpl
 import com.github.lex090.basecoins.data.services.CoinsNetworkService
 import com.github.lex090.basecoins.domain.ICoinsRepository
-import com.github.lex090.basecoins.domain.usecases.GetCoinsListUseCaseImpl
-import com.github.lex090.basecoins.domain.usecases.IGetCoinsListUseCase
+import com.github.lex090.basecoins.domain.usecases.GetCoinListFlowUseCaseImpl
+import com.github.lex090.basecoins.domain.usecases.IGetCoinListFlowUseCase
 import com.github.lex090.corenetworkapi.IRemoteNetworkServiceGenerator
 import dagger.Binds
 import dagger.Module
@@ -24,9 +24,9 @@ internal interface CoinsBindsModule {
 
     @Binds
     @GetCoinsListUseCaseDependence
-    fun bind_GetCoinsListUseCase_to_IBaseUseCase(
-        useCase: GetCoinsListUseCaseImpl
-    ): IGetCoinsListUseCase
+    fun bind_GetCoinListFlowUseCaseImpl_to_IGetCoinListFlowUseCase(
+        useCase: GetCoinListFlowUseCaseImpl
+    ): IGetCoinListFlowUseCase
 
     @Binds
     fun bind_CoinsRepositoryImpl_to_ICoinsRepository(
