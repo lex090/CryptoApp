@@ -55,10 +55,8 @@ internal class FavoritesRepositoryImpl @Inject constructor(
         favoriteCoinDao
             .subscribeOnFavoriteCoinsDbUpdating()
             .distinctUntilChanged()
-            .map { items ->
-                items.map { item ->
-                    item.toCoin()
-                }
+            .map {
+                getFavoriteCoins()
             }
             .flowOn(dispatcherIo)
 }
