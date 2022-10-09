@@ -2,8 +2,8 @@ package com.github.lex090.baseui.presentation.view.diffutil
 
 import android.annotation.SuppressLint
 import androidx.recyclerview.widget.DiffUtil
-import com.github.lex090.baseui.presentation.view.entity.CoinUiEntity
-import com.github.lex090.baseui.presentation.view.entity.DisplayableItem
+import com.github.lex090.baseui.presentation.viewmodel.entity.CoinUiEntity
+import com.github.lex090.baseui.presentation.viewmodel.entity.DisplayableItem
 import javax.inject.Inject
 
 class CoinListDiffUtilCallBack @Inject constructor() : DiffUtil.ItemCallback<DisplayableItem>() {

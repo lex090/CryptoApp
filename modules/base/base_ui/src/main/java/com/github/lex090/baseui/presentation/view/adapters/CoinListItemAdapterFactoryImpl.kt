@@ -3,8 +3,8 @@ package com.github.lex090.baseui.presentation.view.adapters
 import androidx.core.content.ContextCompat
 import com.github.lex090.baseui.R
 import com.github.lex090.baseui.databinding.ItemSmallCoinInfoBinding
-import com.github.lex090.baseui.presentation.view.entity.CoinUiEntity
-import com.github.lex090.baseui.presentation.view.entity.DisplayableItem
+import com.github.lex090.baseui.presentation.viewmodel.entity.CoinUiEntity
+import com.github.lex090.baseui.presentation.viewmodel.entity.DisplayableItem
 import com.hannesdorfmann.adapterdelegates4.AdapterDelegate
 import com.hannesdorfmann.adapterdelegates4.dsl.AdapterDelegateViewBindingViewHolder
 import com.hannesdorfmann.adapterdelegates4.dsl.adapterDelegateViewBinding

@@ -4,7 +4,7 @@ import androidx.recyclerview.widget.DiffUtil
 import com.github.lex090.baseui.presentation.view.adapters.CoinListItemAdapterFactoryImpl
 import com.github.lex090.baseui.presentation.view.adapters.ICoinListItemAdapterFactory
 import com.github.lex090.baseui.presentation.view.diffutil.CoinListDiffUtilCallBack
-import com.github.lex090.baseui.presentation.view.entity.DisplayableItem
+import com.github.lex090.baseui.presentation.viewmodel.entity.DisplayableItem
 import dagger.Binds
 import dagger.Module
 
