@@ -26,8 +26,9 @@ import com.github.lex090.fullcoininfoimpl.presentation.viewmodel.entityUI.CoinIn
 import com.github.lex090.fullcoininfoimpl.presentation.viewmodel.entityUI.DecreasePriceUiEntity
 import com.github.lex090.fullcoininfoimpl.presentation.viewmodel.entityUI.FavoriteUiEntity
 import com.github.lex090.fullcoininfoimpl.presentation.viewmodel.entityUI.IncreasePriceUiEntity
+import com.google.android.material.bottomsheet.BottomSheetBehavior
+import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
-import com.google.android.material.snackbar.Snackbar
 import com.squareup.picasso.Picasso
 import kotlinx.coroutines.flow.onStart
 import kotlinx.coroutines.launch
@@ -70,6 +71,8 @@ class FullCoinInfo : BottomSheetDialogFragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        setupBottomSheetBehavior()
+
         viewLifecycleOwner.lifecycleScope.launch {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
                 viewModel
@@ -113,7 +116,6 @@ class FullCoinInfo : BottomSheetDialogFragment() {
         message: String? = null
     ) {
         showLoadingState()
-        Snackbar.make(this.requireView(), message ?: "", Snackbar.LENGTH_SHORT).show()
         Log.i("myDebug", "processError: exception -> ${exception.message}")
     }
 
@@ -182,6 +184,12 @@ class FullCoinInfo : BottomSheetDialogFragment() {
             .placeholder(R.drawable.round_background_shimmer)
             .error(R.drawable.round_background_shimmer)
             .into(viewBinding.coinInfoLayout.ivCoin)
+    }
+
+    private fun setupBottomSheetBehavior() {
+        val behavior = (dialog as BottomSheetDialog).behavior
+        behavior.state = BottomSheetBehavior.STATE_EXPANDED
+        behavior.skipCollapsed = true
     }
 
     private fun injectDependencies() {

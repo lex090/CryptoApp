@@ -9,8 +9,8 @@
 
     <com.facebook.shimmer.ShimmerFrameLayout
         android:id="@+id/shimmerLayout"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -23,6 +23,16 @@
     <include
         android:id="@+id/coinInfoLayout"
         layout="@layout/item_small_coin_info"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <View
+        android:id="@+id/topCenterDivider"
+        android:layout_width="36dp"
+        android:layout_height="4dp"
+        android:layout_marginTop="4dp"
+        android:background="@drawable/round_background"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -229,6 +239,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:visibility="visible"
-        app:constraint_referenced_ids="coinInfoLayout,marketTitle,marketCardView,tvDescription,tvDescriptionTitle,tvSeeModeDescription" />
+        app:constraint_referenced_ids="topCenterDivider, coinInfoLayout,marketTitle,marketCardView,tvDescription,tvDescriptionTitle,tvSeeModeDescription" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
