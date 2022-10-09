@@ -1,0 +1,111 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<SmellBaseline>
+  <ManuallySuppressedIssues/>
+  <CurrentIssues>
+    <ID>EmptyFunctionBlock:CoinsListFragment.kt$CoinsListFragment${ }</ID>
+    <ID>EmptyTryBlock:CryptoAppApplication.kt$CryptoAppApplication${ }</ID>
+    <ID>LongParameterList:CoinsNetworkService.kt$CoinsNetworkService$( @Path("id") id: String, @Query("localization") localization: Boolean = false, @Query("tickers") tickers: Boolean = false, @Query("market_data") marketData: Boolean = true, @Query("community_data") communityData: Boolean = true, @Query("developer_data") developerData: Boolean = true, @Query("sparkline") sparkline: Boolean = false, )</ID>
+    <ID>LongParameterList:CoinsNetworkService.kt$CoinsNetworkService$( @Query("vs_currency") vsCurrency: String = "usd", @Query("ids") ids: String? = null, @Query("category") category: String? = null, @Query("order") order: String = "market_cap_desc", @Query("per_page") perPage: Int = 100, @Query("page") page: Int = 1, @Query("sparkline") sparkline: Boolean = false, @Query("price_change_percentage") priceChangePercentage: String = "1h,24h,7d,14d,30d", )</ID>
+    <ID>MagicNumber:AppFlowViewModel.kt$AppFlowViewModel$5000</ID>
+    <ID>MagicNumber:FavoriteCoinsViewModel.kt$FavoriteCoinsViewModel$5000</ID>
+    <ID>MatchingDeclarationName:Qualifiers.kt$ApplicationContext</ID>
+    <ID>MatchingDeclarationName:Qualifiers.kt$GetCoinsListUseCaseDependence</ID>
+    <ID>MatchingDeclarationName:Results.kt$ResultOf&lt;out T></ID>
+    <ID>NewLineAtEndOfFile:AddCoinToFavoritesUseCaseImpl.kt$com.github.lex090.basefavoriteimpl.domain.usecases.AddCoinToFavoritesUseCaseImpl.kt</ID>
+    <ID>NewLineAtEndOfFile:AppActivity.kt$com.github.lex090.featureappactivityimpl.AppActivity.kt</ID>
+    <ID>NewLineAtEndOfFile:AppDataBase.kt$com.github.lex090.coredbimpl.database.AppDataBase.kt</ID>
+    <ID>NewLineAtEndOfFile:AppDependenciesProvider.kt$com.github.lex090.corediapi.AppDependenciesProvider.kt</ID>
+    <ID>NewLineAtEndOfFile:AppDependenciesProvidersHolder.kt$com.github.lex090.corediapi.AppDependenciesProvidersHolder.kt</ID>
+    <ID>NewLineAtEndOfFile:AppFlowFragment.kt$com.github.lex090.featureappflowfragmentimpl.presentation.view.AppFlowFragment.kt</ID>
+    <ID>NewLineAtEndOfFile:AppFlowFragmentComponent.kt$com.github.lex090.featureappflowfragmentimpl.di.AppFlowFragmentComponent.kt</ID>
+    <ID>NewLineAtEndOfFile:AppFlowViewModel.kt$com.github.lex090.featureappflowfragmentimpl.presentation.viewmodel.AppFlowViewModel.kt</ID>
+    <ID>NewLineAtEndOfFile:ApplicationComponent.kt$com.github.lex090.cryptoapp.di.ApplicationComponent.kt</ID>
+    <ID>NewLineAtEndOfFile:BaseApplicationModule.kt$com.github.lex090.cryptoapp.di.BaseApplicationModule.kt</ID>
+    <ID>NewLineAtEndOfFile:BaseCoinListFragmentModule.kt$com.github.lex090.featurecoinslistfragmentimpl.di.BaseCoinListFragmentModule.kt</ID>
+    <ID>NewLineAtEndOfFile:BaseCoinsModule.kt$com.github.lex090.basecoins.di.BaseCoinsModule.kt</ID>
+    <ID>NewLineAtEndOfFile:BaseFavoriteCoinsFragmentModule.kt$com.github.lex090.featurefavoritecoinsfragmentimpl.di.BaseFavoriteCoinsFragmentModule.kt</ID>
+    <ID>NewLineAtEndOfFile:BaseFavoriteModule.kt$com.github.lex090.basefavoriteimpl.di.BaseFavoriteModule.kt</ID>
+    <ID>NewLineAtEndOfFile:BaseFullCoinInfoModule.kt$com.github.lex090.fullcoininfoimpl.di.BaseFullCoinInfoModule.kt</ID>
+    <ID>NewLineAtEndOfFile:BaseUIModule.kt$com.github.lex090.baseui.di.BaseUIModule.kt</ID>
+    <ID>NewLineAtEndOfFile:BaseUiState.kt$com.github.lex090.coreapi.presentation.uiSate.BaseUiState.kt</ID>
+    <ID>NewLineAtEndOfFile:BaseUrlProviderImpl.kt$com.github.lex090.corenetworkimpl.BaseUrlProviderImpl.kt</ID>
+    <ID>NewLineAtEndOfFile:ClearFavoritesUseCaseImpl.kt$com.github.lex090.basefavoriteimpl.domain.usecases.ClearFavoritesUseCaseImpl.kt</ID>
+    <ID>NewLineAtEndOfFile:Coin.kt$com.github.lex090.basecoins.domain.entity.Coin.kt</ID>
+    <ID>NewLineAtEndOfFile:CoinInfoUiEntity.kt$com.github.lex090.fullcoininfoimpl.presentation.viewmodel.entityUI.CoinInfoUiEntity.kt</ID>
+    <ID>NewLineAtEndOfFile:CoinListDiffAdapter.kt$com.github.lex090.baseui.presentation.view.diffutil.CoinListDiffAdapter.kt</ID>
+    <ID>NewLineAtEndOfFile:CoinListDiffUtilCallBack.kt$com.github.lex090.baseui.presentation.view.diffutil.CoinListDiffUtilCallBack.kt</ID>
+    <ID>NewLineAtEndOfFile:CoinListFragmentComponent.kt$com.github.lex090.featurecoinslistfragmentimpl.di.CoinListFragmentComponent.kt</ID>
+    <ID>NewLineAtEndOfFile:CoinListItemAdapterFactoryImpl.kt$com.github.lex090.baseui.presentation.view.adapters.CoinListItemAdapterFactoryImpl.kt</ID>
+    <ID>NewLineAtEndOfFile:CoinListViewModel.kt$com.github.lex090.featurecoinslistfragmentimpl.presentation.viewmodel.CoinListViewModel.kt</ID>
+    <ID>NewLineAtEndOfFile:CoinResponse.kt$com.github.lex090.basecoins.data.responses.CoinResponse.kt</ID>
+    <ID>NewLineAtEndOfFile:CoinUiEntity.kt$com.github.lex090.baseui.presentation.view.entity.CoinUiEntity.kt</ID>
+    <ID>NewLineAtEndOfFile:CoinsListFragment.kt$com.github.lex090.featurecoinslistfragmentimpl.presentation.view.CoinsListFragment.kt</ID>
+    <ID>NewLineAtEndOfFile:CoinsListNetworkMap.kt$com.github.lex090.basecoins.data.CoinsListNetworkMap.kt</ID>
+    <ID>NewLineAtEndOfFile:CoinsNetworkService.kt$com.github.lex090.basecoins.data.services.CoinsNetworkService.kt</ID>
+    <ID>NewLineAtEndOfFile:CoinsRepositoryImpl.kt$com.github.lex090.basecoins.data.repositoryimpl.CoinsRepositoryImpl.kt</ID>
+    <ID>NewLineAtEndOfFile:CommunityData.kt$com.github.lex090.basecoins.data.responses.CommunityData.kt</ID>
+    <ID>NewLineAtEndOfFile:CoreComponent.kt$com.github.lex090.corediimpl.CoreComponent.kt</ID>
+    <ID>NewLineAtEndOfFile:CoreComponentDependencies.kt$com.github.lex090.corediapi.CoreComponentDependencies.kt</ID>
+    <ID>NewLineAtEndOfFile:CoreComponentDependenciesFactory.kt$com.github.lex090.corefactory.CoreComponentDependenciesFactory.kt</ID>
+    <ID>NewLineAtEndOfFile:CryptoAppApplication.kt$com.github.lex090.cryptoapp.CryptoAppApplication.kt</ID>
+    <ID>NewLineAtEndOfFile:Description.kt$com.github.lex090.basecoins.data.responses.Description.kt</ID>
+    <ID>NewLineAtEndOfFile:DispatchersModule.kt$com.github.lex090.corediimpl.DispatchersModule.kt</ID>
+    <ID>NewLineAtEndOfFile:ExampleInstrumentedTest.kt$com.github.lex090.cryptoapp.ExampleInstrumentedTest.kt</ID>
+    <ID>NewLineAtEndOfFile:FavoriteCoinEntity.kt$com.github.lex090.coredbapi.data.entity.FavoriteCoinEntity.kt</ID>
+    <ID>NewLineAtEndOfFile:FavoriteCoinsDao.kt$com.github.lex090.coredbapi.data.dao.FavoriteCoinsDao.kt</ID>
+    <ID>NewLineAtEndOfFile:FavoriteCoinsFragment.kt$com.github.lex090.featurefavoritecoinsfragmentimpl.presentation.view.FavoriteCoinsFragment.kt</ID>
+    <ID>NewLineAtEndOfFile:FavoriteCoinsFragmentComponent.kt$com.github.lex090.featurefavoritecoinsfragmentimpl.di.FavoriteCoinsFragmentComponent.kt</ID>
+    <ID>NewLineAtEndOfFile:FavoriteCoinsViewModel.kt$com.github.lex090.featurefavoritecoinsfragmentimpl.presentation.viewmodel.FavoriteCoinsViewModel.kt</ID>
+    <ID>NewLineAtEndOfFile:FavoritesCoinsCountChangedUseCaseImpl.kt$com.github.lex090.basefavoriteimpl.domain.usecases.FavoritesCoinsCountChangedUseCaseImpl.kt</ID>
+    <ID>NewLineAtEndOfFile:FavoritesRepositoryImpl.kt$com.github.lex090.basefavoriteimpl.data.repositoryimpl.FavoritesRepositoryImpl.kt</ID>
+    <ID>NewLineAtEndOfFile:FullCoinInfo.kt$com.github.lex090.fullcoininfoimpl.presentation.view.FullCoinInfo.kt</ID>
+    <ID>NewLineAtEndOfFile:FullCoinInfoComponent.kt$com.github.lex090.fullcoininfoimpl.di.FullCoinInfoComponent.kt</ID>
+    <ID>NewLineAtEndOfFile:FullCoinInfoRepositoryImpl.kt$com.github.lex090.fullcoininfoimpl.data.FullCoinInfoRepositoryImpl.kt</ID>
+    <ID>NewLineAtEndOfFile:FullCoinInfoResponse.kt$com.github.lex090.basecoins.data.responses.FullCoinInfoResponse.kt</ID>
+    <ID>NewLineAtEndOfFile:FullCoinInfoViewModel.kt$com.github.lex090.fullcoininfoimpl.presentation.viewmodel.FullCoinInfoViewModel.kt</ID>
+    <ID>NewLineAtEndOfFile:GetCoinInfoUseCaseImpl.kt$com.github.lex090.fullcoininfoimpl.domain.GetCoinInfoUseCaseImpl.kt</ID>
+    <ID>NewLineAtEndOfFile:GetCoinsListUseCaseImpl.kt$com.github.lex090.basecoins.domain.usecases.GetCoinsListUseCaseImpl.kt</ID>
+    <ID>NewLineAtEndOfFile:GetFavoriteCoinsUseCaseImpl.kt$com.github.lex090.basefavoriteimpl.domain.usecases.GetFavoriteCoinsUseCaseImpl.kt</ID>
+    <ID>NewLineAtEndOfFile:GetFavoriteCoinsWithRemoteUpdatingUseCaseImpl.kt$com.github.lex090.basefavoriteimpl.domain.usecases.GetFavoriteCoinsWithRemoteUpdatingUseCaseImpl.kt</ID>
+    <ID>NewLineAtEndOfFile:GetLiveTimePriceOfCoinFlowUseCaseImpl.kt$com.github.lex090.fullcoininfoimpl.domain.GetLiveTimePriceOfCoinFlowUseCaseImpl.kt</ID>
+    <ID>NewLineAtEndOfFile:IBaseEmptyInputFlowUseCase.kt$com.github.lex090.coreapi.domain.IBaseEmptyInputFlowUseCase.kt</ID>
+    <ID>NewLineAtEndOfFile:IBaseEmptyInputUseCase.kt$com.github.lex090.coreapi.domain.IBaseEmptyInputUseCase.kt</ID>
+    <ID>NewLineAtEndOfFile:IBaseFlowUseCase.kt$com.github.lex090.coreapi.domain.IBaseFlowUseCase.kt</ID>
+    <ID>NewLineAtEndOfFile:IBaseUseCase.kt$com.github.lex090.coreapi.domain.IBaseUseCase.kt</ID>
+    <ID>NewLineAtEndOfFile:ICoinListItemAdapterFactory.kt$com.github.lex090.baseui.presentation.view.adapters.ICoinListItemAdapterFactory.kt</ID>
+    <ID>NewLineAtEndOfFile:ICoinRealTimeService.kt$com.github.lex090.fullcoininfoimpl.data.realtimeservice.ICoinRealTimeService.kt</ID>
+    <ID>NewLineAtEndOfFile:ICoinsRepository.kt$com.github.lex090.basecoins.domain.ICoinsRepository.kt</ID>
+    <ID>NewLineAtEndOfFile:IFavoritesRepository.kt$com.github.lex090.basefavoriteimpl.domain.IFavoritesRepository.kt</ID>
+    <ID>NewLineAtEndOfFile:IFullCoinInfoRepository.kt$com.github.lex090.fullcoininfoimpl.domain.IFullCoinInfoRepository.kt</ID>
+    <ID>NewLineAtEndOfFile:IMapper.kt$com.github.lex090.coreapi.data.IMapper.kt</ID>
+    <ID>NewLineAtEndOfFile:IRemoteNetworkServiceGenerator.kt$com.github.lex090.corenetworkapi.IRemoteNetworkServiceGenerator.kt</ID>
+    <ID>NewLineAtEndOfFile:IUrlProvider.kt$com.github.lex090.corenetworkimpl.IUrlProvider.kt</ID>
+    <ID>NewLineAtEndOfFile:Image.kt$com.github.lex090.basecoins.data.responses.Image.kt</ID>
+    <ID>NewLineAtEndOfFile:Links.kt$com.github.lex090.basecoins.data.responses.Links.kt</ID>
+    <ID>NewLineAtEndOfFile:Mappers.kt$com.github.lex090.basecoins.data.Mappers.kt</ID>
+    <ID>NewLineAtEndOfFile:Mappers.kt$com.github.lex090.basefavoriteimpl.data.Mappers.kt</ID>
+    <ID>NewLineAtEndOfFile:NetworkModule.kt$com.github.lex090.corenetworkimpl.NetworkModule.kt</ID>
+    <ID>NewLineAtEndOfFile:Qualifiers.kt$com.github.lex090.basecoins.di.Qualifiers.kt</ID>
+    <ID>NewLineAtEndOfFile:Qualifiers.kt$com.github.lex090.corediapi.Qualifiers.kt</ID>
+    <ID>NewLineAtEndOfFile:Qualifiers.kt$com.github.lex090.corenetworkimpl.Qualifiers.kt</ID>
+    <ID>NewLineAtEndOfFile:RealTimeNetworkServiceFactory.kt$com.github.lex090.corenetworkapi.RealTimeNetworkServiceFactory.kt</ID>
+    <ID>NewLineAtEndOfFile:RemoteNetworkServiceGeneratorImpl.kt$com.github.lex090.corenetworkimpl.RemoteNetworkServiceGeneratorImpl.kt</ID>
+    <ID>NewLineAtEndOfFile:RemoveCoinFromFavoritesUseCaseImpl.kt$com.github.lex090.basefavoriteimpl.domain.usecases.RemoveCoinFromFavoritesUseCaseImpl.kt</ID>
+    <ID>NewLineAtEndOfFile:ReposUrl.kt$com.github.lex090.basecoins.data.responses.ReposUrl.kt</ID>
+    <ID>NewLineAtEndOfFile:Results.kt$com.github.lex090.coreapi.Results.kt</ID>
+    <ID>NewLineAtEndOfFile:ScarletLifecycle.kt$com.github.lex090.fullcoininfoimpl.data.ScarletLifecycle.kt</ID>
+    <ID>NewLineAtEndOfFile:Timeout.kt$com.github.lex090.corenetworkimpl.Timeout.kt</ID>
+    <ID>NewLineAtEndOfFile:build.gradle.kts$.build.gradle.kts</ID>
+    <ID>SpreadOperator:CoinsRepositoryImpl.kt$CoinsRepositoryImpl$(*listOfPairs)</ID>
+    <ID>SwallowedException:CryptoAppApplication.kt$CryptoAppApplication$e:Exception</ID>
+    <ID>ThrowingExceptionsWithoutMessageOrCause:RealTimeNetworkServiceFactory.kt$FlowStreamAdapter.Factory$IllegalArgumentException()</ID>
+    <ID>TooGenericExceptionCaught:CryptoAppApplication.kt$CryptoAppApplication$e:Exception</ID>
+    <ID>TooGenericExceptionCaught:FullCoinInfoViewModel.kt$FullCoinInfoViewModel$e: Exception</ID>
+    <ID>TooManyFunctions:CoinsListFragment.kt$CoinsListFragment : Fragment</ID>
+    <ID>TooManyFunctions:FullCoinInfo.kt$FullCoinInfo : BottomSheetDialogFragment</ID>
+    <ID>UnusedPrivateMember:CoinsListFragment.kt$CoinsListFragment$error: ResultOf.Error</ID>
+    <ID>UnusedPrivateMember:CoinsListFragment.kt$CoinsListFragment$private fun showError(error: ResultOf.Error)</ID>
+    <ID>UnusedPrivateMember:FavoriteCoinsViewModel.kt$FavoriteCoinsViewModel$position: Int</ID>
+    <ID>UnusedPrivateMember:FullCoinInfo.kt$FullCoinInfo$exception: Throwable</ID>
+  </CurrentIssues>
+</SmellBaseline>
