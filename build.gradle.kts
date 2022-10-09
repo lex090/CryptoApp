@@ -43,3 +43,10 @@ val detektProjectBaseline by tasks.registering(io.gitlab.arturbosch.detekt.Detek
     config.setFrom(files("$rootDir/config/detekt/detekt.yml"))
     baseline.set(file("$rootDir/config/detekt/baseline.xml"))
 }
+
+tasks.register("installGitHook", Copy::class) {
+    from(file("$rootDir/githooks/pre-commit"))
+    into(file("$rootDir/.git/hooks"))
+    fileMode = 777
+}
+tasks.getByPath(":app:preBuild").dependsOn(":installGitHook")

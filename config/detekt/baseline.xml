@@ -2,7 +2,7 @@
 <SmellBaseline>
   <ManuallySuppressedIssues/>
   <CurrentIssues>
-    <ID>EmptyFunctionBlock:CoinsListFragment.kt$CoinsListFragment${ }</ID>
+<!--    <ID>EmptyFunctionBlock:CoinsListFragment.kt$CoinsListFragment${ }</ID>-->
     <ID>EmptyTryBlock:CryptoAppApplication.kt$CryptoAppApplication${ }</ID>
     <ID>LongParameterList:CoinsNetworkService.kt$CoinsNetworkService$( @Path("id") id: String, @Query("localization") localization: Boolean = false, @Query("tickers") tickers: Boolean = false, @Query("market_data") marketData: Boolean = true, @Query("community_data") communityData: Boolean = true, @Query("developer_data") developerData: Boolean = true, @Query("sparkline") sparkline: Boolean = false, )</ID>
     <ID>LongParameterList:CoinsNetworkService.kt$CoinsNetworkService$( @Query("vs_currency") vsCurrency: String = "usd", @Query("ids") ids: String? = null, @Query("category") category: String? = null, @Query("order") order: String = "market_cap_desc", @Query("per_page") perPage: Int = 100, @Query("page") page: Int = 1, @Query("sparkline") sparkline: Boolean = false, @Query("price_change_percentage") priceChangePercentage: String = "1h,24h,7d,14d,30d", )</ID>
