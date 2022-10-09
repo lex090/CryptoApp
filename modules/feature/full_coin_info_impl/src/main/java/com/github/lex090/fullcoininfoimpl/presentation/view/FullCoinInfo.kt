@@ -26,10 +26,12 @@ import com.github.lex090.fullcoininfoimpl.presentation.viewmodel.entityUI.CoinIn
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
+import com.google.android.material.snackbar.Snackbar
 import com.squareup.picasso.Picasso
 import kotlinx.coroutines.flow.onStart
 import kotlinx.coroutines.launch
 import javax.inject.Inject
+import com.github.lex090.fullcoininfoimpl.R as MainR
 
 class FullCoinInfo : BottomSheetDialogFragment() {
 
@@ -69,7 +71,23 @@ class FullCoinInfo : BottomSheetDialogFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         setupBottomSheetBehavior()
+        subscribeToScreenInfo()
+    }
 
+    override fun onDestroyView() {
+        scarletLifecycle.stop()
+        viewModel.clear()
+        _viewBinding = null
+        super.onDestroyView()
+    }
+
+    private fun setupBottomSheetBehavior() {
+        val behavior = (dialog as BottomSheetDialog).behavior
+        behavior.state = BottomSheetBehavior.STATE_EXPANDED
+        behavior.skipCollapsed = true
+    }
+
+    private fun subscribeToScreenInfo() {
         viewLifecycleOwner.lifecycleScope.launch {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
                 viewModel
@@ -81,13 +99,6 @@ class FullCoinInfo : BottomSheetDialogFragment() {
                     .collect(::processState)
             }
         }
-    }
-
-    override fun onDestroyView() {
-        scarletLifecycle.stop()
-        viewModel.clear()
-        _viewBinding = null
-        super.onDestroyView()
     }
 
     private fun processState(state: BaseUiState<UiStateEntity>) {
@@ -103,6 +114,7 @@ class FullCoinInfo : BottomSheetDialogFragment() {
     }
 
     private fun showLoadingState() {
+        viewBinding.contextMenuItemSnackBarHost.isVisible = false
         viewBinding.mainIdGroup.visibility = View.INVISIBLE
         viewBinding.shimmerLayout.isVisible = true
         viewBinding.shimmerLayout.startShimmer()
@@ -113,7 +125,19 @@ class FullCoinInfo : BottomSheetDialogFragment() {
         message: String? = null
     ) {
         showLoadingState()
-        Log.i("myDebug", "processError: exception -> ${exception.message}")
+        val errorMessage = message ?: requireContext().getString(MainR.string.defaultErrorText)
+        showErrorSnackBar(message = errorMessage)
+    }
+
+    private fun showErrorSnackBar(message: String) {
+        viewBinding.contextMenuItemSnackBarHost.isVisible = true
+        val view = viewBinding.contextMenuItemSnackBarHost
+        Snackbar.make(view, message, Snackbar.LENGTH_INDEFINITE).apply {
+            setAction(MainR.string.retryErrorButton) {
+                subscribeToScreenInfo()
+                dismiss()
+            }
+        }.show()
     }
 
     private fun processSuccessStateData(uiStateEntity: UiStateEntity) {
@@ -127,6 +151,7 @@ class FullCoinInfo : BottomSheetDialogFragment() {
     private fun setAndShowFullCoinDataToScreen(coinInfo: CoinInfoUiEntity) {
         Log.i("myDebug", "setAndShowFullCoinDataToScreen: ${coinInfo}")
         with(viewBinding) {
+            contextMenuItemSnackBarHost.isVisible = false
             mainIdGroup.isVisible = true
             shimmerLayout.stopShimmer()
             shimmerLayout.isVisible = false
@@ -181,12 +206,6 @@ class FullCoinInfo : BottomSheetDialogFragment() {
             .placeholder(R.drawable.round_background_shimmer)
             .error(R.drawable.round_background_shimmer)
             .into(viewBinding.coinInfoLayout.ivCoin)
-    }
-
-    private fun setupBottomSheetBehavior() {
-        val behavior = (dialog as BottomSheetDialog).behavior
-        behavior.state = BottomSheetBehavior.STATE_EXPANDED
-        behavior.skipCollapsed = true
     }
 
     private fun injectDependencies() {
