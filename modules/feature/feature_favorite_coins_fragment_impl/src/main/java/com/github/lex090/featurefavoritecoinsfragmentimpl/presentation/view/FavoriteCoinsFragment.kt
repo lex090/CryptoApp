@@ -53,7 +53,7 @@ class FavoriteCoinsFragment : Fragment() {
                 coinListItemAdapterFactory
                     .createCommonCoinListItemAdapterFactory(
                         this@FavoriteCoinsFragment::onCoinItemClick,
-                        { _, _ -> },
+                        {},
                         this@FavoriteCoinsFragment::clickOnRemoveCoinFromFavorites,
                     )
             )
@@ -112,10 +112,8 @@ class FavoriteCoinsFragment : Fragment() {
         adapter.items = result
     }
 
-    private fun clickOnRemoveCoinFromFavorites(position: Int, coinUiEntity: CoinUiEntity) {
-        viewModel.clickOnRemoveCoinFromFavorites(
-            position = position, coin = coinUiEntity.toCoin()
-        )
+    private fun clickOnRemoveCoinFromFavorites(coinUiEntity: CoinUiEntity) {
+        viewModel.clickOnRemoveCoinFromFavorites(coin = coinUiEntity.originalData)
     }
 
     private fun onCoinItemClick(coinUiEntity: CoinUiEntity) {

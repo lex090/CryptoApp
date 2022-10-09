@@ -27,7 +27,7 @@ class CoinListViewModel(
         MutableStateFlow(BaseUiState.Loading)
     val screenState: MutableStateFlow<BaseUiState<UiStateEntity>> = _mutableScreenStateFlow
 
-    fun onViewsInit() {
+    fun initScreenStateSubscription() {
         viewModelScope.launch {
             _mutableScreenStateFlow.value = BaseUiState.Loading
             when (val result = getCoinsFromRepository()) {
@@ -43,37 +43,22 @@ class CoinListViewModel(
         }
     }
 
-    fun clickOnAddCoinToFavorites(position: Int, coin: Coin) {
+    fun clickOnAddCoinToFavorites(coin: Coin) {
         viewModelScope.launch {
-            addCoinToFavoritesUseCase.execute(data = coin)
             val newCoin = coin.copy(isFavorite = true)
-            changeListItem(position, newCoin)
+            addCoinToFavoritesUseCase.execute(data = newCoin)
         }
     }
 
-    fun clickOnRemoveCoinFromFavorites(position: Int, coin: Coin) {
+    fun clickOnRemoveCoinFromFavorites(coin: Coin) {
         viewModelScope.launch {
-            removeCoinFromFavoritesUseCase.execute(data = coin)
             val newCoin = coin.copy(isFavorite = false)
-            changeListItem(position, newCoin)
+            removeCoinFromFavoritesUseCase.execute(data = newCoin)
         }
-    }
-
-    @SuppressWarnings("UnusedPrivateMember")
-    private fun changeListItem(
-        position: Int,
-        coin: Coin
-    ) {
-//        val coinList = coinsList.value
-//        val items = mutableListOf<Coin>()
-//        items.addAll(coinList)
-//        items[position] = coin
-//        _mutableCoinsListStateFlow.value = items
     }
 
     private suspend fun getCoinsFromRepository(): ResultOf<List<Coin>> =
         getCoinsListUseCase.execute()
-
 
     class Factory @Inject constructor(
         @GetCoinsListUseCaseDependence

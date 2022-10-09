@@ -8,7 +8,7 @@ interface ICoinListItemAdapterFactory {
 
     fun createCommonCoinListItemAdapterFactory(
         onCoinItemClick: (coinUiEntity: CoinUiEntity) -> Unit,
-        addCoinToFavoritesClickListener: (position: Int, coinUiEntity: CoinUiEntity) -> Unit,
-        removeCoinFromFavoritesListener: (position: Int, coinUiEntity: CoinUiEntity) -> Unit,
+        addCoinToFavoritesClickListener: (coinUiEntity: CoinUiEntity) -> Unit,
+        removeCoinFromFavoritesListener: (coinUiEntity: CoinUiEntity) -> Unit,
     ): AdapterDelegate<List<DisplayableItem>>
 }

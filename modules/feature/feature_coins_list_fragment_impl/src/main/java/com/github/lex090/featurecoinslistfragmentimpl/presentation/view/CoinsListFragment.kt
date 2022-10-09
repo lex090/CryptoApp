@@ -18,7 +18,6 @@ import com.github.lex090.baseui.presentation.view.diffutil.CoinListDiffAdapter
 import com.github.lex090.baseui.presentation.viewmodel.entity.CoinUiEntity
 import com.github.lex090.baseui.presentation.viewmodel.entity.CoinUiEntityList
 import com.github.lex090.baseui.presentation.viewmodel.entity.DisplayableItem
-import com.github.lex090.baseui.presentation.viewmodel.entity.toCoin
 import com.github.lex090.coreapi.presentation.uiSate.BaseUiState
 import com.github.lex090.coreapi.presentation.uiSate.UiStateEntity
 import com.github.lex090.corediapi.AppDependenciesProvidersHolder
@@ -85,7 +84,7 @@ class CoinsListFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initRecyclerView()
-        initDataSubscriptions()
+        subscribeToScreenState()
     }
 
     override fun onDestroyView() {
@@ -138,19 +137,19 @@ class CoinsListFragment : Fragment() {
         val view = viewBinding.contextMenuItemSnackBarHost
         Snackbar.make(view, message, Snackbar.LENGTH_INDEFINITE).apply {
             setAction(MainR.string.retryErrorButton) {
-                initDataSubscriptions()
+                subscribeToScreenState()
                 dismiss()
             }
         }.show()
     }
 
-    private fun initDataSubscriptions() {
+    private fun subscribeToScreenState() {
         viewLifecycleOwner.lifecycleScope.launch {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
                 viewModel
                     .screenState
                     .onStart {
-                        viewModel.onViewsInit()
+                        viewModel.initScreenStateSubscription()
                     }
                     .collect(::processState)
             }
@@ -162,16 +161,12 @@ class CoinsListFragment : Fragment() {
         viewBinding.rvCoinsList.layoutManager = LinearLayoutManager(context)
     }
 
-    private fun clickOnAddCoinToFavorites(position: Int, coinUiEntity: CoinUiEntity) {
-        viewModel.clickOnAddCoinToFavorites(
-            position = position, coin = coinUiEntity.toCoin(isFavoriteNewValue = true)
-        )
+    private fun clickOnAddCoinToFavorites(coinUiEntity: CoinUiEntity) {
+        viewModel.clickOnAddCoinToFavorites(coin = coinUiEntity.originalData)
     }
 
-    private fun clickOnRemoveCoinFromFavorites(position: Int, coinUiEntity: CoinUiEntity) {
-        viewModel.clickOnRemoveCoinFromFavorites(
-            position = position, coin = coinUiEntity.toCoin(isFavoriteNewValue = false)
-        )
+    private fun clickOnRemoveCoinFromFavorites(coinUiEntity: CoinUiEntity) {
+        viewModel.clickOnRemoveCoinFromFavorites(coin = coinUiEntity.originalData)
     }
 
     private fun onCoinItemClick(coinUiEntity: CoinUiEntity) {

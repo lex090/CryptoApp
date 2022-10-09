@@ -26,7 +26,7 @@ class FavoriteCoinsViewModel(
                 listOf()
             )
 
-    fun clickOnRemoveCoinFromFavorites(position: Int, coin: Coin) {
+    fun clickOnRemoveCoinFromFavorites(coin: Coin) {
         viewModelScope.launch {
             removeCoinFromFavoritesUseCase.execute(data = coin)
         }

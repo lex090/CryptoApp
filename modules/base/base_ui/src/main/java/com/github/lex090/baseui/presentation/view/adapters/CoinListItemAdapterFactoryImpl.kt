@@ -14,8 +14,8 @@ internal class CoinListItemAdapterFactoryImpl @Inject constructor() : ICoinListI
 
     override fun createCommonCoinListItemAdapterFactory(
         onCoinItemClick: (coinUiEntity: CoinUiEntity) -> Unit,
-        addCoinToFavoritesClickListener: (position: Int, coinUiEntity: CoinUiEntity) -> Unit,
-        removeCoinFromFavoritesListener: (position: Int, coinUiEntity: CoinUiEntity) -> Unit
+        addCoinToFavoritesClickListener: (coinUiEntity: CoinUiEntity) -> Unit,
+        removeCoinFromFavoritesListener: (coinUiEntity: CoinUiEntity) -> Unit
     ): AdapterDelegate<List<DisplayableItem>> =
         adapterDelegateViewBinding<CoinUiEntity, DisplayableItem, ItemSmallCoinInfoBinding>(
             { layoutInflater, root ->
@@ -28,9 +28,9 @@ internal class CoinListItemAdapterFactoryImpl @Inject constructor() : ICoinListI
         ) {
             binding.btnFavorite.setOnClickListener {
                 if (item.isFavorite)
-                    removeCoinFromFavoritesListener(adapterPosition, item)
+                    removeCoinFromFavoritesListener(item)
                 else
-                    addCoinToFavoritesClickListener(adapterPosition, item)
+                    addCoinToFavoritesClickListener(item)
             }
 
             binding.root.setOnClickListener {
