@@ -64,7 +64,8 @@ class AppFlowFragment : Fragment() {
             childFragmentManager.findFragmentById(R.id.mainFlowFragmentContainer) as NavHostFragment
         val navController = navHostFragment.navController
 
-        viewBinding.bottomNavigationView?.setupWithNavController(navController = navController)
+        viewBinding.bottomNavigationView.elevation = 0f
+        viewBinding.bottomNavigationView.setupWithNavController(navController = navController)
     }
 
     private fun initSubscriptionOnViewModel() {
