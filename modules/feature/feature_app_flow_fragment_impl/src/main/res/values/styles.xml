@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="Widget.App.BottomNavigationView" parent="Widget.MaterialComponents.BottomNavigationView.Colored">
+        <item name="itemTextColor">@color/main_gray_nav_bar</item>
+        <item name="itemTextAppearanceActive">@style/NormalTextAppearanceActive</item>
+        <item name="itemTextAppearanceInactive">@style/NormalTextAppearanceInactive</item>
+    </style>
+</resources>
