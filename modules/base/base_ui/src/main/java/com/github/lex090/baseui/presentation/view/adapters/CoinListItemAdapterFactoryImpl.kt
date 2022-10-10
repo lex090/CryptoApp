@@ -1,10 +1,10 @@
 package com.github.lex090.baseui.presentation.view.adapters
 
-import androidx.core.content.ContextCompat
-import com.github.lex090.baseui.R
 import com.github.lex090.baseui.databinding.ItemSmallCoinInfoBinding
-import com.github.lex090.baseui.presentation.view.entity.CoinUiEntity
-import com.github.lex090.baseui.presentation.view.entity.DisplayableItem
+import com.github.lex090.baseui.presentation.view.checkFavorite
+import com.github.lex090.baseui.presentation.view.loadCoinImageToIV
+import com.github.lex090.baseui.presentation.viewmodel.entity.CoinUiEntity
+import com.github.lex090.baseui.presentation.viewmodel.entity.DisplayableItem
 import com.hannesdorfmann.adapterdelegates4.AdapterDelegate
 import com.hannesdorfmann.adapterdelegates4.dsl.AdapterDelegateViewBindingViewHolder
 import com.hannesdorfmann.adapterdelegates4.dsl.adapterDelegateViewBinding
@@ -14,8 +14,8 @@ internal class CoinListItemAdapterFactoryImpl @Inject constructor() : ICoinListI
 
     override fun createCommonCoinListItemAdapterFactory(
         onCoinItemClick: (coinUiEntity: CoinUiEntity) -> Unit,
-        addCoinToFavoritesClickListener: (position: Int, coinUiEntity: CoinUiEntity) -> Unit,
-        removeCoinFromFavoritesListener: (position: Int, coinUiEntity: CoinUiEntity) -> Unit
+        addCoinToFavoritesClickListener: (coinUiEntity: CoinUiEntity) -> Unit,
+        removeCoinFromFavoritesListener: (coinUiEntity: CoinUiEntity) -> Unit
     ): AdapterDelegate<List<DisplayableItem>> =
         adapterDelegateViewBinding<CoinUiEntity, DisplayableItem, ItemSmallCoinInfoBinding>(
             { layoutInflater, root ->
@@ -28,9 +28,9 @@ internal class CoinListItemAdapterFactoryImpl @Inject constructor() : ICoinListI
         ) {
             binding.btnFavorite.setOnClickListener {
                 if (item.isFavorite)
-                    removeCoinFromFavoritesListener(adapterPosition, item)
+                    removeCoinFromFavoritesListener(item)
                 else
-                    addCoinToFavoritesClickListener(adapterPosition, item)
+                    addCoinToFavoritesClickListener(item)
             }
 
             binding.root.setOnClickListener {
@@ -39,8 +39,8 @@ internal class CoinListItemAdapterFactoryImpl @Inject constructor() : ICoinListI
 
             bind {
                 if (it.isNotEmpty()) {
-                    val item = it.first() as Boolean
-                    checkFavorite(item)
+                    val isFavorite = it.first() as Boolean
+                    binding.btnFavorite.checkFavorite(isFavorite)
                 } else {
                     bindItem()
                 }
@@ -48,23 +48,12 @@ internal class CoinListItemAdapterFactoryImpl @Inject constructor() : ICoinListI
         }
 
     private fun AdapterDelegateViewBindingViewHolder<CoinUiEntity, ItemSmallCoinInfoBinding>.bindItem() {
+        binding.tvCoinRang.text = item.rang
+        binding.tvCoinSymbol.text = item.symbol
         binding.tvCoinName.text = item.name
-        binding.tvCoinRang.text = "#${item.position.toString()}"
-        binding.tvCoinPrice.text = "${item.price.toString()}$"
-        checkFavorite(item.isFavorite)
-    }
-
-    private fun AdapterDelegateViewBindingViewHolder<CoinUiEntity, ItemSmallCoinInfoBinding>.checkFavorite(
-        item: Boolean
-    ) {
-        if (item) {
-            binding.btnFavorite.background =
-                ContextCompat.getDrawable(context, R.drawable.ic_baseline_star_24)
-        } else {
-            binding.btnFavorite.background = ContextCompat.getDrawable(
-                context,
-                R.drawable.ic_baseline_star_outline_24
-            )
-        }
+        binding.tvCoinPrice.text = item.price
+        binding.tvCoinPricePercentage.text = item.priceChanging
+        binding.ivCoin.loadCoinImageToIV(item.imageUrl)
+        binding.btnFavorite.checkFavorite(item.isFavorite)
     }
 }

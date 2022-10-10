@@ -5,77 +5,74 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
 import com.github.lex090.basecoins.di.GetCoinsListUseCaseDependence
 import com.github.lex090.basecoins.domain.entity.Coin
-import com.github.lex090.basecoins.domain.usecases.IGetCoinsListUseCase
+import com.github.lex090.basecoins.domain.usecases.IGetCoinListFlowUseCase
 import com.github.lex090.basefavoriteimpl.domain.usecases.IAddCoinToFavoritesUseCase
 import com.github.lex090.basefavoriteimpl.domain.usecases.IRemoveCoinFromFavoritesUseCase
+import com.github.lex090.baseui.presentation.viewmodel.entity.toCoinUiEntity
+import com.github.lex090.baseui.presentation.viewmodel.entity.toCoinUiEntityList
 import com.github.lex090.coreapi.ResultOf
-import kotlinx.coroutines.flow.MutableStateFlow
+import com.github.lex090.coreapi.presentation.uiSate.BaseUiState
+import com.github.lex090.coreapi.presentation.uiSate.UiStateEntity
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.plus
 import javax.inject.Inject
 
 class CoinListViewModel(
-    private val getCoinsListUseCase: IGetCoinsListUseCase,
+    getCoinListFlowUseCase: IGetCoinListFlowUseCase,
     private val addCoinToFavoritesUseCase: IAddCoinToFavoritesUseCase,
     private val removeCoinFromFavoritesUseCase: IRemoveCoinFromFavoritesUseCase,
 ) : ViewModel() {
 
-    private val _mutableCoinsListStateFlow: MutableStateFlow<List<Coin>> =
-        MutableStateFlow(
-            listOf()
-        )
-    val coinsList: StateFlow<List<Coin>> = _mutableCoinsListStateFlow
-
-
-    fun onViewsInit() {
-        viewModelScope.launch {
-            when (val result = getCoinsFromRepository()) {
-                is ResultOf.Error -> {
-
-                }
-                is ResultOf.Success -> {
-                    _mutableCoinsListStateFlow.value = result.data
-                }
-            }
-        }
+    companion object {
+        private const val STOP_TIMEOUT_WHILE_SUBSCRIBE = 5000L
     }
 
-    fun clickOnAddCoinToFavorites(position: Int, coin: Coin) {
+    val screenState: StateFlow<BaseUiState<UiStateEntity>> =
+        getCoinListFlowUseCase
+            .execute()
+            .map(::processCoinsDataFlow)
+            .stateIn(
+                viewModelScope,
+                SharingStarted.WhileSubscribed(STOP_TIMEOUT_WHILE_SUBSCRIBE),
+                BaseUiState.Loading
+            )
+
+    fun clickOnAddCoinToFavorites(coin: Coin) {
         viewModelScope.launch {
-            addCoinToFavoritesUseCase.execute(data = coin)
             val newCoin = coin.copy(isFavorite = true)
-            changeListItem(position, newCoin)
+            addCoinToFavoritesUseCase.execute(data = newCoin)
         }
     }
 
-    fun clickOnRemoveCoinFromFavorites(position: Int, coin: Coin) {
+    fun clickOnRemoveCoinFromFavorites(coin: Coin) {
         viewModelScope.launch {
-            removeCoinFromFavoritesUseCase.execute(data = coin)
             val newCoin = coin.copy(isFavorite = false)
-            changeListItem(position, newCoin)
+            removeCoinFromFavoritesUseCase.execute(data = newCoin)
         }
     }
 
-    private fun changeListItem(
-        position: Int,
-        coin: Coin
-    ) {
-        val coinList = coinsList.value
-        val items = mutableListOf<Coin>()
-        items.addAll(coinList)
-        items[position] = coin
-        _mutableCoinsListStateFlow.value = items
+    private fun processCoinsDataFlow(
+        result: ResultOf<List<Coin>>
+    ): BaseUiState<UiStateEntity> = when (result) {
+        is ResultOf.Error -> {
+            BaseUiState.Error(result.exception, result.message)
+        }
+        is ResultOf.Success -> {
+            val coins = result.data.map { it.toCoinUiEntity() }.toCoinUiEntityList()
+            BaseUiState.Success(coins)
+        }
     }
-
-    private suspend fun getCoinsFromRepository(): ResultOf<List<Coin>> =
-        getCoinsListUseCase.execute()
-
 
     class Factory @Inject constructor(
         @GetCoinsListUseCaseDependence
-        private val getCoinsListUseCase: IGetCoinsListUseCase,
+        private val getCoinsListUseCase: IGetCoinListFlowUseCase,
         private val addCoinToFavoritesUseCase: IAddCoinToFavoritesUseCase,
-        private val removeCoinFromFavoritesUseCase: IRemoveCoinFromFavoritesUseCase
+        private val removeCoinFromFavoritesUseCase: IRemoveCoinFromFavoritesUseCase,
     ) : ViewModelProvider.Factory {
 
         @Suppress("UNCHECKED_CAST")
