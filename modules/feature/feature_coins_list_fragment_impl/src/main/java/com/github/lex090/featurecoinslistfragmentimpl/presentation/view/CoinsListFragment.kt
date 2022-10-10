@@ -27,6 +27,7 @@ import com.github.lex090.featurecoinslistfragmentimpl.di.DaggerCoinListFragmentC
 import com.github.lex090.featurecoinslistfragmentimpl.presentation.viewmodel.CoinListViewModel
 import com.google.android.material.snackbar.Snackbar
 import com.hannesdorfmann.adapterdelegates4.AdapterDelegatesManager
+import kotlinx.coroutines.flow.onStart
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 import com.github.lex090.baseui.R as MainR
@@ -148,6 +149,9 @@ class CoinsListFragment : Fragment() {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
                 viewModel
                     .screenState
+                    .onStart {
+                        viewModel.subscribeToState()
+                    }
                     .collect(::processState)
             }
         }

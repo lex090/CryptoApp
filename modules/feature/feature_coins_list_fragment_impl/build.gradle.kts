@@ -58,4 +58,10 @@ dependencies {
     kapt(Dependencies.Libraries.dagger2compiler)
 
     implementation(Dependencies.Libraries.facebookShimmer)
+
+    testImplementation(Dependencies.Libraries.junit)
+    testImplementation(Dependencies.Libraries.mockitoCore)
+    testImplementation(Dependencies.Libraries.mockitoKotlin)
+    testImplementation(Dependencies.Libraries.coroutinesTesting)
+    testImplementation(Dependencies.Libraries.turbine)
 }
