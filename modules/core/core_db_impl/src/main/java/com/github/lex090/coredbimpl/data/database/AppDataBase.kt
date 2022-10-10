@@ -1,4 +1,4 @@
-package com.github.lex090.coredbimpl.database
+package com.github.lex090.coredbimpl.data.database
 
 import androidx.room.Database
 import androidx.room.RoomDatabase

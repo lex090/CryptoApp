@@ -3,8 +3,8 @@ package com.github.lex090.coredbimpl.di
 import android.content.Context
 import androidx.room.Room
 import com.github.lex090.coredbapi.data.dao.FavoriteCoinsDao
-import com.github.lex090.coredbimpl.database.AppDatabase
-import com.github.lex090.coredbimpl.database.DATABASE_NAME
+import com.github.lex090.coredbimpl.data.database.AppDatabase
+import com.github.lex090.coredbimpl.data.database.DATABASE_NAME
 import com.github.lex090.corediapi.ApplicationContext
 import com.github.lex090.corediapi.ApplicationScope
 import dagger.Module
