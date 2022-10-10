@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="NormalTextAppearanceActive" parent="">
+        <item name="android:textColor">#747474</item>
+        <item name="android:typeface">monospace</item>
+        <item name="android:textSize">12sp</item>
+    </style>
+
+    <style name="NormalTextAppearanceInactive" parent="">
+        <item name="android:textColor">#4D747474</item>
+        <item name="android:typeface">monospace</item>
+        <item name="android:textSize">12sp</item>
+    </style>
+
+</resources>

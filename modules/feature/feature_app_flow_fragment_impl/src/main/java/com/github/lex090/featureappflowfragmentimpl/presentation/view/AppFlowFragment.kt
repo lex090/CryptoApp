@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
@@ -80,10 +81,11 @@ class AppFlowFragment : Fragment() {
 
     private fun processFavoritesCount(favoritesCont: Int) {
         val badge = viewBinding
-            ?.bottomNavigationView
-            ?.getOrCreateBadge(nav_graph_favorite_coins_fragment)
-        badge?.isVisible = favoritesCont > 0
-        badge?.number = favoritesCont
+            .bottomNavigationView
+            .getOrCreateBadge(nav_graph_favorite_coins_fragment)
+        badge.backgroundColor = ContextCompat.getColor(requireContext(), R.color.grayMain)
+        badge.isVisible = favoritesCont > 0
+        badge.number = favoritesCont
     }
 
     private fun injectDependencies() {
