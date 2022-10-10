@@ -7,12 +7,15 @@ import com.github.lex090.cryptoapp.dependencies.Dependencies.Versions.androidxCo
 import com.github.lex090.cryptoapp.dependencies.Dependencies.Versions.androidxCoreKtxVersion
 import com.github.lex090.cryptoapp.dependencies.Dependencies.Versions.androidxEspressoVersion
 import com.github.lex090.cryptoapp.dependencies.Dependencies.Versions.androidxJunitVersion
+import com.github.lex090.cryptoapp.dependencies.Dependencies.Versions.coroutinesTestingVersion
 import com.github.lex090.cryptoapp.dependencies.Dependencies.Versions.dagger2Version
 import com.github.lex090.cryptoapp.dependencies.Dependencies.Versions.facebookShimmerVersion
 import com.github.lex090.cryptoapp.dependencies.Dependencies.Versions.fragmentKtxVersion
 import com.github.lex090.cryptoapp.dependencies.Dependencies.Versions.junitVersion
 import com.github.lex090.cryptoapp.dependencies.Dependencies.Versions.kotlinxCoroutinesVersion
 import com.github.lex090.cryptoapp.dependencies.Dependencies.Versions.materialVersion
+import com.github.lex090.cryptoapp.dependencies.Dependencies.Versions.mockitoCoreVersion
+import com.github.lex090.cryptoapp.dependencies.Dependencies.Versions.mockitoKotlinVersion
 import com.github.lex090.cryptoapp.dependencies.Dependencies.Versions.moshiVersion
 import com.github.lex090.cryptoapp.dependencies.Dependencies.Versions.multidexVersion
 import com.github.lex090.cryptoapp.dependencies.Dependencies.Versions.navigationVersion
@@ -34,6 +37,9 @@ object Dependencies {
         const val materialVersion = "1.6.1"
         const val androidxConstraintLayoutVersion = "1.6.1"
         const val junitVersion = "4.13.2"
+        const val mockitoCoreVersion = "4.8.0"
+        const val mockitoKotlinVersion = "4.0.0"
+        const val coroutinesTestingVersion = kotlinxCoroutinesVersion
         const val androidxJunitVersion = "1.1.3"
         const val androidxEspressoVersion = "3.4.0"
         const val retrofitVersion = "2.9.0"
@@ -102,10 +108,14 @@ object Dependencies {
         const val material = "com.google.android.material:material:$materialVersion"
         const val androidxConstraintLayout =
             "androidx.constraintlayout:constraintlayout:$androidxConstraintLayoutVersion"
+
         const val junit = "junit:junit:$junitVersion"
         const val androidxJunit = "androidx.test.ext:junit:$androidxJunitVersion"
         const val androidxEspresso = "androidx.test.espresso:espresso-core:$androidxEspressoVersion"
-
+        const val mockitoCore = "org.mockito:mockito-core:$mockitoCoreVersion"
+        const val mockitoKotlin = "org.mockito.kotlin:mockito-kotlin:$mockitoKotlinVersion"
+        const val coroutinesTesting =
+            "org.jetbrains.kotlinx:kotlinx-coroutines-test:$coroutinesTestingVersion"
 
         const val retrofit = "com.squareup.retrofit2:retrofit:$retrofitVersion"
         const val retrofitConverterMoshi =
@@ -158,4 +168,3 @@ object AppConfiguration {
     const val versionCode = 1
     const val versionName = "1.0"
 }
-

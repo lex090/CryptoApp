@@ -35,4 +35,9 @@ dependencies {
 
     implementation(Dependencies.Libraries.dagger2)
     kapt(Dependencies.Libraries.dagger2compiler)
+
+    testImplementation(Dependencies.Libraries.junit)
+    testImplementation(Dependencies.Libraries.mockitoCore)
+    testImplementation(Dependencies.Libraries.mockitoKotlin)
+    testImplementation(Dependencies.Libraries.coroutinesTesting)
 }

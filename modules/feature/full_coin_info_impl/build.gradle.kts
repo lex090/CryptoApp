@@ -59,4 +59,9 @@ dependencies {
 
     implementation(Dependencies.Libraries.facebookShimmer)
     implementation(Dependencies.Libraries.picasso)
+
+    testImplementation(Dependencies.Libraries.junit)
+    testImplementation(Dependencies.Libraries.mockitoCore)
+    testImplementation(Dependencies.Libraries.mockitoKotlin)
+    testImplementation(Dependencies.Libraries.coroutinesTesting)
 }

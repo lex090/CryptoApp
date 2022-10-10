@@ -46,4 +46,9 @@ dependencies {
     implementation(Dependencies.Libraries.moshi)
 
     implementation(Dependencies.Libraries.kotlinxCoroutines)
+
+    testImplementation(Dependencies.Libraries.junit)
+    testImplementation(Dependencies.Libraries.mockitoCore)
+    testImplementation(Dependencies.Libraries.mockitoKotlin)
+    testImplementation(Dependencies.Libraries.coroutinesTesting)
 }

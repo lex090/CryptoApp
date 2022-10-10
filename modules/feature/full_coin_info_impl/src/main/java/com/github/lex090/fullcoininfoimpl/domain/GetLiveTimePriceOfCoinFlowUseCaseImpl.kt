@@ -9,8 +9,7 @@ interface IGetLiveTimePriceOfCoinFlowUseCase :
 
 class GetLiveTimePriceOfCoinFlowUseCaseImpl @Inject constructor(
     private val fullCoinInfoRepository: IFullCoinInfoRepository
-) :
-    IGetLiveTimePriceOfCoinFlowUseCase {
+) : IGetLiveTimePriceOfCoinFlowUseCase {
 
     override fun execute(data: String): Flow<Double> =
         fullCoinInfoRepository.getRealTimePriceOfCoin(coinId = data)
