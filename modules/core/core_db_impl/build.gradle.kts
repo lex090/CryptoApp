@@ -36,4 +36,14 @@ dependencies {
 
     implementation(Dependencies.Libraries.dagger2)
     kapt(Dependencies.Libraries.dagger2compiler)
+
+    implementation(Dependencies.Libraries.kotlinxCoroutines)
+
+    testImplementation(Dependencies.Libraries.junit)
+    androidTestImplementation(Dependencies.Libraries.turbine)
+    androidTestImplementation(Dependencies.Libraries.androidxJunit)
+    androidTestImplementation(Dependencies.Libraries.truth)
+    androidTestImplementation(Dependencies.Libraries.androidArchCoreCoreTesting)
+    androidTestImplementation(Dependencies.Libraries.coroutinesTesting)
+    androidTestImplementation(Dependencies.Libraries.androidxEspresso)
 }

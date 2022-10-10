@@ -2,6 +2,7 @@ package com.github.lex090.cryptoapp.dependencies
 
 import com.github.lex090.cryptoapp.dependencies.Dependencies.Versions.activityKtxVersion
 import com.github.lex090.cryptoapp.dependencies.Dependencies.Versions.adapterDelegatesVersion
+import com.github.lex090.cryptoapp.dependencies.Dependencies.Versions.androidArchCoreCoreTestingVersion
 import com.github.lex090.cryptoapp.dependencies.Dependencies.Versions.androidxAppcompatVersion
 import com.github.lex090.cryptoapp.dependencies.Dependencies.Versions.androidxConstraintLayoutVersion
 import com.github.lex090.cryptoapp.dependencies.Dependencies.Versions.androidxCoreKtxVersion
@@ -26,6 +27,8 @@ import com.github.lex090.cryptoapp.dependencies.Dependencies.Versions.retrofitCo
 import com.github.lex090.cryptoapp.dependencies.Dependencies.Versions.retrofitVersion
 import com.github.lex090.cryptoapp.dependencies.Dependencies.Versions.roomVersion
 import com.github.lex090.cryptoapp.dependencies.Dependencies.Versions.scarletVersion
+import com.github.lex090.cryptoapp.dependencies.Dependencies.Versions.truthVersion
+import com.github.lex090.cryptoapp.dependencies.Dependencies.Versions.turbineVersion
 
 object Dependencies {
 
@@ -40,6 +43,9 @@ object Dependencies {
         const val mockitoCoreVersion = "4.8.0"
         const val mockitoKotlinVersion = "4.0.0"
         const val coroutinesTestingVersion = kotlinxCoroutinesVersion
+        const val turbineVersion = "0.11.0"
+        const val truthVersion = "1.0.1"
+        const val androidArchCoreCoreTestingVersion = "1.0.0"
         const val androidxJunitVersion = "1.1.3"
         const val androidxEspressoVersion = "3.4.0"
         const val retrofitVersion = "2.9.0"
@@ -116,6 +122,10 @@ object Dependencies {
         const val mockitoKotlin = "org.mockito.kotlin:mockito-kotlin:$mockitoKotlinVersion"
         const val coroutinesTesting =
             "org.jetbrains.kotlinx:kotlinx-coroutines-test:$coroutinesTestingVersion"
+        const val turbine = "app.cash.turbine:turbine:$turbineVersion"
+        const val truth = "com.google.truth:truth:$truthVersion"
+        const val androidArchCoreCoreTesting =
+            "android.arch.core:core-testing:$androidArchCoreCoreTestingVersion"
 
         const val retrofit = "com.squareup.retrofit2:retrofit:$retrofitVersion"
         const val retrofitConverterMoshi =
