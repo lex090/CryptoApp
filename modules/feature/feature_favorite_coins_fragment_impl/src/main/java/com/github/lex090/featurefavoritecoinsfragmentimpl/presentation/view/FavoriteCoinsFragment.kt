@@ -12,6 +12,7 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.github.lex090.baseui.R
 import com.github.lex090.baseui.presentation.view.adapters.ICoinListItemAdapterFactory
@@ -93,8 +94,12 @@ class FavoriteCoinsFragment : Fragment() {
     }
 
     private fun initRecyclerView() {
-        viewBinding.rvFavoritesList.adapter = adapter
-        viewBinding.rvFavoritesList.layoutManager = LinearLayoutManager(context)
+        with(viewBinding) {
+            rvFavoritesList.adapter = adapter
+            rvFavoritesList.layoutManager = LinearLayoutManager(context)
+            val decorator = DividerItemDecoration(context, DividerItemDecoration.VERTICAL)
+            rvFavoritesList.addItemDecoration(decorator)
+        }
     }
 
     private fun subscribeToScreenState() {
