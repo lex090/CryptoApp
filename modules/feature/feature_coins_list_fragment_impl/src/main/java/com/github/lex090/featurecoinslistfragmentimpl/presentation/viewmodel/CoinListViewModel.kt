@@ -13,34 +13,32 @@ import com.github.lex090.baseui.presentation.viewmodel.entity.toCoinUiEntityList
 import com.github.lex090.coreapi.ResultOf
 import com.github.lex090.coreapi.presentation.uiSate.BaseUiState
 import com.github.lex090.coreapi.presentation.uiSate.UiStateEntity
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.flow.SharingStarted
+import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.map
-import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.plus
 import javax.inject.Inject
 
 class CoinListViewModel(
-    getCoinListFlowUseCase: IGetCoinListFlowUseCase,
+    private val getCoinListFlowUseCase: IGetCoinListFlowUseCase,
     private val addCoinToFavoritesUseCase: IAddCoinToFavoritesUseCase,
     private val removeCoinFromFavoritesUseCase: IRemoveCoinFromFavoritesUseCase,
 ) : ViewModel() {
 
-    companion object {
-        private const val STOP_TIMEOUT_WHILE_SUBSCRIBE = 5000L
-    }
+    private val _mutableScreenState: MutableStateFlow<BaseUiState<UiStateEntity>> =
+        MutableStateFlow(BaseUiState.Loading)
+    val screenState: StateFlow<BaseUiState<UiStateEntity>> = _mutableScreenState
 
-    val screenState: StateFlow<BaseUiState<UiStateEntity>> =
-        getCoinListFlowUseCase
-            .execute()
-            .map(::processCoinsDataFlow)
-            .stateIn(
-                viewModelScope,
-                SharingStarted.WhileSubscribed(STOP_TIMEOUT_WHILE_SUBSCRIBE),
-                BaseUiState.Loading
-            )
+    fun subscribeToState() {
+        viewModelScope.launch {
+            getCoinListFlowUseCase
+                .execute()
+                .map(::processCoinsDataFlow)
+                .collect {
+                    _mutableScreenState.value = it
+                }
+        }
+    }
 
     fun clickOnAddCoinToFavorites(coin: Coin) {
         viewModelScope.launch {
