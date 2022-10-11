@@ -30,6 +30,12 @@ android {
     buildFeatures {
         viewBinding = true
     }
+
+    testOptions {
+        unitTests {
+            isIncludeAndroidResources = true
+        }
+    }
 }
 
 dependencies {
@@ -59,9 +65,15 @@ dependencies {
 
     implementation(Dependencies.Libraries.facebookShimmer)
 
+    debugImplementation(Dependencies.Libraries.fragmentTesting)
     testImplementation(Dependencies.Libraries.junit)
-    testImplementation(Dependencies.Libraries.mockitoCore)
+    testImplementation(Dependencies.Libraries.androidxJunit)
+    testImplementation(Dependencies.Libraries.androidxEspresso)
+    testImplementation(Dependencies.Libraries.androidXCoreTesting)
     testImplementation(Dependencies.Libraries.mockitoKotlin)
+    testImplementation(Dependencies.Libraries.robolectric)
+    testImplementation(Dependencies.Libraries.androidArchCoreCoreTesting)
     testImplementation(Dependencies.Libraries.coroutinesTesting)
     testImplementation(Dependencies.Libraries.turbine)
+    testImplementation(Dependencies.Libraries.mockitoInline)
 }

@@ -10,19 +10,14 @@ import com.github.lex090.baseui.presentation.viewmodel.entity.toCoinUiEntity
 import com.github.lex090.baseui.presentation.viewmodel.entity.toCoinUiEntityList
 import com.github.lex090.coreapi.ResultOf
 import com.github.lex090.coreapi.presentation.uiSate.BaseUiState
+import com.github.lex090.featurecoinslistfragmentimpl.presentation.CoroutinesTestRule
 import com.github.lex090.featurecoinslistfragmentimpl.presentation.coin1
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.flow
-import kotlinx.coroutines.test.TestCoroutineDispatcher
-import kotlinx.coroutines.test.resetMain
 import kotlinx.coroutines.test.runTest
-import kotlinx.coroutines.test.setMain
 import org.junit.Assert.assertEquals
 import org.junit.Rule
 import org.junit.Test
-import org.junit.rules.TestWatcher
-import org.junit.runner.Description
 import org.mockito.kotlin.mock
 import org.mockito.kotlin.times
 import org.mockito.kotlin.verify
@@ -125,21 +120,5 @@ class CoinListViewModelTest {
         viewModel.screenState.test {
             assertEquals(expected, awaitItem())
         }
-    }
-}
-
-@ExperimentalCoroutinesApi
-class CoroutinesTestRule(
-    private val testDispatcher: TestCoroutineDispatcher = TestCoroutineDispatcher()
-) : TestWatcher() {
-
-    override fun starting(description: Description?) {
-        super.starting(description)
-        Dispatchers.setMain(testDispatcher)
-    }
-
-    override fun finished(description: Description?) {
-        super.finished(description)
-        Dispatchers.resetMain()
     }
 }
