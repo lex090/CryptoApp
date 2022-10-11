@@ -3,9 +3,11 @@
 
     <item
         android:id="@id/nav_graph_coins_list_fragment"
+        android:icon="@drawable/ic_bottom_bar_coins_list"
         android:title="Coins list" />
 
     <item
         android:id="@id/nav_graph_favorite_coins_fragment"
+        android:icon="@drawable/ic_bottom_bar_favorites"
         android:title="Favorite coins" />
 </menu>

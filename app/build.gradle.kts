@@ -41,21 +41,29 @@ android {
 dependencies {
     implementation(project(Dependencies.ProjectModules.coreFactory))
 
-    implementation(project(Dependencies.ProjectModules.coreDiApi))
     implementation(project(Dependencies.ProjectModules.coreDiImpl))
-    implementation(project(Dependencies.ProjectModules.coreNetworkApi))
+
     implementation(project(Dependencies.ProjectModules.coreNetworkImpl))
 
-    implementation(project(Dependencies.ProjectModules.featureAppActivityApi))
+    implementation(project(Dependencies.ProjectModules.coreApi))
+
+    implementation(project(Dependencies.ProjectModules.baseUI))
+
+    implementation(project(Dependencies.ProjectModules.coreDbImpl))
+
+    implementation(project(Dependencies.ProjectModules.baseFavorite))
+
+    implementation(project(Dependencies.ProjectModules.baseCoins))
+
     implementation(project(Dependencies.ProjectModules.featureAppActivityImpl))
-    implementation(project(Dependencies.ProjectModules.featureAppFlowFragmentApi))
+
     implementation(project(Dependencies.ProjectModules.featureAppFlowFragmentImpl))
 
-    implementation(project(Dependencies.ProjectModules.featureCoinsListFragmentApi))
     implementation(project(Dependencies.ProjectModules.featureCoinsListFragmentImpl))
 
-    implementation(project(Dependencies.ProjectModules.featureFavoriteCoinsFragmentApi))
     implementation(project(Dependencies.ProjectModules.featureFavoriteCoinsFragmentImpl))
+
+    implementation(project(Dependencies.ProjectModules.featureFullCoinInfoImpl))
 
     implementation(Dependencies.Libraries.androidxCoreKtx)
     implementation(Dependencies.Libraries.androidxAppcompat)
@@ -65,6 +73,8 @@ dependencies {
     testImplementation(Dependencies.Libraries.junit)
     androidTestImplementation(Dependencies.Libraries.androidxJunit)
     androidTestImplementation(Dependencies.Libraries.androidxEspresso)
+
+    implementation(Dependencies.Libraries.okHttp3)
 
     implementation(Dependencies.Libraries.multidex)
 

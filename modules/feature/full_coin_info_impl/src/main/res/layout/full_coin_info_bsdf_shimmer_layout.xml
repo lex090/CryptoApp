@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <View
+        android:layout_width="36dp"
+        android:layout_height="4dp"
+        android:layout_marginTop="4dp"
+        android:background="@drawable/round_background"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/topGuidLineShimmer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="24dp" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/coinRangShimmer"
+        android:layout_width="16dp"
+        android:layout_height="16dp"
+        android:layout_marginStart="16dp"
+        android:background="@drawable/round_background_shimmer"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/topGuidLineShimmer" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/coinImgShimmer"
+        android:layout_width="36dp"
+        android:layout_height="36dp"
+        android:layout_marginStart="16dp"
+        android:background="@drawable/round_background_shimmer"
+        app:layout_constraintBottom_toBottomOf="@id/coinRangShimmer"
+        app:layout_constraintStart_toEndOf="@id/coinRangShimmer"
+        app:layout_constraintTop_toTopOf="@id/coinRangShimmer" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/coinNameShimmer"
+        android:layout_width="124dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:background="@drawable/round_background_shimmer"
+        app:layout_constraintBottom_toBottomOf="@id/coinImgShimmer"
+        app:layout_constraintStart_toEndOf="@id/coinImgShimmer"
+        app:layout_constraintTop_toTopOf="@id/coinImgShimmer" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/coinPriceShimmer"
+        android:layout_width="124dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/round_background_shimmer"
+        app:layout_constraintBottom_toBottomOf="@id/coinImgShimmer"
+        app:layout_constraintEnd_toStartOf="@id/coinIsFavoriteShimmer"
+        app:layout_constraintStart_toEndOf="@id/coinNameShimmer"
+        app:layout_constraintTop_toTopOf="@id/coinImgShimmer" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/coinIsFavoriteShimmer"
+        android:layout_width="36dp"
+        android:layout_height="36dp"
+        android:layout_marginEnd="16dp"
+        android:background="@drawable/round_background_shimmer"
+        app:layout_constraintBottom_toBottomOf="@id/coinRangShimmer"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/coinRangShimmer" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/marketGuideLineShimmer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="70dp" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/marketTitleShimmer"
+        android:layout_width="256dp"
+        android:layout_height="24dp"
+        android:layout_marginStart="16dp"
+        android:background="@drawable/round_background_shimmer"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/marketGuideLineShimmer" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/marketCardViewShimmer"
+        android:layout_width="match_parent"
+        android:layout_height="256dp"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="16dp"
+        app:cardCornerRadius="16dp"
+        app:cardElevation="24dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/marketTitleShimmer">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/containerShimmer"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/marketCapShimmer"
+                android:layout_width="128dp"
+                android:layout_height="20dp"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="24dp"
+                android:background="@drawable/round_background_shimmer"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <View
+                android:id="@+id/divider1Shimmer"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginHorizontal="24dp"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/round_background"
+                app:layout_constraintTop_toBottomOf="@id/marketCapShimmer" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/marketCapAmountShimmer"
+                android:layout_width="128dp"
+                android:layout_height="20dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginEnd="24dp"
+                android:background="@drawable/round_background_shimmer"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/volume24hShimmer"
+                android:layout_width="128dp"
+                android:layout_height="20dp"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="24dp"
+                android:background="@drawable/round_background_shimmer"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/divider1Shimmer" />
+
+            <View
+                android:id="@+id/divider2Shimmer"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginHorizontal="24dp"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/round_background"
+                app:layout_constraintTop_toBottomOf="@id/volume24hShimmer" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/volume24hAmountShimmer"
+                android:layout_width="128dp"
+                android:layout_height="20dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginEnd="24dp"
+                android:background="@drawable/round_background_shimmer"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/divider1Shimmer" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/fullyDillMCapShimmer"
+                android:layout_width="128dp"
+                android:layout_height="20dp"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="24dp"
+                android:background="@drawable/round_background_shimmer"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/divider2Shimmer" />
+
+            <View
+                android:id="@+id/divider3Shimmer"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginHorizontal="24dp"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/round_background"
+                app:layout_constraintTop_toBottomOf="@id/fullyDillMCapShimmer" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/fullyDillMCapAmountShimmer"
+                android:layout_width="128dp"
+                android:layout_height="20dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginEnd="24dp"
+                android:background="@drawable/round_background_shimmer"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/divider2Shimmer" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvSeeAllShimmer"
+                android:layout_width="128dp"
+                android:layout_height="20dp"
+                android:layout_marginTop="24dp"
+                android:background="@drawable/round_background_shimmer"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/divider3Shimmer" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvDescriptionTitleShimmer"
+        android:layout_width="128dp"
+        android:layout_height="24dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="24dp"
+        android:background="@drawable/round_background_shimmer"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/marketCardViewShimmer" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvDescriptionShimmer"
+        android:layout_width="0dp"
+        android:layout_height="64dp"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/round_background_shimmer"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvDescriptionTitleShimmer" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvSeeModeDescriptionShimmer"
+        android:layout_width="128dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="32dp"
+        android:background="@drawable/round_background_shimmer"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvDescriptionShimmer" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

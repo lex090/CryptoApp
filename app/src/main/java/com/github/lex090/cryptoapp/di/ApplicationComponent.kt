@@ -1,5 +1,6 @@
 package com.github.lex090.cryptoapp.di
 
+import com.github.lex090.corediapi.AppDependenciesProvider
 import com.github.lex090.corediapi.ApplicationScope
 import com.github.lex090.corediapi.CoreComponentDependencies
 import dagger.Component
@@ -13,7 +14,7 @@ import dagger.Component
         CoreComponentDependencies::class
     ]
 )
-interface ApplicationComponent {
+interface ApplicationComponent : AppDependenciesProvider {
 
     @Component.Factory
     interface Factory {

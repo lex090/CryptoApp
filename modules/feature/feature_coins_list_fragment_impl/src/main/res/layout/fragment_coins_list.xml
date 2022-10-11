@@ -2,12 +2,22 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.github.lex090.featurecoinslistfragmentimpl.CoinsListFragment">
+    tools:context="com.github.lex090.featurecoinslistfragmentimpl.presentation.view.CoinsListFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <include
+        android:id="@+id/shimmerLayout"
+        layout="@layout/shimmer_layout" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvCoinsList"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:visibility="invisible" />
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:id="@+id/contextMenuItemSnackBarHost"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom" />
 
 </FrameLayout>

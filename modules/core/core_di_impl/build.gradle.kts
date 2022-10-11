@@ -29,6 +29,7 @@ android {
 dependencies {
     api(project(Dependencies.ProjectModules.coreDiApi))
     implementation(project(Dependencies.ProjectModules.coreNetworkImpl))
+    implementation(project(Dependencies.ProjectModules.coreDbImpl))
 
     implementation(Dependencies.Libraries.retrofit)
     implementation(Dependencies.Libraries.retrofitConverterMoshi)
@@ -38,4 +39,6 @@ dependencies {
 
     implementation(Dependencies.Libraries.dagger2)
     kapt(Dependencies.Libraries.dagger2compiler)
+
+    implementation(Dependencies.Libraries.kotlinxCoroutines)
 }
