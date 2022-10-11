@@ -3,6 +3,7 @@ package com.github.lex090.cryptoapp.dependencies
 import com.github.lex090.cryptoapp.dependencies.Dependencies.Versions.activityKtxVersion
 import com.github.lex090.cryptoapp.dependencies.Dependencies.Versions.adapterDelegatesVersion
 import com.github.lex090.cryptoapp.dependencies.Dependencies.Versions.androidArchCoreCoreTestingVersion
+import com.github.lex090.cryptoapp.dependencies.Dependencies.Versions.androidXCoreTestingVersion
 import com.github.lex090.cryptoapp.dependencies.Dependencies.Versions.androidxAppcompatVersion
 import com.github.lex090.cryptoapp.dependencies.Dependencies.Versions.androidxConstraintLayoutVersion
 import com.github.lex090.cryptoapp.dependencies.Dependencies.Versions.androidxCoreKtxVersion
@@ -12,11 +13,13 @@ import com.github.lex090.cryptoapp.dependencies.Dependencies.Versions.coroutines
 import com.github.lex090.cryptoapp.dependencies.Dependencies.Versions.dagger2Version
 import com.github.lex090.cryptoapp.dependencies.Dependencies.Versions.facebookShimmerVersion
 import com.github.lex090.cryptoapp.dependencies.Dependencies.Versions.fragmentKtxVersion
+import com.github.lex090.cryptoapp.dependencies.Dependencies.Versions.fragmentTestingVersion
 import com.github.lex090.cryptoapp.dependencies.Dependencies.Versions.junitVersion
 import com.github.lex090.cryptoapp.dependencies.Dependencies.Versions.kotlinxCoroutinesVersion
 import com.github.lex090.cryptoapp.dependencies.Dependencies.Versions.materialVersion
 import com.github.lex090.cryptoapp.dependencies.Dependencies.Versions.mockitoCoreVersion
 import com.github.lex090.cryptoapp.dependencies.Dependencies.Versions.mockitoKotlinVersion
+import com.github.lex090.cryptoapp.dependencies.Dependencies.Versions.mockitoVersion
 import com.github.lex090.cryptoapp.dependencies.Dependencies.Versions.moshiVersion
 import com.github.lex090.cryptoapp.dependencies.Dependencies.Versions.multidexVersion
 import com.github.lex090.cryptoapp.dependencies.Dependencies.Versions.navigationVersion
@@ -25,6 +28,7 @@ import com.github.lex090.cryptoapp.dependencies.Dependencies.Versions.okHttp3Ver
 import com.github.lex090.cryptoapp.dependencies.Dependencies.Versions.picassoVersion
 import com.github.lex090.cryptoapp.dependencies.Dependencies.Versions.retrofitConverterMoshiVersion
 import com.github.lex090.cryptoapp.dependencies.Dependencies.Versions.retrofitVersion
+import com.github.lex090.cryptoapp.dependencies.Dependencies.Versions.robolectricVersion
 import com.github.lex090.cryptoapp.dependencies.Dependencies.Versions.roomVersion
 import com.github.lex090.cryptoapp.dependencies.Dependencies.Versions.scarletVersion
 import com.github.lex090.cryptoapp.dependencies.Dependencies.Versions.truthVersion
@@ -41,10 +45,14 @@ object Dependencies {
         const val androidxConstraintLayoutVersion = "1.6.1"
         const val junitVersion = "4.13.2"
         const val mockitoCoreVersion = "4.8.0"
+        const val mockitoVersion = "2.13.0"
         const val mockitoKotlinVersion = "4.0.0"
         const val coroutinesTestingVersion = kotlinxCoroutinesVersion
         const val turbineVersion = "0.11.0"
         const val truthVersion = "1.0.1"
+        const val fragmentTestingVersion = "1.5.2"
+        const val androidXCoreTestingVersion = "1.4.0"
+        const val robolectricVersion = "4.8"
         const val androidArchCoreCoreTestingVersion = "1.0.0"
         const val androidxJunitVersion = "1.1.3"
         const val androidxEspressoVersion = "3.4.0"
@@ -119,6 +127,8 @@ object Dependencies {
         const val androidxJunit = "androidx.test.ext:junit:$androidxJunitVersion"
         const val androidxEspresso = "androidx.test.espresso:espresso-core:$androidxEspressoVersion"
         const val mockitoCore = "org.mockito:mockito-core:$mockitoCoreVersion"
+        const val mockitoInline = "org.mockito:mockito-inline:$mockitoVersion"
+
         const val mockitoKotlin = "org.mockito.kotlin:mockito-kotlin:$mockitoKotlinVersion"
         const val coroutinesTesting =
             "org.jetbrains.kotlinx:kotlinx-coroutines-test:$coroutinesTestingVersion"
@@ -126,6 +136,9 @@ object Dependencies {
         const val truth = "com.google.truth:truth:$truthVersion"
         const val androidArchCoreCoreTesting =
             "android.arch.core:core-testing:$androidArchCoreCoreTestingVersion"
+        const val fragmentTesting = "androidx.fragment:fragment-testing:$fragmentTestingVersion"
+        const val androidXCoreTesting = "androidx.test:core:$androidXCoreTestingVersion"
+        const val robolectric = "org.robolectric:robolectric:$robolectricVersion"
 
         const val retrofit = "com.squareup.retrofit2:retrofit:$retrofitVersion"
         const val retrofitConverterMoshi =
